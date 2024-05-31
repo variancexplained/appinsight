@@ -65,7 +65,7 @@ Enough with the preliminaries, let's dive in.
 
 import os
 if 'jbook' in os.getcwd():
-    os.chdir(os.path.abspath(os.path.join("../../..")))
+    os.chdir(os.path.abspath(os.path.join("../..")))
 import warnings
 warnings.filterwarnings("ignore")
 ```
