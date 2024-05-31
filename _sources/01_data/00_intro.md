@@ -18,7 +18,7 @@ kernelspec:
 ## Introduction
 In 1983, Steve Jobs envisioned a future where consumers could seamlessly purchase and download software directly from their computers. Fast forward 25 years to 2008, Apple launched the App Store, realizing Jobs’ vision and revolutionizing the way we interact with technology. Following the success of the iTunes digital music store, the Apple App Store became one of the world’s first commercially successful mobile app marketplaces, and today, it stands as a digital leviathan. As of May 29, 2024, the App Store boasts a staggering 1,928,363 apps available for download, catering to over 1.3 billion iOS users worldwide.
 
-And, amidst this flourishing ecosystem, understanding how users *actually* feel about the apps they download and use every day, remains crucial. It's incontestable. Ratings and reviews play a pivotal role in App Store Optimization (ASO) and app discoverability, which can be the difference between app success and failure. Yet, the dearth of large-scale customer rating and review datasets for in-depth analysis, astounding. 
+And, amidst this flourishing ecosystem, understanding how users *actually* feel about the apps they download and use every day, remains crucial. It's incontestable. Ratings and reviews play a pivotal role in App Store Optimization (ASO) and app discoverability, which can be the difference between app success and failure. Yet, the dearth of large-scale customer rating and review datasets for in-depth analysis, astounding.
 
 Disaffected by the scarcity of comprehensive App Store review datasets, an undertaking was begun to construct a collection of app reviews that would serve as a laboratory where the frontier of generative methods, text synthesis, graph neural networks, next-gen NLP solutions, advanced integration technologies, and other innovative methods can be explored, stretched, taxed and charged with revealing the nuances and contours of the customer experience, to uncover the latent, and perhaps indistinguished emergent market need with AI.
 
@@ -58,14 +58,14 @@ Optimize monetization strategies through targeted advertising, in-app purchases,
 Whether you're a developer looking to create the next big app, a stakeholder striving to optimize app performance, or a data scientist seeking to extract insights from user feedback, we believe that this excursion into the AppVoC Dataset will provide tools, techniques, and inspiration needed to unlock the full potential of user data and drive meaningful innovations in the app ecosystem.
 
 ## AppVoC Overview
-Enough with the preliminaries, let's dive in. 
+Enough with the preliminaries, let's dive in.
 
 ```{code-cell} ipython3
 :tags: [remove-cell]
 
 import os
 if 'jbook' in os.getcwd():
-    os.chdir(os.path.abspath(os.path.join("../..")))
+    os.chdir(os.path.abspath(os.path.join("../../..")))
 import warnings
 warnings.filterwarnings("ignore")
 ```
