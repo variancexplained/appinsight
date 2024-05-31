@@ -566,18 +566,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">appinsight.data.analysis.overview</span> <span class="kn">import</span> <span class="n">DatasetOverview</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">appinsight.infrastructure.storage.dataset</span> <span class="kn">import</span> <span class="n">DatasetManager</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;appinsight.data.analysis&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,6 +577,98 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Characteristic</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Number of Reviews</td>
+      <td>183,010</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Number of Users</td>
+      <td>181,886</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Number of Apps</td>
+      <td>13,461</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Number of Categories</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Characteristic</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Number of Reviews</td>
+      <td>183,010</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Number of Users</td>
+      <td>181,886</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Number of Apps</td>
+      <td>13,461</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Number of Categories</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>As stated above and as indicated below, we have over 18 million reviews for 34,000 apss from some 13 million unique users.</p>
 <p>The AppInsight Reviews dataset, extracted from the Apple App Store in July of 2023, represents user sentiments and experiences within the app ecosystem dating back to 2008. Comprising 18,301,035 reviews of approximately 34,000 mobile applications spanning 11 distinct categories, this dataset . The dataset encompasses 13 variables, offering a multifaceted view of user interactions and app attributes. Let’s introduce the key variables encapsulated within the dataset:</p>
