@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. AppVoC Preprocessing: Cleaning &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_data/03_clean';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. AppVoC Preprocessing: Feature Engineering" href="04_features.html" />
+    <link rel="prev" title="3. AppVoC Preprocessing: Data Quality Assessment" href="02_dqa.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../00_intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"><p style="text-align:left"><span style="color:#002B5B"><span style="font-size:36px"><span style="font-family:Lato">VoCMobile.ai</span></span><span style="font-size:18px"><span style="font-family:Lato">AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics & Insight</span></span></span></p>
+</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_intro.html">
+                    AppInsight: Analysis and Opportunity Discovery in the Mobile App Ecosystem
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. AppVoC Preprocessing: Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. AppVoC Preprocessing: Data Quality Assessment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. AppVoC Preprocessing: Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. AppVoC Preprocessing: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. AppVoC Preprocessing: Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. AppVoC Preprocessing: Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. AppVoC Preprocessing: Conclusion</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/01_data/03_clean.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/01_data/03_clean.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/01_data/03_clean.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F01_data/03_clean.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_data/03_clean.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AppVoC Preprocessing: Cleaning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">4.1. Approach to Addressing Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">4.2. Removal Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4.3. Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">4.4. Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">4.5. Validation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-preprocessing-cleaning">
+<h1><span class="section-number">4. </span>AppVoC Preprocessing: Cleaning<a class="headerlink" href="#appvoc-preprocessing-cleaning" title="Link to this heading">#</a></h1>
+<p>This stage involves systematically addressing anomalies identified during the data quality assessment, which is essential for reliable and valid downstream analysis.</p>
+<section id="approach-to-addressing-anomalies">
+<h2><span class="section-number">4.1. </span>Approach to Addressing Anomalies<a class="headerlink" href="#approach-to-addressing-anomalies" title="Link to this heading">#</a></h2>
+<p>During the data quality assessment, we identified various anomalies within the dataset. Each anomaly was then evaluated to estimate its potential impact on the subsequent analysis. This evaluation process categorized anomalies into four distinct levels of criticality:</p>
+<ol class="arabic simple">
+<li><p><strong>Critical</strong>: These anomalies have a significant impact on the integrity and reliability of the data. If left unaddressed, they could severely distort the results of any analysis. Examples include duplicate records, non-English text (if the analysis is language-specific), and invalid ratings.</p></li>
+<li><p><strong>High</strong>: High impact anomalies also pose a substantial threat to the validity of the analysis but are slightly less severe than critical issues. These include records with excessive special characters, profanity, and privacy-related issues such as email addresses or phone numbers embedded in the text.</p></li>
+<li><p><strong>Medium</strong>: Medium impact anomalies have a moderate effect on the analysis. While they do not necessarily distort results as severely as critical or high issues, they can still introduce noise and reduce the overall quality of insights. Examples include outliers in vote sums and vote counts, and unusually long reviews.</p></li>
+<li><p><strong>Low</strong>: Low impact anomalies are considered minor issues that have minimal impact on the overall analysis. These include the presence of emojis and URLs in the text, which typically do not affect the analytical outcome significantly.</p></li>
+</ol>
+</section>
+<section id="removal-criteria">
+<h2><span class="section-number">4.2. </span>Removal Criteria<a class="headerlink" href="#removal-criteria" title="Link to this heading">#</a></h2>
+<p>Based on the criticality assessment, a systematic approach was adopted to handle these anomalies:</p>
+<ul class="simple">
+<li><p><strong>Critical and High Impact Issues</strong>: Observations containing anomalies classified as critical or high impact were earmarked for removal. The rationale behind this strict approach is to eliminate any potential distortions in the analysis that could arise from these severe issues. By removing these observations, we ensure that the dataset maintains a high level of integrity and reliability.</p></li>
+<li><p><strong>Medium and Low Impact Issues</strong>: Anomalies classified as medium or low impact were not grounds for removal of the observations. Instead, these issues were retained in the dataset to preserve as much data as possible while accepting a tolerable level of noise. This approach balances the need for data quality with the necessity of maintaining a sufficient volume of data for robust analysis.</p></li>
+</ul>
+<p>By following this structured and systematic approach to data cleaning, we ensure that the dataset is prepared to a high standard of quality, ready for accurate and reliable downstream analysis. This preparation phase is fundamental to the success of any data-driven project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">appinsight.data.prep.clean</span> <span class="kn">import</span> <span class="n">DataCleaner</span><span class="p">,</span> <span class="n">CleanConfig</span>
+<span class="kn">from</span> <span class="nn">appinsight.analysis.dqa</span> <span class="kn">import</span> <span class="n">DataQualityAnalysisConfig</span><span class="p">,</span> <span class="n">DataQualityAnalysis</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="configuration">
+<h2><span class="section-number">4.3. </span>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<p>A configuration object was created to map each identified anomaly to its corresponding impact level. This configuration facilitated an organized and consistent approach to anomaly handling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">CleanConfig</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">config</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Issue</th>
+      <th>Characteristic</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>dqa_is_duplicate</td>
+      <td>Duplicate Values</td>
+      <td>Critical</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>dqa_is_duplicate_rating_id</td>
+      <td>Duplicate IDs</td>
+      <td>Critical</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>dqa_non_english</td>
+      <td>Non-English Reviews</td>
+      <td>Critical</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>dqa_rating_invalid</td>
+      <td>Invalid Ratings</td>
+      <td>Critical</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>dqa_has_null</td>
+      <td>Null Values</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>dqa_has_excessive_special_chars</td>
+      <td>Excessive Special Characters</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>dqa_date_invalid</td>
+      <td>Invalid Dates</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>dqa_has_profanity</td>
+      <td>Profanity</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>dqa_contains_email</td>
+      <td>Contains Email Address(es)</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>dqa_contains_phone_number</td>
+      <td>Contains Phone Number(s)</td>
+      <td>High</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>dqa_has_emoji</td>
+      <td>Emojis</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>dqa_contains_url</td>
+      <td>Contains URL(s)</td>
+      <td>Low</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>dqa_vote_sum_outlier</td>
+      <td>Contains Vote Sum Outliers</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>dqa_vote_count_outlier</td>
+      <td>Contains Vote Count Outliers</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>dqa_review_length_outlier</td>
+      <td>Contains Review Length Outliers</td>
+      <td>Medium</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="execution">
+<h2><span class="section-number">4.4. </span>Execution<a class="headerlink" href="#execution" title="Link to this heading">#</a></h2>
+<p>The DataCleaner object encapsulates the data cleaning pipeline.  Observations flagged with critical or high impact anomalies were removed, while those with medium or low impact issues were retained. The process was designed to be transparent, with clear reporting of the number of observations removed and retained.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cleaner</span> <span class="o">=</span> <span class="n">DataCleaner</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">data_clean</span> <span class="o">=</span> <span class="n">cleaner</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the data cleaning stage successfully completed, we have ensured that our dataset is free from critical and high-impact anomalies, thereby enhancing its integrity and reliability.</p>
+</section>
+<section id="validation">
+<h2><span class="section-number">4.5. </span>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<p>Let’s verify that the critical and high impact issues have been addressed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">DataQualityAnalysisConfig</span><span class="p">()</span>
+<span class="n">analyzer</span> <span class="o">=</span> <span class="n">DataQualityAnalysis</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+<span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Characteristic</th>
+      <th>Impact</th>
+      <th>Count</th>
+      <th>Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Duplicate Values</td>
+      <td>Critical</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Duplicate IDs</td>
+      <td>Critical</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Non-English Reviews</td>
+      <td>Critical</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Invalid Ratings</td>
+      <td>Critical</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Null Values</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Excessive Special Characters</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Invalid Dates</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Profanity</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Contains Email Address(es)</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Contains Phone Number(s)</td>
+      <td>High</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Emojis</td>
+      <td>Low</td>
+      <td>700</td>
+      <td>4.09</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Contains URL(s)</td>
+      <td>Low</td>
+      <td>0</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Contains Vote Count Outliers</td>
+      <td>Medium</td>
+      <td>942</td>
+      <td>5.51</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Contains Vote Sum Outliers</td>
+      <td>Medium</td>
+      <td>718</td>
+      <td>4.20</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Contains Review Length Outliers</td>
+      <td>Medium</td>
+      <td>1197</td>
+      <td>7.00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The results show that the observations with critical and high impact issues have been removed from the dataset. Next, a spot of feature engineering.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_dqa.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>AppVoC Preprocessing: Data Quality Assessment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="04_features.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>AppVoC Preprocessing: Feature Engineering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">4.1. Approach to Addressing Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">4.2. Removal Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4.3. Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">4.4. Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">4.5. Validation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

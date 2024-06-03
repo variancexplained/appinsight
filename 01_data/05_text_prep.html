@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. AppVoC Preprocessing: Text Processing &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_data/05_text_prep';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. AppVoC Preprocessing: Metrics" href="06_metrics.html" />
+    <link rel="prev" title="5. AppVoC Preprocessing: Feature Engineering" href="04_features.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../00_intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title"><p style="text-align:left"><span style="color:#002B5B"><span style="font-size:36px"><span style="font-family:Lato">VoCMobile.ai</span></span><span style="font-size:18px"><span style="font-family:Lato">AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics & Insight</span></span></span></p>
+</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_intro.html">
+                    AppInsight: Analysis and Opportunity Discovery in the Mobile App Ecosystem
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. AppVoC Preprocessing: Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. AppVoC Preprocessing: Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_clean.html">4. AppVoC Preprocessing: Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. AppVoC Preprocessing: Feature Engineering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. AppVoC Preprocessing: Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. AppVoC Preprocessing: Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. AppVoC Preprocessing: Conclusion</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/01_data/05_text_prep.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/01_data/05_text_prep.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/01_data/05_text_prep.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F01_data/05_text_prep.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_data/05_text_prep.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AppVoC Preprocessing: Text Processing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-preprocessing-text-processing">
+<h1><span class="section-number">6. </span>AppVoC Preprocessing: Text Processing<a class="headerlink" href="#appvoc-preprocessing-text-processing" title="Link to this heading">#</a></h1>
+<p>In this phase, we will focus on the following text processing tasks using PySpark:</p>
+<ul class="simple">
+<li><p><strong>Tokenization</strong>: Breaking down the text into individual words or tokens.</p></li>
+<li><p><strong>Lemmatization</strong>: Reducing words to their base or root form to ensure that different forms of the same word are treated as the same token.</p></li>
+<li><p><strong>Spell Checking</strong>: Correcting any spelling errors in the text to improve the quality of the tokens.</p></li>
+<li><p><strong>Stop Words Removal</strong>: Removing common words (such as ‘and’, ‘the’, ‘is’) that do not contribute significant meaning to the text.</p></li>
+<li><p><strong>N-grams</strong>: Creating n-grams (combinations of n consecutive words) to capture more context and semantic meaning from the text.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">appinsight.data.prep.text_prep</span> <span class="kn">import</span> <span class="n">TextPreprocessor</span><span class="p">,</span> <span class="n">TextPrepConfig</span>
+<span class="kn">from</span> <span class="nn">appinsight.infrastructure.spark.factory</span> <span class="kn">import</span> <span class="n">SparkSessionFactory</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to /home/john/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<p>To begin our text preprocessing pipeline using the Spark-NLP package, the first step is to obtain a SparkSession object configured for NLP tasks. This SparkSession will enable us to leverage Spark-NLP’s powerful capabilities for handling large-scale text data efficiently.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">SparkSessionFactory</span><span class="p">()</span>
+<span class="n">spark</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">nlp</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following code snippet demonstrates the setup and execution of this stage using our Spark session.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">TextPrepConfig</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">prep</span> <span class="o">=</span> <span class="n">TextPreprocessor</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">spark</span><span class="o">=</span><span class="n">spark</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">prep</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 0:&gt;                                                          (0 + 0) / 1]
+
+[Stage 0:&gt;                                                          (0 + 1) / 1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+<p>Having completed the text processing steps, we can now take a closer look at the processed data to ensure everything is correctly formatted and ready for further analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;app_id&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;vote_sum&quot;</span><span class="p">,</span> <span class="s2">&quot;vote_count&quot;</span><span class="p">,</span> <span class="s2">&quot;review_length&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;bigrams&quot;</span><span class="p">,</span> <span class="s2">&quot;trigrams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
+|        id|    app_id|         category|              author|               title|vote_sum|vote_count|review_length|              output|             bigrams|            trigrams|
++----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
+|1160519484| 454638411|Social Networking|a3485c0ad91b83c2a966|                Good|       0|         0|            2|              [good]|                  []|                  []|
+|9036129510|1597150642| Health &amp; Fitness|5b28931a5bc65792a7b8|         It’s a Scam|       0|         0|          191|[appprogram, joke...|[appprogram_joke,...|[appprogram_joke_...|
+|1685166136| 946346179|    Entertainment|66edc1765bb07328b9d4|         Hard to use|       0|         0|           31|[would, good, cop...|[would_good, good...|[would_good_copy,...|
+|6836055253|1158555867| Health &amp; Fitness|9e88318918189b886c83|     Peoples privacy|       1|         1|           33|[app, tell, peopl...|[app_tell, tell_p...|[app_tell_people,...|
+| 445648636| 447119634|Social Networking|09b586574a4c4d3e6259|       I Love Google|       0|         0|            3|     [google, apple]|      [google_apple]|                  []|
+|5946771260| 924620788|        Education|578235daa937830884a6|   Google class room|       0|         0|            8|  [many, issue, app]|[many_issue, issu...|    [many_issue_app]|
+|4013881002|1008508212|        Utilities|2bd44cc8bdfc4fb1b424|             Awesome|       0|         0|           14|[work, great, tim...|[work_great, grea...|[work_great_time,...|
+|  62658192| 301387274|    Entertainment|3852bf436c583d9fa61e|          Suggestion|       0|         0|           26|[player, able, cu...|[player_able, abl...|[player_able_cust...|
+|1074727642| 300704847|        Utilities|090e95dd6899ccfb8b1c|            Good App|       0|         0|           32|[find, ive, overp...|[find_ive, ive_ov...|[find_ive_overpay...|
+|1533647974| 986999874|        Utilities|2f248ff7635bae06866a|Why does this app...|       0|         0|           12|[another, app, tr...|[another_app, app...|[another_app_try,...|
+|1376085901| 453713815| Health &amp; Fitness|0f48a5ae1cff21fc4e2d|What&#39;s the point,...|       0|         0|           73|[what, point, app...|[what_point, poin...|[what_point_app, ...|
+|5982285197|1324048797|        Utilities|ea640daee09a551c812b|           Great job|       0|         0|            7|[nice, app, u, lo...|[nice_app, app_u,...|[nice_app_u, app_...|
+|6858821209| 487922291|    Entertainment|c60df8d4da5c9a7f214c|Literally doesn’t...|       0|         0|           45|[literally, cant,...|[literally_cant, ...|[literally_cant_l...|
+|7998719763|1473663873|    Entertainment|0ff4dafa9c351c784c81|Best Bible Series...|       0|         0|           99|[see, bible, mini...|[see_bible, bible...|[see_bible_minise...|
+| 659281050| 381471023|        Utilities|e1be36deeea3f1f90a41|          Flashlight|       0|         0|            2|              [love]|                  []|                  []|
+|1455948573| 946659216|     Productivity|a97f15998956542082ff|         Works Great|       0|         0|            1|              [tuff]|                  []|                  []|
+|8267527474|1117444284|          Medical|f2da0a60a0439bcd2bb0|              Zsmann|       0|         0|            1|         [wonderful]|                  []|                  []|
+|1043626240| 454638411|Social Networking|fc7e8d059e06f49caccf|            Annoying|       0|         0|           24|[annoy, use, two,...|[annoy_use, use_t...|[annoy_use_two, u...|
+|6468024979| 804217537|        Utilities|f6fb32c2bb17379cb407|       Great service|       0|         0|            7|[fast, reliable, ...|[fast_reliable, r...|[fast_reliable_re...|
+| 604136222| 386022579| Health &amp; Fitness|890878098e86a9afd99d|                  :)|       0|         0|            5|  [great, app, love]|[great_app, app_l...|    [great_app_love]|
++----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
+only showing top 20 rows
+</pre></div>
+</div>
+</div>
+</div>
+<p>The text processing stage has generated an enriched DataFrame, which includes tokenized output, bigrams, and trigrams that have been normalized, tokenized, lemmatized, and spellchecked, with stopwords removed.</p>
+<p>Having completed the text processing stage, we can now proceed to the final stage of precomputing and aggregating metrics.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_features.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>AppVoC Preprocessing: Feature Engineering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_metrics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>AppVoC Preprocessing: Metrics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
