@@ -1,0 +1,719 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. AppVoC Preprocessing: Data Quality Assessment &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_data/02_dqa';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. AppVoC Preprocessing: Cleaning" href="03_clean.html" />
+    <link rel="prev" title="2. AppVoC Preprocessing: Normalization" href="01_norm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../00_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="<p style="text-align:left"><span style="color:#002B5B"><span style="font-size:36px"><span style="font-family:Lato">VoCMobile.ai</span></span><span style="font-size:18px"><span style="font-family:Lato">AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics & Insight</span></span></span></p>
+ - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="<p style="text-align:left"><span style="color:#002B5B"><span style="font-size:36px"><span style="font-family:Lato">VoCMobile.ai</span></span><span style="font-size:18px"><span style="font-family:Lato">AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics & Insight</span></span></span></p>
+ - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_intro.html">
+                    AppInsight: Analysis and Opportunity Discovery in the Mobile App Ecosystem
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. AppVoC Preprocessing: Normalization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. AppVoC Preprocessing: Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_clean.html">4. AppVoC Preprocessing: Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. AppVoC Preprocessing: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. AppVoC Preprocessing: Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. AppVoC Preprocessing: Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. AppVoC Preprocessing: Conclusion</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/01_data/02_dqa.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/01_data/02_dqa.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/01_data/02_dqa.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F01_data/02_dqa.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/01_data/02_dqa.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AppVoC Preprocessing: Data Quality Assessment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-checks">3.1. Data Quality Checks</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-preprocessing-data-quality-assessment">
+<h1><span class="section-number">3. </span>AppVoC Preprocessing: Data Quality Assessment<a class="headerlink" href="#appvoc-preprocessing-data-quality-assessment" title="Link to this heading">#</a></h1>
+<p>The second stage of data processing is the Data Quality Assessment. This stage ensures that our dataset is ready for subsequent analysis and modeling tasks. By identifying and rectifying data quality issues early, we can avoid potential pitfalls that might compromise the integrity and accuracy of our results.</p>
+<section id="data-quality-checks">
+<h2><span class="section-number">3.1. </span>Data Quality Checks<a class="headerlink" href="#data-quality-checks" title="Link to this heading">#</a></h2>
+<p>In this stage, we employ a series of tasks designed to identify and address any noise or irregularities within the dataset. Each task focuses on a specific aspect of data quality, ranging from detecting duplicate entries to identifying profanity, special patterns, and other potential sources of bias or distortion.</p>
+<ol class="arabic simple">
+<li><p><strong>Duplicate Rows</strong>: We identify and remove duplicate entries to ensure that each observation is unique, preventing skewed analyses and inflated metrics.</p></li>
+<li><p><strong>Null Values</strong>: We detect and handle missing data appropriately, which could involve imputation, deletion, or flagging incomplete records for further investigation.</p></li>
+<li><p><strong>Outliers</strong>: Check for outliers in numeric columns using the non-parametric Interquartile Range (IQR) method.</p></li>
+<li><p><strong>Non-English Text</strong>: We check for and address non-English text, as it may not be relevant to our analysis or could require special handling.</p></li>
+<li><p><strong>Emojis</strong>: Emojis can carry significant meaning in certain contexts but might also introduce noise. We identify and decide on their treatment—whether to retain, remove, or translate them into textual representations.</p></li>
+<li><p><strong>Excessive Special Characters</strong>: Special characters can disrupt text analysis and need to be managed, either by cleaning or encoding them appropriately.</p></li>
+<li><p><strong>Invalid Dates</strong>: We verify that date values fall within expected ranges and formats, correcting or flagging anomalies for further review.</p></li>
+<li><p><strong>Invalid Ratings</strong>: Ratings that fall outside the expected scale (e.g., 1 to 5) are identified and corrected or flagged.</p></li>
+<li><p><strong>Profanity</strong>: We detect and handle profane content to ensure that our dataset adheres to appropriate usage standards, especially if it’s intended for public or sensitive applications.</p></li>
+<li><p><strong>Special Patterns</strong>: We identify and manage special patterns such as URLs, phone numbers, and emails. These patterns could be indicative of spam or need to be anonymized to protect privacy.</p></li>
+</ol>
+<p>By conducting these data quality checks, we ensure that our dataset is clean, reliable, and ready for detailed analysis. This foundational step sets the stage for accurate insights and robust conclusions in the subsequent phases of our data processing pipeline.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">appinsight.data.prep.dqa</span> <span class="kn">import</span> <span class="n">DataQualityAssessment</span><span class="p">,</span> <span class="n">DQAConfig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ve encapsulated the data quality assessment process in a <code class="docutils literal notranslate"><span class="pre">DataQualityAssessment</span></code> class. Configured with source and target files, this class conducts the 10 data quality checks, marking the observations that require attention.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">DQAConfig</span><span class="p">(</span><span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dqa</span> <span class="o">=</span> <span class="n">DataQualityAssessment</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">dqa</span><span class="o">.</span><span class="n">execute</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s get a summary of the data quality issues by type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dqa</span><span class="o">.</span><span class="n">overview</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_821a9">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_821a9_level0_col0" class="col_heading level0 col0" >Count</th>
+      <th id="T_821a9_level0_col1" class="col_heading level0 col1" >Percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_821a9_level0_row0" class="row_heading level0 row0" >dqa_is_duplicate</th>
+      <td id="T_821a9_row0_col0" class="data row0 col0" >4</td>
+      <td id="T_821a9_row0_col1" class="data row0 col1" >0.02</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row1" class="row_heading level0 row1" >dqa_is_duplicate_rating_id</th>
+      <td id="T_821a9_row1_col0" class="data row1 col0" >5</td>
+      <td id="T_821a9_row1_col1" class="data row1 col1" >0.03</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row2" class="row_heading level0 row2" >dqa_has_null</th>
+      <td id="T_821a9_row2_col0" class="data row2 col0" >5</td>
+      <td id="T_821a9_row2_col1" class="data row2 col1" >0.03</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row3" class="row_heading level0 row3" >dqa_vote_sum_outlier</th>
+      <td id="T_821a9_row3_col0" class="data row3 col0" >749</td>
+      <td id="T_821a9_row3_col1" class="data row3 col1" >4.09</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row4" class="row_heading level0 row4" >dqa_vote_count_outlier</th>
+      <td id="T_821a9_row4_col0" class="data row4 col0" >995</td>
+      <td id="T_821a9_row4_col1" class="data row4 col1" >5.44</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row5" class="row_heading level0 row5" >dqa_review_length_outlier</th>
+      <td id="T_821a9_row5_col0" class="data row5 col0" >1,234</td>
+      <td id="T_821a9_row5_col1" class="data row5 col1" >6.74</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row6" class="row_heading level0 row6" >dqa_non_english</th>
+      <td id="T_821a9_row6_col0" class="data row6 col0" >937</td>
+      <td id="T_821a9_row6_col1" class="data row6 col1" >5.12</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row7" class="row_heading level0 row7" >dqa_has_excessive_special_chars</th>
+      <td id="T_821a9_row7_col0" class="data row7 col0" >204</td>
+      <td id="T_821a9_row7_col1" class="data row7 col1" >1.11</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row8" class="row_heading level0 row8" >dqa_date_invalid</th>
+      <td id="T_821a9_row8_col0" class="data row8 col0" >0</td>
+      <td id="T_821a9_row8_col1" class="data row8 col1" >0.00</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row9" class="row_heading level0 row9" >dqa_rating_invalid</th>
+      <td id="T_821a9_row9_col0" class="data row9 col0" >0</td>
+      <td id="T_821a9_row9_col1" class="data row9 col1" >0.00</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row10" class="row_heading level0 row10" >dqa_has_profanity</th>
+      <td id="T_821a9_row10_col0" class="data row10 col0" >184</td>
+      <td id="T_821a9_row10_col1" class="data row10 col1" >1.01</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row11" class="row_heading level0 row11" >dqa_contains_email</th>
+      <td id="T_821a9_row11_col0" class="data row11 col0" >5</td>
+      <td id="T_821a9_row11_col1" class="data row11 col1" >0.03</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row12" class="row_heading level0 row12" >dqa_contains_url</th>
+      <td id="T_821a9_row12_col0" class="data row12 col0" >5</td>
+      <td id="T_821a9_row12_col1" class="data row12 col1" >0.03</td>
+    </tr>
+    <tr>
+      <th id="T_821a9_level0_row13" class="row_heading level0 row13" >dqa_contains_phone_number</th>
+      <td id="T_821a9_row13_col0" class="data row13 col0" >14</td>
+      <td id="T_821a9_row13_col1" class="data row13 col1" >0.08</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>The data quality assessment (DQA) conducted revealed several key issues. A small percentage of records were identified as duplicates or had duplicate rating IDs. There were no null values, invalid dates, or invalid ratings. Outliers were found in vote sums, vote counts, and review lengths. A notable portion of the data was flagged for being non-English or containing excessive special characters. Instances of profanity and presence of email addresses, URLs, or phone numbers were minimal.</p>
+<p>Next, we move to the cleaning stage.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./01_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_norm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>AppVoC Preprocessing: Normalization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_clean.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>AppVoC Preprocessing: Cleaning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-checks">3.1. Data Quality Checks</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
