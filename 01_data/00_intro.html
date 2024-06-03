@@ -508,42 +508,40 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">dsm</span> <span class="o">=</span> <span class="n">DatasetManager</span><span class="p">()</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">dsm</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;01_normalized&quot;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;reviews.pkl&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ov</span> <span class="o">=</span> <span class="n">DatasetOverview</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ov</span><span class="o">.</span><span class="n">overview</span>
-
-<span class="nn">File ~/projects/appinsight/appinsight/infrastructure/storage/dataset.py:39,</span> in <span class="ni">DatasetManager.read</span><span class="nt">(cls, directory, filename)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Reads data so designated.&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">filepath</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">39</span> <span class="k">return</span> <span class="n">IOService</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
-
-<span class="nn">File ~/projects/appinsight/appinsight/infrastructure/storage/file.py:362,</span> in <span class="ni">IOService.read</span><span class="nt">(cls, filepath, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">359</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">361</span>     <span class="n">io</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_io</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">362</span>     <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/projects/appinsight/appinsight/infrastructure/storage/file.py:45,</span> in <span class="ni">IO.read</span><span class="nt">(cls, filepath, *args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="k">return</span> <span class="n">data</span>
-
-<span class="nn">File ~/projects/appinsight/appinsight/infrastructure/storage/file.py:247,</span> in <span class="ni">PickleIO._read</span><span class="nt">(cls, filepath, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="nd">@classmethod</span>
-<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="k">def</span> <span class="nf">_read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">247</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span>             <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/test/01_normalized/reviews.pkl&#39;
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_fcd75">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_fcd75_level0_col0" class="col_heading level0 col0" >Characteristic</th>
+      <th id="T_fcd75_level0_col1" class="col_heading level0 col1" >Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_fcd75_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_fcd75_row0_col0" class="data row0 col0" >Number of Reviews</td>
+      <td id="T_fcd75_row0_col1" class="data row0 col1" >18,306</td>
+    </tr>
+    <tr>
+      <th id="T_fcd75_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_fcd75_row1_col0" class="data row1 col0" >Number of Users</td>
+      <td id="T_fcd75_row1_col1" class="data row1 col1" >18,289</td>
+    </tr>
+    <tr>
+      <th id="T_fcd75_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_fcd75_row2_col0" class="data row2 col0" >Number of Apps</td>
+      <td id="T_fcd75_row2_col1" class="data row2 col1" >4,199</td>
+    </tr>
+    <tr>
+      <th id="T_fcd75_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_fcd75_row3_col0" class="data row3 col0" >Number of Categories</td>
+      <td id="T_fcd75_row3_col1" class="data row3 col1" >10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>The table below provides a breakdown of the review distribution across various app categories, highlighting the count and percentage of reviews each category has received within the full dataset.</p>
 <div class="cell docutils container">
@@ -555,75 +553,75 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_872ec">
+<table id="T_eeeba">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_872ec_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_872ec_level0_col1" class="col_heading level0 col1" >Count</th>
-      <th id="T_872ec_level0_col2" class="col_heading level0 col2" >Percent</th>
+      <th id="T_eeeba_level0_col0" class="col_heading level0 col0" >category</th>
+      <th id="T_eeeba_level0_col1" class="col_heading level0 col1" >Count</th>
+      <th id="T_eeeba_level0_col2" class="col_heading level0 col2" >Percent</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_872ec_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_872ec_row0_col0" class="data row0 col0" >Book</td>
-      <td id="T_872ec_row0_col1" class="data row0 col1" >796</td>
-      <td id="T_872ec_row0_col2" class="data row0 col2" >4.35</td>
+      <th id="T_eeeba_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_eeeba_row0_col0" class="data row0 col0" >Book</td>
+      <td id="T_eeeba_row0_col1" class="data row0 col1" >796</td>
+      <td id="T_eeeba_row0_col2" class="data row0 col2" >4.35</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_872ec_row1_col0" class="data row1 col0" >Business</td>
-      <td id="T_872ec_row1_col1" class="data row1 col1" >1,418</td>
-      <td id="T_872ec_row1_col2" class="data row1 col2" >7.75</td>
+      <th id="T_eeeba_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_eeeba_row1_col0" class="data row1 col0" >Business</td>
+      <td id="T_eeeba_row1_col1" class="data row1 col1" >1,418</td>
+      <td id="T_eeeba_row1_col2" class="data row1 col2" >7.75</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_872ec_row2_col0" class="data row2 col0" >Education</td>
-      <td id="T_872ec_row2_col1" class="data row2 col1" >1,126</td>
-      <td id="T_872ec_row2_col2" class="data row2 col2" >6.15</td>
+      <th id="T_eeeba_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_eeeba_row2_col0" class="data row2 col0" >Education</td>
+      <td id="T_eeeba_row2_col1" class="data row2 col1" >1,126</td>
+      <td id="T_eeeba_row2_col2" class="data row2 col2" >6.15</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_872ec_row3_col0" class="data row3 col0" >Entertainment</td>
-      <td id="T_872ec_row3_col1" class="data row3 col1" >2,004</td>
-      <td id="T_872ec_row3_col2" class="data row3 col2" >10.95</td>
+      <th id="T_eeeba_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_eeeba_row3_col0" class="data row3 col0" >Entertainment</td>
+      <td id="T_eeeba_row3_col1" class="data row3 col1" >2,004</td>
+      <td id="T_eeeba_row3_col2" class="data row3 col2" >10.95</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_872ec_row4_col0" class="data row4 col0" >Health & Fitness</td>
-      <td id="T_872ec_row4_col1" class="data row4 col1" >4,009</td>
-      <td id="T_872ec_row4_col2" class="data row4 col2" >21.90</td>
+      <th id="T_eeeba_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_eeeba_row4_col0" class="data row4 col0" >Health & Fitness</td>
+      <td id="T_eeeba_row4_col1" class="data row4 col1" >4,009</td>
+      <td id="T_eeeba_row4_col2" class="data row4 col2" >21.90</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_872ec_row5_col0" class="data row5 col0" >Lifestyle</td>
-      <td id="T_872ec_row5_col1" class="data row5 col1" >1,726</td>
-      <td id="T_872ec_row5_col2" class="data row5 col2" >9.43</td>
+      <th id="T_eeeba_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_eeeba_row5_col0" class="data row5 col0" >Lifestyle</td>
+      <td id="T_eeeba_row5_col1" class="data row5 col1" >1,726</td>
+      <td id="T_eeeba_row5_col2" class="data row5 col2" >9.43</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_872ec_row6_col0" class="data row6 col0" >Medical</td>
-      <td id="T_872ec_row6_col1" class="data row6 col1" >662</td>
-      <td id="T_872ec_row6_col2" class="data row6 col2" >3.62</td>
+      <th id="T_eeeba_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_eeeba_row6_col0" class="data row6 col0" >Medical</td>
+      <td id="T_eeeba_row6_col1" class="data row6 col1" >662</td>
+      <td id="T_eeeba_row6_col2" class="data row6 col2" >3.62</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_872ec_row7_col0" class="data row7 col0" >Productivity</td>
-      <td id="T_872ec_row7_col1" class="data row7 col1" >794</td>
-      <td id="T_872ec_row7_col2" class="data row7 col2" >4.34</td>
+      <th id="T_eeeba_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_eeeba_row7_col0" class="data row7 col0" >Productivity</td>
+      <td id="T_eeeba_row7_col1" class="data row7 col1" >794</td>
+      <td id="T_eeeba_row7_col2" class="data row7 col2" >4.34</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_872ec_row8_col0" class="data row8 col0" >Social Networking</td>
-      <td id="T_872ec_row8_col1" class="data row8 col1" >2,699</td>
-      <td id="T_872ec_row8_col2" class="data row8 col2" >14.74</td>
+      <th id="T_eeeba_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_eeeba_row8_col0" class="data row8 col0" >Social Networking</td>
+      <td id="T_eeeba_row8_col1" class="data row8 col1" >2,699</td>
+      <td id="T_eeeba_row8_col2" class="data row8 col2" >14.74</td>
     </tr>
     <tr>
-      <th id="T_872ec_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_872ec_row9_col0" class="data row9 col0" >Utilities</td>
-      <td id="T_872ec_row9_col1" class="data row9 col1" >3,072</td>
-      <td id="T_872ec_row9_col2" class="data row9 col2" >16.78</td>
+      <th id="T_eeeba_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_eeeba_row9_col0" class="data row9 col0" >Utilities</td>
+      <td id="T_eeeba_row9_col1" class="data row9 col1" >3,072</td>
+      <td id="T_eeeba_row9_col2" class="data row9 col2" >16.78</td>
     </tr>
   </tbody>
 </table>
