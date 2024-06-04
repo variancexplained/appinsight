@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -509,35 +509,35 @@ document.write(`
 <p>Having completed the text processing steps, we can now take a closer look at the processed data to ensure everything is correctly formatted and ready for further analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;app_id&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;vote_sum&quot;</span><span class="p">,</span> <span class="s2">&quot;vote_count&quot;</span><span class="p">,</span> <span class="s2">&quot;review_length&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;bigrams&quot;</span><span class="p">,</span> <span class="s2">&quot;trigrams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;app_id&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">,</span>  <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;bigrams&quot;</span><span class="p">,</span> <span class="s2">&quot;trigrams&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
-|        id|    app_id|         category|              author|               title|vote_sum|vote_count|review_length|              output|             bigrams|            trigrams|
-+----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
-|1160519484| 454638411|Social Networking|a3485c0ad91b83c2a966|                Good|       0|         0|            2|              [good]|                  []|                  []|
-|9036129510|1597150642| Health &amp; Fitness|5b28931a5bc65792a7b8|         It’s a Scam|       0|         0|          191|[appprogram, joke...|[appprogram_joke,...|[appprogram_joke_...|
-|1685166136| 946346179|    Entertainment|66edc1765bb07328b9d4|         Hard to use|       0|         0|           31|[would, good, cop...|[would_good, good...|[would_good_copy,...|
-|6836055253|1158555867| Health &amp; Fitness|9e88318918189b886c83|     Peoples privacy|       1|         1|           33|[app, tell, peopl...|[app_tell, tell_p...|[app_tell_people,...|
-| 445648636| 447119634|Social Networking|09b586574a4c4d3e6259|       I Love Google|       0|         0|            3|     [google, apple]|      [google_apple]|                  []|
-|5946771260| 924620788|        Education|578235daa937830884a6|   Google class room|       0|         0|            8|  [many, issue, app]|[many_issue, issu...|    [many_issue_app]|
-|4013881002|1008508212|        Utilities|2bd44cc8bdfc4fb1b424|             Awesome|       0|         0|           14|[work, great, tim...|[work_great, grea...|[work_great_time,...|
-|  62658192| 301387274|    Entertainment|3852bf436c583d9fa61e|          Suggestion|       0|         0|           26|[player, able, cu...|[player_able, abl...|[player_able_cust...|
-|1074727642| 300704847|        Utilities|090e95dd6899ccfb8b1c|            Good App|       0|         0|           32|[find, ive, overp...|[find_ive, ive_ov...|[find_ive_overpay...|
-|1533647974| 986999874|        Utilities|2f248ff7635bae06866a|Why does this app...|       0|         0|           12|[another, app, tr...|[another_app, app...|[another_app_try,...|
-|1376085901| 453713815| Health &amp; Fitness|0f48a5ae1cff21fc4e2d|What&#39;s the point,...|       0|         0|           73|[what, point, app...|[what_point, poin...|[what_point_app, ...|
-|5982285197|1324048797|        Utilities|ea640daee09a551c812b|           Great job|       0|         0|            7|[nice, app, u, lo...|[nice_app, app_u,...|[nice_app_u, app_...|
-|6858821209| 487922291|    Entertainment|c60df8d4da5c9a7f214c|Literally doesn’t...|       0|         0|           45|[literally, cant,...|[literally_cant, ...|[literally_cant_l...|
-|7998719763|1473663873|    Entertainment|0ff4dafa9c351c784c81|Best Bible Series...|       0|         0|           99|[see, bible, mini...|[see_bible, bible...|[see_bible_minise...|
-| 659281050| 381471023|        Utilities|e1be36deeea3f1f90a41|          Flashlight|       0|         0|            2|              [love]|                  []|                  []|
-|1455948573| 946659216|     Productivity|a97f15998956542082ff|         Works Great|       0|         0|            1|              [tuff]|                  []|                  []|
-|8267527474|1117444284|          Medical|f2da0a60a0439bcd2bb0|              Zsmann|       0|         0|            1|         [wonderful]|                  []|                  []|
-|1043626240| 454638411|Social Networking|fc7e8d059e06f49caccf|            Annoying|       0|         0|           24|[annoy, use, two,...|[annoy_use, use_t...|[annoy_use_two, u...|
-|6468024979| 804217537|        Utilities|f6fb32c2bb17379cb407|       Great service|       0|         0|            7|[fast, reliable, ...|[fast_reliable, r...|[fast_reliable_re...|
-| 604136222| 386022579| Health &amp; Fitness|890878098e86a9afd99d|                  :)|       0|         0|            5|  [great, app, love]|[great_app, app_l...|    [great_app_love]|
-+----------+----------+-----------------+--------------------+--------------------+--------+----------+-------------+--------------------+--------------------+--------------------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+----------+----------+-----------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+|        id|    app_id|         category|              author|               title|              output|             bigrams|            trigrams|
++----------+----------+-----------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+|1160519484| 454638411|Social Networking|a3485c0ad91b83c2a966|                Good|              [good]|                  []|                  []|
+|9036129510|1597150642| Health &amp; Fitness|5b28931a5bc65792a7b8|         It’s a Scam|[appprogram, joke...|[appprogram_joke,...|[appprogram_joke_...|
+|1685166136| 946346179|    Entertainment|66edc1765bb07328b9d4|         Hard to use|[would, good, cop...|[would_good, good...|[would_good_copy,...|
+|6836055253|1158555867| Health &amp; Fitness|9e88318918189b886c83|     Peoples privacy|[app, tell, peopl...|[app_tell, tell_p...|[app_tell_people,...|
+| 445648636| 447119634|Social Networking|09b586574a4c4d3e6259|       I Love Google|     [google, apple]|      [google_apple]|                  []|
+|5946771260| 924620788|        Education|578235daa937830884a6|   Google class room|  [many, issue, app]|[many_issue, issu...|    [many_issue_app]|
+|4013881002|1008508212|        Utilities|2bd44cc8bdfc4fb1b424|             Awesome|[work, great, tim...|[work_great, grea...|[work_great_time,...|
+|  62658192| 301387274|    Entertainment|3852bf436c583d9fa61e|          Suggestion|[player, able, cu...|[player_able, abl...|[player_able_cust...|
+|1074727642| 300704847|        Utilities|090e95dd6899ccfb8b1c|            Good App|[find, ive, overp...|[find_ive, ive_ov...|[find_ive_overpay...|
+|1533647974| 986999874|        Utilities|2f248ff7635bae06866a|Why does this app...|[another, app, tr...|[another_app, app...|[another_app_try,...|
+|1376085901| 453713815| Health &amp; Fitness|0f48a5ae1cff21fc4e2d|What&#39;s the point,...|[what, point, app...|[what_point, poin...|[what_point_app, ...|
+|5982285197|1324048797|        Utilities|ea640daee09a551c812b|           Great job|[nice, app, u, lo...|[nice_app, app_u,...|[nice_app_u, app_...|
+|6858821209| 487922291|    Entertainment|c60df8d4da5c9a7f214c|Literally doesn’t...|[literally, cant,...|[literally_cant, ...|[literally_cant_l...|
+|7998719763|1473663873|    Entertainment|0ff4dafa9c351c784c81|Best Bible Series...|[see, bible, mini...|[see_bible, bible...|[see_bible_minise...|
+| 659281050| 381471023|        Utilities|e1be36deeea3f1f90a41|          Flashlight|              [love]|                  []|                  []|
+|1455948573| 946659216|     Productivity|a97f15998956542082ff|         Works Great|              [tuff]|                  []|                  []|
+|8267527474|1117444284|          Medical|f2da0a60a0439bcd2bb0|              Zsmann|         [wonderful]|                  []|                  []|
+|1043626240| 454638411|Social Networking|fc7e8d059e06f49caccf|            Annoying|[annoy, use, two,...|[annoy_use, use_t...|[annoy_use_two, u...|
+|6468024979| 804217537|        Utilities|f6fb32c2bb17379cb407|       Great service|[fast, reliable, ...|[fast_reliable, r...|[fast_reliable_re...|
+| 604136222| 386022579| Health &amp; Fitness|890878098e86a9afd99d|                  :)|  [great, app, love]|[great_app, app_l...|    [great_app_love]|
++----------+----------+-----------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 only showing top 20 rows
 </pre></div>
 </div>
