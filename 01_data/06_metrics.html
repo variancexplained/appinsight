@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Metrics &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+    <title>7. Metrics &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 </title>
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Conclusion" href="07_conclusion.html" />
-    <link rel="prev" title="Text Processing" href="05_text_prep.html" />
+    <link rel="next" title="8. Conclusion" href="07_conclusion.html" />
+    <link rel="prev" title="6. Text Processing" href="05_text_prep.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,14 +182,14 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00_intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_norm.html">Normalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">Data Quality Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_clean.html">Cleaning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_features.html">Feature Engineering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">Text Processing</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_clean.html">4. Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. Text Processing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. Conclusion</a></li>
 </ul>
 
     </div>
@@ -451,10 +451,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-metrics">Category Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-metrics">Author Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-metrics">App Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-and-author-metrics">Category and Author Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-metrics">7.1. Category Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-metrics">7.2. Author Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-metrics">7.3. App Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-and-author-metrics">7.4. Category and Author Metrics</a></li>
 </ul>
             </nav>
         </div>
@@ -467,7 +467,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="metrics">
-<h1>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Metrics<a class="headerlink" href="#metrics" title="Link to this heading">#</a></h1>
 <p>In this stage, we delve deeper, aggregating and computing vital statistics across multiple dimensions of our dataset. The Metrics Aggregation Stage provides a multi-dimensional overview by aggregating data at various levels: category, author, app, and the combination of category and author.</p>
 <p>For each level of aggregation, we extract key metrics including counts of reviews, unique authors, and unique apps. Additionally, we compute descriptive statistics on important features such as rating, review length, vote count, vote sum, and date.</p>
 <p>This approach allows us to gain insights into the distribution and characteristics of reviews across different categories, authors, and apps, providing valuable information for our subsequent analysis and decision-making processes.</p>
@@ -496,7 +496,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <section id="category-metrics">
-<h2>Category Metrics<a class="headerlink" href="#category-metrics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Category Metrics<a class="headerlink" href="#category-metrics" title="Link to this heading">#</a></h2>
 <p>In this section, we review category-level metrics, providing insights into various aspects such as review counts, unique authors, unique apps, and descriptive statistics concerning ratings, review length, vote count, vote sum, and date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,7 +557,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <p>Overall, these statistics help in understanding user engagement and satisfaction within the selected app category, as well as the distribution and variability of reviews over time.</p>
 </section>
 <section id="author-metrics">
-<h2>Author Metrics<a class="headerlink" href="#author-metrics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Author Metrics<a class="headerlink" href="#author-metrics" title="Link to this heading">#</a></h2>
 <p>Building on the category-level metrics, author-level metrics provide a more granular view of individual reviewers’ behaviors and contributions. These metrics include the total number of reviews each author has submitted, the distribution of their ratings, and the lengths of their reviews. Additionally, author-level metrics capture the number of votes their reviews receive, both individually and in aggregate. This helps in understanding patterns in reviewer activity, the consistency of their feedback, and the reception of their reviews by the community, complementing the broader insights gained from the category-level analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +615,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <p>This sample reveals that author-level metrics provide a more granular view of individual reviewer behaviors. It details the number of reviews the author has submitted, the distribution and variability of their ratings, and the lengths of their reviews. Additionally, these metrics capture the number of votes their reviews receive, both individually and in total. This deeper analysis helps reveal patterns in reviewer activity, consistency in their feedback, and how their reviews are received by the community, complementing the broader trends observed at the category level.</p>
 </section>
 <section id="app-metrics">
-<h2>App Metrics<a class="headerlink" href="#app-metrics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>App Metrics<a class="headerlink" href="#app-metrics" title="Link to this heading">#</a></h2>
 <p>Following the insights from the author metrics, let’s now transition to exploring the characteristics of individual apps. Through app-level metrics, we can gain deeper insights into the performance, user engagement, and features of specific applications within the category.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,7 +671,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <p>This sample illustrates the app-level metrics, providing detailed insights into individual applications. These metrics encompass various aspects such as the number of authors associated with each app, the total number of reviews received, the distribution of reviews per author, and detailed rating information including minimum, maximum, average, and mode ratings. Additionally, it includes statistics on the lengths of reviews, the number of votes received, and the timeframe during which the reviews were submitted for each app.</p>
 </section>
 <section id="category-and-author-metrics">
-<h2>Category and Author Metrics<a class="headerlink" href="#category-and-author-metrics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Category and Author Metrics<a class="headerlink" href="#category-and-author-metrics" title="Link to this heading">#</a></h2>
 <p>Now, let’s wrap up our analysis by combining the insights from both category-level and author-level metrics. By synthesizing these comprehensive sets of statistics, we can gain a holistic understanding of the category’s landscape, and individual author behaviors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,7 +765,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Text Processing</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Text Processing</p>
       </div>
     </a>
     <a class="right-next"
@@ -773,7 +773,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Conclusion</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Conclusion</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -793,10 +793,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-metrics">Category Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-metrics">Author Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-metrics">App Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-and-author-metrics">Category and Author Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-metrics">7.1. Category Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#author-metrics">7.2. Author Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-metrics">7.3. App Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-and-author-metrics">7.4. Category and Author Metrics</a></li>
 </ul>
   </nav></div>
 
