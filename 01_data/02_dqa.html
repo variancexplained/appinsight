@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>AppVoC Preprocessing: Data Quality Assessment &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+    <title>Data Quality Assessment &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 </title>
   
   
@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AppVoC Preprocessing: Cleaning" href="03_clean.html" />
-    <link rel="prev" title="AppVoC Preprocessing: Normalization" href="01_norm.html" />
+    <link rel="next" title="Cleaning" href="03_clean.html" />
+    <link rel="prev" title="Normalization" href="01_norm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,20 +176,20 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../00_intro.html">
-                    AppInsight: Analysis and Opportunity Discovery in the Mobile App Ecosystem
+                    AppInsight
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset Preparation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00_intro.html">AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_norm.html">AppVoC Preprocessing: Normalization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">AppVoC Preprocessing: Data Quality Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_clean.html">AppVoC Preprocessing: Cleaning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_features.html">AppVoC Preprocessing: Feature Engineering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">AppVoC Preprocessing: Text Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">AppVoC Preprocessing: Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">AppVoC Preprocessing: Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">Normalization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_clean.html">Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">Conclusion</a></li>
 </ul>
 
     </div>
@@ -441,7 +441,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>AppVoC Preprocessing: Data Quality Assessment</h1>
+    <h1>Data Quality Assessment</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -463,8 +463,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-preprocessing-data-quality-assessment">
-<h1>AppVoC Preprocessing: Data Quality Assessment<a class="headerlink" href="#appvoc-preprocessing-data-quality-assessment" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-quality-assessment">
+<h1>Data Quality Assessment<a class="headerlink" href="#data-quality-assessment" title="Link to this heading">#</a></h1>
 <p>The second stage of data processing is the Data Quality Assessment. This stage ensures that our dataset is ready for subsequent analysis and modeling tasks. By identifying and rectifying data quality issues early, we can avoid potential pitfalls that might compromise the integrity and accuracy of our results.</p>
 <section id="data-quality-checks">
 <h2>Data Quality Checks<a class="headerlink" href="#data-quality-checks" title="Link to this heading">#</a></h2>
@@ -509,84 +509,84 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_190b6">
+<table id="T_bb21f">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_190b6_level0_col0" class="col_heading level0 col0" >Count</th>
-      <th id="T_190b6_level0_col1" class="col_heading level0 col1" >Percent</th>
+      <th id="T_bb21f_level0_col0" class="col_heading level0 col0" >Count</th>
+      <th id="T_bb21f_level0_col1" class="col_heading level0 col1" >Percent</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_190b6_level0_row0" class="row_heading level0 row0" >dqa_is_duplicate</th>
-      <td id="T_190b6_row0_col0" class="data row0 col0" >4</td>
-      <td id="T_190b6_row0_col1" class="data row0 col1" >0.02</td>
+      <th id="T_bb21f_level0_row0" class="row_heading level0 row0" >dqa_is_duplicate</th>
+      <td id="T_bb21f_row0_col0" class="data row0 col0" >4</td>
+      <td id="T_bb21f_row0_col1" class="data row0 col1" >0.02</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row1" class="row_heading level0 row1" >dqa_is_duplicate_rating_id</th>
-      <td id="T_190b6_row1_col0" class="data row1 col0" >5</td>
-      <td id="T_190b6_row1_col1" class="data row1 col1" >0.03</td>
+      <th id="T_bb21f_level0_row1" class="row_heading level0 row1" >dqa_is_duplicate_rating_id</th>
+      <td id="T_bb21f_row1_col0" class="data row1 col0" >5</td>
+      <td id="T_bb21f_row1_col1" class="data row1 col1" >0.03</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row2" class="row_heading level0 row2" >dqa_has_null</th>
-      <td id="T_190b6_row2_col0" class="data row2 col0" >5</td>
-      <td id="T_190b6_row2_col1" class="data row2 col1" >0.03</td>
+      <th id="T_bb21f_level0_row2" class="row_heading level0 row2" >dqa_has_null</th>
+      <td id="T_bb21f_row2_col0" class="data row2 col0" >5</td>
+      <td id="T_bb21f_row2_col1" class="data row2 col1" >0.03</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row3" class="row_heading level0 row3" >dqa_vote_sum_outlier</th>
-      <td id="T_190b6_row3_col0" class="data row3 col0" >749</td>
-      <td id="T_190b6_row3_col1" class="data row3 col1" >4.09</td>
+      <th id="T_bb21f_level0_row3" class="row_heading level0 row3" >dqa_vote_sum_outlier</th>
+      <td id="T_bb21f_row3_col0" class="data row3 col0" >749</td>
+      <td id="T_bb21f_row3_col1" class="data row3 col1" >4.09</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row4" class="row_heading level0 row4" >dqa_vote_count_outlier</th>
-      <td id="T_190b6_row4_col0" class="data row4 col0" >995</td>
-      <td id="T_190b6_row4_col1" class="data row4 col1" >5.44</td>
+      <th id="T_bb21f_level0_row4" class="row_heading level0 row4" >dqa_vote_count_outlier</th>
+      <td id="T_bb21f_row4_col0" class="data row4 col0" >995</td>
+      <td id="T_bb21f_row4_col1" class="data row4 col1" >5.44</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row5" class="row_heading level0 row5" >dqa_review_length_outlier</th>
-      <td id="T_190b6_row5_col0" class="data row5 col0" >1,234</td>
-      <td id="T_190b6_row5_col1" class="data row5 col1" >6.74</td>
+      <th id="T_bb21f_level0_row5" class="row_heading level0 row5" >dqa_review_length_outlier</th>
+      <td id="T_bb21f_row5_col0" class="data row5 col0" >1,234</td>
+      <td id="T_bb21f_row5_col1" class="data row5 col1" >6.74</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row6" class="row_heading level0 row6" >dqa_non_english</th>
-      <td id="T_190b6_row6_col0" class="data row6 col0" >937</td>
-      <td id="T_190b6_row6_col1" class="data row6 col1" >5.12</td>
+      <th id="T_bb21f_level0_row6" class="row_heading level0 row6" >dqa_non_english</th>
+      <td id="T_bb21f_row6_col0" class="data row6 col0" >937</td>
+      <td id="T_bb21f_row6_col1" class="data row6 col1" >5.12</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row7" class="row_heading level0 row7" >dqa_has_excessive_special_chars</th>
-      <td id="T_190b6_row7_col0" class="data row7 col0" >204</td>
-      <td id="T_190b6_row7_col1" class="data row7 col1" >1.11</td>
+      <th id="T_bb21f_level0_row7" class="row_heading level0 row7" >dqa_has_excessive_special_chars</th>
+      <td id="T_bb21f_row7_col0" class="data row7 col0" >204</td>
+      <td id="T_bb21f_row7_col1" class="data row7 col1" >1.11</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row8" class="row_heading level0 row8" >dqa_date_invalid</th>
-      <td id="T_190b6_row8_col0" class="data row8 col0" >0</td>
-      <td id="T_190b6_row8_col1" class="data row8 col1" >0.00</td>
+      <th id="T_bb21f_level0_row8" class="row_heading level0 row8" >dqa_date_invalid</th>
+      <td id="T_bb21f_row8_col0" class="data row8 col0" >0</td>
+      <td id="T_bb21f_row8_col1" class="data row8 col1" >0.00</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row9" class="row_heading level0 row9" >dqa_rating_invalid</th>
-      <td id="T_190b6_row9_col0" class="data row9 col0" >0</td>
-      <td id="T_190b6_row9_col1" class="data row9 col1" >0.00</td>
+      <th id="T_bb21f_level0_row9" class="row_heading level0 row9" >dqa_rating_invalid</th>
+      <td id="T_bb21f_row9_col0" class="data row9 col0" >0</td>
+      <td id="T_bb21f_row9_col1" class="data row9 col1" >0.00</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row10" class="row_heading level0 row10" >dqa_has_profanity</th>
-      <td id="T_190b6_row10_col0" class="data row10 col0" >184</td>
-      <td id="T_190b6_row10_col1" class="data row10 col1" >1.01</td>
+      <th id="T_bb21f_level0_row10" class="row_heading level0 row10" >dqa_has_profanity</th>
+      <td id="T_bb21f_row10_col0" class="data row10 col0" >184</td>
+      <td id="T_bb21f_row10_col1" class="data row10 col1" >1.01</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row11" class="row_heading level0 row11" >dqa_contains_email</th>
-      <td id="T_190b6_row11_col0" class="data row11 col0" >5</td>
-      <td id="T_190b6_row11_col1" class="data row11 col1" >0.03</td>
+      <th id="T_bb21f_level0_row11" class="row_heading level0 row11" >dqa_contains_email</th>
+      <td id="T_bb21f_row11_col0" class="data row11 col0" >5</td>
+      <td id="T_bb21f_row11_col1" class="data row11 col1" >0.03</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row12" class="row_heading level0 row12" >dqa_contains_url</th>
-      <td id="T_190b6_row12_col0" class="data row12 col0" >5</td>
-      <td id="T_190b6_row12_col1" class="data row12 col1" >0.03</td>
+      <th id="T_bb21f_level0_row12" class="row_heading level0 row12" >dqa_contains_url</th>
+      <td id="T_bb21f_row12_col0" class="data row12 col0" >5</td>
+      <td id="T_bb21f_row12_col1" class="data row12 col1" >0.03</td>
     </tr>
     <tr>
-      <th id="T_190b6_level0_row13" class="row_heading level0 row13" >dqa_contains_phone_number</th>
-      <td id="T_190b6_row13_col0" class="data row13 col0" >14</td>
-      <td id="T_190b6_row13_col1" class="data row13 col1" >0.08</td>
+      <th id="T_bb21f_level0_row13" class="row_heading level0 row13" >dqa_contains_phone_number</th>
+      <td id="T_bb21f_row13_col0" class="data row13 col0" >14</td>
+      <td id="T_bb21f_row13_col1" class="data row13 col1" >0.08</td>
     </tr>
   </tbody>
 </table>
@@ -633,7 +633,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">AppVoC Preprocessing: Normalization</p>
+        <p class="prev-next-title">Normalization</p>
       </div>
     </a>
     <a class="right-next"
@@ -641,7 +641,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">AppVoC Preprocessing: Cleaning</p>
+        <p class="prev-next-title">Cleaning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
