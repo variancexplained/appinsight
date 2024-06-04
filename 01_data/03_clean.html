@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4. AppVoC Preprocessing: Cleaning &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+    <title>AppVoC Preprocessing: Cleaning &#8212; &lt;p style=&#34;text-align:left&#34;&gt;&lt;span style=&#34;color:#002B5B&#34;&gt;&lt;span style=&#34;font-size:36px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;VoCMobile.ai&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;font-size:18px&#34;&gt;&lt;span style=&#34;font-family:Lato&#34;&gt;AppInsight: Generative-AI Powered Mobile App Voice of Customer Analytics &amp; Insight&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 </title>
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5. AppVoC Preprocessing: Feature Engineering" href="04_features.html" />
-    <link rel="prev" title="3. AppVoC Preprocessing: Data Quality Assessment" href="02_dqa.html" />
+    <link rel="next" title="AppVoC Preprocessing: Feature Engineering" href="04_features.html" />
+    <link rel="prev" title="AppVoC Preprocessing: Data Quality Assessment" href="02_dqa.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,14 +182,14 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="00_intro.html">1. AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. AppVoC Preprocessing: Normalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. AppVoC Preprocessing: Data Quality Assessment</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. AppVoC Preprocessing: Cleaning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. AppVoC Preprocessing: Feature Engineering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. AppVoC Preprocessing: Text Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. AppVoC Preprocessing: Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. AppVoC Preprocessing: Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">AppVoC Dataset: Apple App Store Voice of the Customer at Scale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_norm.html">AppVoC Preprocessing: Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">AppVoC Preprocessing: Data Quality Assessment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AppVoC Preprocessing: Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_features.html">AppVoC Preprocessing: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">AppVoC Preprocessing: Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">AppVoC Preprocessing: Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">AppVoC Preprocessing: Conclusion</a></li>
 </ul>
 
     </div>
@@ -451,11 +451,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">4.1. Approach to Addressing Anomalies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">4.2. Removal Criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4.3. Configuration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">4.4. Execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">4.5. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">Approach to Addressing Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">Removal Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
 </ul>
             </nav>
         </div>
@@ -468,10 +468,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="appvoc-preprocessing-cleaning">
-<h1><span class="section-number">4. </span>AppVoC Preprocessing: Cleaning<a class="headerlink" href="#appvoc-preprocessing-cleaning" title="Link to this heading">#</a></h1>
+<h1>AppVoC Preprocessing: Cleaning<a class="headerlink" href="#appvoc-preprocessing-cleaning" title="Link to this heading">#</a></h1>
 <p>This stage involves systematically addressing anomalies identified during the data quality assessment, which is essential for reliable and valid downstream analysis.</p>
 <section id="approach-to-addressing-anomalies">
-<h2><span class="section-number">4.1. </span>Approach to Addressing Anomalies<a class="headerlink" href="#approach-to-addressing-anomalies" title="Link to this heading">#</a></h2>
+<h2>Approach to Addressing Anomalies<a class="headerlink" href="#approach-to-addressing-anomalies" title="Link to this heading">#</a></h2>
 <p>During the data quality assessment, we identified various anomalies within the dataset. Each anomaly was then evaluated to estimate its potential impact on the subsequent analysis. This evaluation process categorized anomalies into four distinct levels of criticality:</p>
 <ol class="arabic simple">
 <li><p><strong>Critical</strong>: These anomalies have a significant impact on the integrity and reliability of the data. If left unaddressed, they could severely distort the results of any analysis. Examples include duplicate records, non-English text (if the analysis is language-specific), and invalid ratings.</p></li>
@@ -481,7 +481,7 @@ document.write(`
 </ol>
 </section>
 <section id="removal-criteria">
-<h2><span class="section-number">4.2. </span>Removal Criteria<a class="headerlink" href="#removal-criteria" title="Link to this heading">#</a></h2>
+<h2>Removal Criteria<a class="headerlink" href="#removal-criteria" title="Link to this heading">#</a></h2>
 <p>Based on the criticality assessment, a systematic approach was adopted to handle these anomalies:</p>
 <ul class="simple">
 <li><p><strong>Critical and High Impact Issues</strong>: Observations containing anomalies classified as critical or high impact were earmarked for removal. The rationale behind this strict approach is to eliminate any potential distortions in the analysis that could arise from these severe issues. By removing these observations, we ensure that the dataset maintains a high level of integrity and reliability.</p></li>
@@ -498,7 +498,7 @@ document.write(`
 </div>
 </section>
 <section id="configuration">
-<h2><span class="section-number">4.3. </span>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
 <p>A configuration object was created to map each identified anomaly to its corresponding impact level. This configuration facilitated an organized and consistent approach to anomaly handling.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -628,7 +628,7 @@ document.write(`
 </div>
 </section>
 <section id="execution">
-<h2><span class="section-number">4.4. </span>Execution<a class="headerlink" href="#execution" title="Link to this heading">#</a></h2>
+<h2>Execution<a class="headerlink" href="#execution" title="Link to this heading">#</a></h2>
 <p>The DataCleaner object encapsulates the data cleaning pipeline.  Observations flagged with critical or high impact anomalies were removed, while those with medium or low impact issues were retained. The process was designed to be transparent, with clear reporting of the number of observations removed and retained.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -641,7 +641,7 @@ document.write(`
 <p>With the data cleaning stage successfully completed, we have ensured that our dataset is free from critical and high-impact anomalies, thereby enhancing its integrity and reliability.</p>
 </section>
 <section id="validation">
-<h2><span class="section-number">4.5. </span>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
+<h2>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h2>
 <p>Let’s verify that the critical and high impact issues have been addressed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -827,7 +827,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>AppVoC Preprocessing: Data Quality Assessment</p>
+        <p class="prev-next-title">AppVoC Preprocessing: Data Quality Assessment</p>
       </div>
     </a>
     <a class="right-next"
@@ -835,7 +835,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>AppVoC Preprocessing: Feature Engineering</p>
+        <p class="prev-next-title">AppVoC Preprocessing: Feature Engineering</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -855,11 +855,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">4.1. Approach to Addressing Anomalies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">4.2. Removal Criteria</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">4.3. Configuration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">4.4. Execution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">4.5. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approach-to-addressing-anomalies">Approach to Addressing Anomalies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removal-criteria">Removal Criteria</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution">Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
 </ul>
   </nav></div>
 
