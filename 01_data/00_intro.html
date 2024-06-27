@@ -1,669 +1,798 @@
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="../">
 
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Introduction &#8212; &lt;h1&gt;AppStore Analysis and Opportunity Discovery&lt;/h1&gt;
-</title>
-  
-  
-  
+  <title>1. Introduction &#8212; &lt;h1&gt;AppStore Analysis and Opportunity Discovery&lt;/h1&gt;
+  </title>
+
+
+
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  
+
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
-  
+
   <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-  
+  <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+  <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+  <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+  <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  <link rel="stylesheet" type="text/css"
+    href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+  <link rel="stylesheet" type="text/css"
+    href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '01_data/00_intro';</script>
-    <link rel="icon" href="../_static/favicon.png"/>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Normalization" href="01_norm.html" />
-    <link rel="prev" title="AppInsight" href="../00_intro.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+  <script src="../_static/doctools.js?v=9a2dae69"></script>
+  <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+  <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+  <script src="../_static/copybutton.js?v=f281be69"></script>
+  <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+  <script>let toggleHintShow = 'Click to show';</script>
+  <script>let toggleHintHide = 'Click to hide';</script>
+  <script>let toggleOpenOnPrint = 'true';</script>
+  <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script src="../_static/design-tabs.js?v=36754332"></script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+  <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+  <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+  <script>DOCUMENTATION_OPTIONS.pagename = '01_data/00_intro';</script>
+  <link rel="icon" href="../_static/favicon.png" />
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="2. Normalization" href="01_norm.html" />
+  <link rel="prev" title="AppInsight" href="../00_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en" />
+</head>
 
-  
-  
+
+<body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%"
+  data-default-mode="">
+
+
+
   <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
+
   <div id="pst-scroll-pixel-helper"></div>
-  
+
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
     Back to top
   </button>
 
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
+
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary" />
   <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
+
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary" />
   <label class="overlay overlay-secondary" for="__secondary"></label>
-  
+
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
+      <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..."
+          aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off"
+          spellcheck="false" />
+        <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+      </form>
+    </div>
   </div>
-  
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
-    </header>
-  
+
+  <header class="bd-header navbar navbar-expand-lg bd-navbar">
+  </header>
+
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
+
+
+
       <div class="bd-sidebar-primary bd-sidebar">
-        
 
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
 
-  
 
-<a class="navbar-brand logo" href="../00_intro.html">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="../_static/logo.png" class="logo__image only-light" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
- - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+        <div class="sidebar-header-items sidebar-primary__section">
+
+
+
+
+        </div>
+
+        <div class="sidebar-primary-items__start sidebar-primary__section">
+          <div class="sidebar-primary-item">
+
+
+
+            <a class="navbar-brand logo" href="../00_intro.html">
+
+
+
+
+
+
+
+
+
+
+              <img src="../_static/logo.png" class="logo__image only-light" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+ - Home" />
+              <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
  - Home"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item">
 
- <script>
- document.write(`
+
+            </a>
+          </div>
+          <div class="sidebar-primary-item">
+
+            <script>
+              document.write(`
    <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
    </button>
  `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../00_intro.html">
-                    AppInsight
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset Preparation</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. Normalization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. Data Quality Assessment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_clean.html">4. Cleaning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_features.html">5. Feature Engineering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. Text Processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. Metrics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. Conclusion</a></li>
-</ul>
+            </script>
+          </div>
+          <div class="sidebar-primary-item">
+            <nav class="bd-links bd-docs-nav" aria-label="Main">
+              <div class="bd-toc-item navbar-nav active">
 
-    </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+                <ul class="nav bd-sidenav bd-sidenav__home-link">
+                  <li class="toctree-l1">
+                    <a class="reference internal" href="../00_intro.html">
+                      AppInsight
+                    </a>
+                  </li>
+                </ul>
+                <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset
+                    Preparation</span></p>
+                <ul class="current nav bd-sidenav">
+                  <li class="toctree-l1 current active"><a class="current reference internal" href="#">1.
+                      Introduction</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="01_norm.html">2. Normalization</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="02_dqa.html">3. Data Quality Assessment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="03_clean.html">4. Cleaning</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="04_features.html">5. Feature
+                      Engineering</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="05_text_prep.html">6. Text Processing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="06_metrics.html">7. Metrics</a></li>
+                  <li class="toctree-l1"><a class="reference internal" href="07_conclusion.html">8. Conclusion</a></li>
+                </ul>
+
+              </div>
+            </nav>
+          </div>
+        </div>
+
+
+        <div class="sidebar-primary-items__end sidebar-primary__section">
+        </div>
+
+        <div id="rtd-footer-container"></div>
 
 
       </div>
-      
+
       <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
 
 
 
+        <div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+
+            <div class="bd-header-article">
+              <div class="header-article-items header-article__inner">
+
+                <div class="header-article-items__start">
+
+                  <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm"
+                      for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom"
+                      data-bs-toggle="tooltip">
+                      <span class="fa-solid fa-bars"></span>
+                    </label></div>
+
+                </div>
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/01_data/00_intro.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
+                <div class="header-article-items__end">
 
-<span class="btn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/01_data/00_intro.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
+                  <div class="header-article-item">
 
-<span class="btn__icon-container">
-  
-    <img src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-  </ul>
-</div>
+                    <div class="article-header-buttons">
 
 
 
 
 
+                      <div class="dropdown dropdown-launch-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Launch interactive content">
+                          <i class="fas fa-rocket"></i>
+                        </button>
+                        <ul class="dropdown-menu">
 
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
 
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/01_data/00_intro.ipynb" target="_blank"
-   class="btn btn-sm btn-source-edit-button dropdown-item"
-   title="Suggest edit"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
 
-<span class="btn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="btn__text-container">Suggest edit</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F01_data/00_intro.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
+                          <li><a
+                              href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/01_data/00_intro.ipynb"
+                              target="_blank" class="btn btn-sm dropdown-item" title="Launch onBinder"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
 
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
+
+                              <span class="btn__icon-container">
+
+                                <img src="../_static/images/logo_binder.svg">
+                              </span>
+                              <span class="btn__text-container">Binder</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li><a
+                              href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/01_data/00_intro.ipynb"
+                              target="_blank" class="btn btn-sm dropdown-item" title="Launch onColab"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+
+                                <img src="../_static/images/logo_colab.png">
+                              </span>
+                              <span class="btn__text-container">Colab</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
 
 
 
 
 
 
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../_sources/01_data/00_intro.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
+                      <div class="dropdown dropdown-source-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Source repositories">
+                          <i class="fab fa-github"></i>
+                        </button>
+                        <ul class="dropdown-menu">
 
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
 
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
+
+                          <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+                              class="btn btn-sm btn-source-repository-button dropdown-item" title="Source repository"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fab fa-github"></i>
+                              </span>
+                              <span class="btn__text-container">Repository</span>
+                            </a>
+                          </li>
 
 
 
 
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
+                          <li><a
+                              href="https://github.com/variancexplained/appinsight/edit/main/jbook/01_data/00_intro.ipynb"
+                              target="_blank" class="btn btn-sm btn-source-edit-button dropdown-item"
+                              title="Suggest edit" data-bs-placement="left" data-bs-toggle="tooltip">
 
 
+                              <span class="btn__icon-container">
+                                <i class="fas fa-pencil-alt"></i>
+                              </span>
+                              <span class="btn__text-container">Suggest edit</span>
+                            </a>
+                          </li>
 
-<script>
-document.write(`
+
+
+
+                          <li><a
+                              href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F01_data/00_intro.html&body=Your%20issue%20content%20here."
+                              target="_blank" class="btn btn-sm btn-source-issues-button dropdown-item"
+                              title="Open an issue" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-lightbulb"></i>
+                              </span>
+                              <span class="btn__text-container">Open issue</span>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+
+
+                      <div class="dropdown dropdown-download-buttons">
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                          aria-expanded="false" aria-label="Download this page">
+                          <i class="fas fa-download"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+
+
+
+                          <li><a href="../_sources/01_data/00_intro.ipynb" target="_blank"
+                              class="btn btn-sm btn-download-source-button dropdown-item" title="Download source file"
+                              data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file"></i>
+                              </span>
+                              <span class="btn__text-container">.ipynb</span>
+                            </a>
+                          </li>
+
+
+
+
+                          <li>
+                            <button onclick="window.print()" class="btn btn-sm btn-download-pdf-button dropdown-item"
+                              title="Print to PDF" data-bs-placement="left" data-bs-toggle="tooltip">
+
+
+                              <span class="btn__icon-container">
+                                <i class="fas fa-file-pdf"></i>
+                              </span>
+                              <span class="btn__text-container">.pdf</span>
+                            </button>
+                          </li>
+
+                        </ul>
+                      </div>
+
+
+
+
+                      <button onclick="toggleFullScreen()" class="btn btn-sm btn-fullscreen-button"
+                        title="Fullscreen mode" data-bs-placement="bottom" data-bs-toggle="tooltip">
+
+
+                        <span class="btn__icon-container">
+                          <i class="fas fa-expand"></i>
+                        </span>
+
+                      </button>
+
+
+
+                      <script>
+                        document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
-</script>
+                      </script>
 
 
-<script>
-document.write(`
+                      <script>
+                        document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
+                      </script>
+                      <label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"
+                        title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+                        <span class="fa-solid fa-list"></span>
+                      </label>
+                    </div>
+                  </div>
 
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
+                </div>
+
+              </div>
             </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-appvoc-dataset">1.1. Key Features of AppVoC Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#major-statistics-of-the-appvoc-dataset">1.2. Major Statistics of the AppVoC Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-dataset-variables">1.3. AppVoC Dataset Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-preprocessing">1.4. AppVOC Preprocessing</a></li>
-</ul>
-            </nav>
-        </div>
-    </div>
-</div>
 
-              
-                
-<div id="searchbox"></div>
-                <article class="bd-article">
-                  
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p>“Because we offer nearly two million apps — and we want you to feel good about using every single one of them.” - Apple</p>
-</div></blockquote>
-<p>In 1983, Steve Jobs envisioned a future where consumers could seamlessly purchase and download software directly from their computers. Fast forward 25 years to 2008, Apple launched the App Store, realizing Jobs’ vision and revolutionizing the way we interact with technology. Following the success of the iTunes digital music store, the Apple App Store became one of the world’s first commercially successful mobile app marketplaces, and today, it stands as a digital leviathan. As of May 29, 2024, the App Store boasts a staggering 1,928,363 apps available for download, catering to over 1.3 billion iOS users worldwide.</p>
-<p>And, amidst this flourishing ecosystem, understanding how users <em>actually</em> feel about the apps they download and use every day, remains crucial. It’s incontestable. Ratings and reviews play a pivotal role in App Store Optimization (ASO) and app discoverability, which can be the difference between app success and failure. Yet, the dearth of large-scale customer rating and review datasets for in-depth analysis is astounding.</p>
-<p>Disaffected by the scarcity of comprehensive App Store review datasets, an undertaking was begun to construct a collection of app reviews that would serve as a laboratory where the frontier of generative methods, text synthesis, graph neural networks, next-gen NLP solutions, advanced integration technologies, and other innovative methods can be explored, stretched, taxed and charged with revealing the nuances and contours of the customer experience, to uncover the latent, and perhaps undistinguished emergent market need with AI.</p>
-<p>Introducing the AppVoC (Voice of the Customer) dataset — a collection of iOS app reviews, believed to be one of the largest collections of Apple iOS user review datasets available, second only to that of the App Store itself.</p>
-<section id="key-features-of-appvoc-dataset">
-<h2><span class="section-number">1.1. </span>Key Features of AppVoC Dataset<a class="headerlink" href="#key-features-of-appvoc-dataset" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Scale</strong>: The dataset includes approximately 18 million reviews, making it one of the most extensive collections of app store reviews publicly available.</p></li>
-<li><p><strong>User Base</strong>: It covers 13 million unique users, reflecting a vast and diverse range of perspectives.</p></li>
-<li><p><strong>App Diversity</strong>: The dataset includes reviews for for some 34,000 unique apps showcasing the broad spectrum of app interests and needs.</p></li>
-<li><p><strong>Category Coverage</strong>: The dataset spans ten of the most popular app categories, illuminating the diverse interests and needs of mobile users.</p></li>
-<li><p><strong>Voice-on-Voice</strong>: The dataset captures how users engage and value the sentiments and opinions of other users. The number and value of user votes on reviews opens up new avenues allowing researchers and analysts to explore user engagement dynamics, identify influential reviews, and understand the collective sentiment of the user community towards specific apps. These insights can inform app developers, stakeholders, and decision-makers in optimizing app experiences, addressing user concerns, and driving user engagement and satisfaction.</p></li>
-<li><p><strong>Temporal Coverage</strong>: Spanning from 2008 to 2023, the dataset captures a wealth of user interactions and feedback over 15 years, providing a longitudinal view of app usage and user feedback trends. Timestamps illuminate the individual and collective progression of sentiment over time, motivating deeper exploration into the evolving dynamics of user engagement and feedback. By analyzing the temporal dimension of reviews, researchers and analysts can uncover trends, patterns, and fluctuations in user sentiment, shedding light on the factors influencing app popularity, user satisfaction, and overall app ecosystem dynamics. This temporal lens not only provides valuable insights into past user behavior but also enables predictive analysis and forecasting, empowering stakeholders to anticipate trends, mitigate risks, and capitalize on emerging opportunities in the ever-evolving app landscape.</p></li>
-<li><p><strong>Rich Metadata</strong>: Each review is accompanied by metadata such as app name, category, rating, vote count, and timestamp, enabling multifaceted analysis.</p></li>
-</ul>
-</section>
-<section id="major-statistics-of-the-appvoc-dataset">
-<h2><span class="section-number">1.2. </span>Major Statistics of the AppVoC Dataset<a class="headerlink" href="#major-statistics-of-the-appvoc-dataset" title="Link to this heading">#</a></h2>
-<p>With an overview of the AppVoC dataset established, let’s delve into the major statistics that define its scope and depth. This section provides a detailed summary of key metrics, including the number of reviews, users, apps, and categories, and a breakdown of reviews by category.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">appinsight.analysis.overview</span> <span class="kn">import</span> <span class="n">DatasetOverview</span>
+
+
+            <div id="jb-print-docs-body" class="onlyprint">
+              <h1>Introduction</h1>
+              <!-- Table of contents -->
+              <div id="print-main-content">
+                <div id="jb-print-toc">
+
+                  <div>
+                    <h2> Contents </h2>
+                  </div>
+                  <nav aria-label="Page">
+                    <ul class="visible nav section-nav flex-column">
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#key-features-of-appvoc-dataset">1.1. Key Features of AppVoC Dataset</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#major-statistics-of-the-appvoc-dataset">1.2. Major Statistics of the AppVoC Dataset</a>
+                      </li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#appvoc-dataset-variables">1.3. AppVoC Dataset Variables</a></li>
+                      <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                          href="#appvoc-preprocessing">1.4. AppVOC Preprocessing</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="searchbox"></div>
+            <article class="bd-article">
+
+              <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+                <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction"
+                    title="Link to this heading">#</a></h1>
+                <blockquote>
+                  <div>
+                    <p>“Because we offer nearly two million apps — and we want you to feel good about using every single
+                      one of them.” - Apple</p>
+                  </div>
+                </blockquote>
+                <p>In 1983, Steve Jobs envisioned a future where consumers could seamlessly purchase and download
+                  software directly from their computers. Fast forward 25 years to 2008, Apple launched the App Store,
+                  realizing Jobs’ vision and revolutionizing the way we interact with technology. Following the success
+                  of the iTunes digital music store, the Apple App Store became one of the world’s first commercially
+                  successful mobile app marketplaces, and today, it stands as a digital leviathan. As of May 29, 2024,
+                  the App Store boasts a staggering 1,928,363 apps available for download, catering to over 1.3 billion
+                  iOS users worldwide.</p>
+                <p>And, amidst this flourishing ecosystem, understanding how users <em>actually</em> feel about the apps
+                  they download and use every day, remains crucial. It’s incontestable. Ratings and reviews play a
+                  pivotal role in App Store Optimization (ASO) and app discoverability, which can be the difference
+                  between app success and failure. Yet, the dearth of large-scale customer rating and review datasets
+                  for in-depth analysis is astounding.</p>
+                <p>Disaffected by the scarcity of comprehensive App Store review datasets, an undertaking was begun to
+                  construct a collection of app reviews that would serve as a laboratory where the frontier of
+                  generative methods, text synthesis, graph neural networks, next-gen NLP solutions, advanced
+                  integration technologies, and other innovative methods can be explored, stretched, taxed and charged
+                  with revealing the nuances and contours of the customer experience, to uncover the latent, and perhaps
+                  undistinguished emergent market need with AI.</p>
+                <p>Introducing the AppVoC (Voice of the Customer) dataset — a collection of iOS app reviews, believed to
+                  be one of the largest collections of Apple iOS user review datasets available, second only to that of
+                  the App Store itself.</p>
+                <section id="key-features-of-appvoc-dataset">
+                  <h2><span class="section-number">1.1. </span>Key Features of AppVoC Dataset<a class="headerlink"
+                      href="#key-features-of-appvoc-dataset" title="Link to this heading">#</a></h2>
+                  <ul class="simple">
+                    <li>
+                      <p><strong>Scale</strong>: The dataset includes approximately 18 million reviews, making it one of
+                        the most extensive collections of app store reviews publicly available.</p>
+                    </li>
+                    <li>
+                      <p><strong>User Base</strong>: It covers 13 million unique users, reflecting a vast and diverse
+                        range of perspectives.</p>
+                    </li>
+                    <li>
+                      <p><strong>App Diversity</strong>: The dataset includes reviews for for some 34,000 unique apps
+                        showcasing the broad spectrum of app interests and needs.</p>
+                    </li>
+                    <li>
+                      <p><strong>Category Coverage</strong>: The dataset spans ten of the most popular app categories,
+                        illuminating the diverse interests and needs of mobile users.</p>
+                    </li>
+                    <li>
+                      <p><strong>Voice-on-Voice</strong>: The dataset captures how users engage and value the sentiments
+                        and opinions of other users. The number and value of user votes on reviews opens up new avenues
+                        allowing researchers and analysts to explore user engagement dynamics, identify influential
+                        reviews, and understand the collective sentiment of the user community towards specific apps.
+                        These insights can inform app developers, stakeholders, and decision-makers in optimizing app
+                        experiences, addressing user concerns, and driving user engagement and satisfaction.</p>
+                    </li>
+                    <li>
+                      <p><strong>Temporal Coverage</strong>: Spanning from 2008 to 2023, the dataset captures a wealth
+                        of user interactions and feedback over 15 years, providing a longitudinal view of app usage and
+                        user feedback trends. Timestamps illuminate the individual and collective progression of
+                        sentiment over time, motivating deeper exploration into the evolving dynamics of user engagement
+                        and feedback. By analyzing the temporal dimension of reviews, researchers and analysts can
+                        uncover trends, patterns, and fluctuations in user sentiment, shedding light on the factors
+                        influencing app popularity, user satisfaction, and overall app ecosystem dynamics. This temporal
+                        lens not only provides valuable insights into past user behavior but also enables predictive
+                        analysis and forecasting, empowering stakeholders to anticipate trends, mitigate risks, and
+                        capitalize on emerging opportunities in the ever-evolving app landscape.</p>
+                    </li>
+                    <li>
+                      <p><strong>Rich Metadata</strong>: Each review is accompanied by metadata such as app name,
+                        category, rating, vote count, and timestamp, enabling multifaceted analysis.</p>
+                    </li>
+                  </ul>
+                </section>
+                <section id="major-statistics-of-the-appvoc-dataset">
+                  <h2><span class="section-number">1.2. </span>Major Statistics of the AppVoC Dataset<a
+                      class="headerlink" href="#major-statistics-of-the-appvoc-dataset"
+                      title="Link to this heading">#</a></h2>
+                  <p>With an overview of the AppVoC dataset established, let’s delve into the major statistics that
+                    define its scope and depth. This section provides a detailed summary of key metrics, including the
+                    number of reviews, users, apps, and categories, and a breakdown of reviews by category.</p>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="kn">from</span> <span class="nn">appinsight.analysis.overview</span> <span class="kn">import</span> <span class="n">DatasetOverview</span>
 <span class="kn">from</span> <span class="nn">appinsight.infrastructure.storage.dataset</span> <span class="kn">import</span> <span class="n">DatasetManager</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dsm</span> <span class="o">=</span> <span class="n">DatasetManager</span><span class="p">()</span>
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="n">dsm</span> <span class="o">=</span> <span class="n">DatasetManager</span><span class="p">()</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">dsm</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;01_normalized&quot;</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;reviews.pkl&quot;</span><span class="p">)</span>
 <span class="n">ov</span> <span class="o">=</span> <span class="n">DatasetOverview</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 <span class="n">ov</span><span class="o">.</span><span class="n">overview</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_b0129">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_b0129_level0_col0" class="col_heading level0 col0" >Characteristic</th>
-      <th id="T_b0129_level0_col1" class="col_heading level0 col1" >Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_b0129_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_b0129_row0_col0" class="data row0 col0" >Number of Reviews</td>
-      <td id="T_b0129_row0_col1" class="data row0 col1" >18,306</td>
-    </tr>
-    <tr>
-      <th id="T_b0129_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_b0129_row1_col0" class="data row1 col0" >Number of Users</td>
-      <td id="T_b0129_row1_col1" class="data row1 col1" >18,289</td>
-    </tr>
-    <tr>
-      <th id="T_b0129_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_b0129_row2_col0" class="data row2 col0" >Number of Apps</td>
-      <td id="T_b0129_row2_col1" class="data row2 col1" >4,199</td>
-    </tr>
-    <tr>
-      <th id="T_b0129_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_b0129_row3_col0" class="data row3 col0" >Number of Categories</td>
-      <td id="T_b0129_row3_col1" class="data row3 col1" >10</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-<p>The table below provides a breakdown of the review distribution across various app categories, highlighting the count and percentage of reviews each category has received within the full dataset.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">summary</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_49e5d">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th id="T_49e5d_level0_col0" class="col_heading level0 col0" >category</th>
-      <th id="T_49e5d_level0_col1" class="col_heading level0 col1" >Count</th>
-      <th id="T_49e5d_level0_col2" class="col_heading level0 col2" >Percent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_49e5d_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_49e5d_row0_col0" class="data row0 col0" >Book</td>
-      <td id="T_49e5d_row0_col1" class="data row0 col1" >796</td>
-      <td id="T_49e5d_row0_col2" class="data row0 col2" >4.35</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_49e5d_row1_col0" class="data row1 col0" >Business</td>
-      <td id="T_49e5d_row1_col1" class="data row1 col1" >1,418</td>
-      <td id="T_49e5d_row1_col2" class="data row1 col2" >7.75</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_49e5d_row2_col0" class="data row2 col0" >Education</td>
-      <td id="T_49e5d_row2_col1" class="data row2 col1" >1,126</td>
-      <td id="T_49e5d_row2_col2" class="data row2 col2" >6.15</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_49e5d_row3_col0" class="data row3 col0" >Entertainment</td>
-      <td id="T_49e5d_row3_col1" class="data row3 col1" >2,004</td>
-      <td id="T_49e5d_row3_col2" class="data row3 col2" >10.95</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_49e5d_row4_col0" class="data row4 col0" >Health & Fitness</td>
-      <td id="T_49e5d_row4_col1" class="data row4 col1" >4,009</td>
-      <td id="T_49e5d_row4_col2" class="data row4 col2" >21.90</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_49e5d_row5_col0" class="data row5 col0" >Lifestyle</td>
-      <td id="T_49e5d_row5_col1" class="data row5 col1" >1,726</td>
-      <td id="T_49e5d_row5_col2" class="data row5 col2" >9.43</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_49e5d_row6_col0" class="data row6 col0" >Medical</td>
-      <td id="T_49e5d_row6_col1" class="data row6 col1" >662</td>
-      <td id="T_49e5d_row6_col2" class="data row6 col2" >3.62</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_49e5d_row7_col0" class="data row7 col0" >Productivity</td>
-      <td id="T_49e5d_row7_col1" class="data row7 col1" >794</td>
-      <td id="T_49e5d_row7_col2" class="data row7 col2" >4.34</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_49e5d_row8_col0" class="data row8 col0" >Social Networking</td>
-      <td id="T_49e5d_row8_col1" class="data row8 col1" >2,699</td>
-      <td id="T_49e5d_row8_col2" class="data row8 col2" >14.74</td>
-    </tr>
-    <tr>
-      <th id="T_49e5d_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_49e5d_row9_col0" class="data row9 col0" >Utilities</td>
-      <td id="T_49e5d_row9_col1" class="data row9 col1" >3,072</td>
-      <td id="T_49e5d_row9_col2" class="data row9 col2" >16.78</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
-</div>
-</section>
-<section id="appvoc-dataset-variables">
-<h2><span class="section-number">1.3. </span>AppVoC Dataset Variables<a class="headerlink" href="#appvoc-dataset-variables" title="Link to this heading">#</a></h2>
-<p>The dataset contains 13 variables, offering a multifaceted view of user interactions and app attributes.</p>
-<ul class="simple">
-<li><p><strong>id</strong>: Unique identifier for each review.</p></li>
-<li><p><strong>app_id</strong>: Unique identifier for the app being reviewed.</p></li>
-<li><p><strong>app_name</strong>: Name of the mobile application being reviewed.</p></li>
-<li><p><strong>category_id</strong>: Four-digit identifier representing the category or genre of the app.</p></li>
-<li><p><strong>category</strong>: Category or genre name of the app.</p></li>
-<li><p><strong>author</strong>: Name or identifier of the reviewer.</p></li>
-<li><p><strong>rating</strong>: Numeric rating provided by the author for the app.</p></li>
-<li><p><strong>title</strong>: Title of the review.</p></li>
-<li><p><strong>content</strong>: Detailed content of the review provided by the author.</p></li>
-<li><p><strong>review_length</strong>: Length of the review in words.</p></li>
-<li><p><strong>vote_sum</strong>: Total sum of votes on the usefulness of the rating.</p></li>
-<li><p><strong>vote_count</strong>: Number of votes on the usefulness of the rating.</p></li>
-<li><p><strong>date</strong>: Date when the review was written.</p></li>
-</ul>
-<p>These variables collectively evince the mobile app user experience and provide a basis for analyzing user feedback and extracting actionable intelligence about areas for improvement, feature requests, unmet needs, and user preferences.</p>
-</section>
-<section id="appvoc-preprocessing">
-<h2><span class="section-number">1.4. </span>AppVOC Preprocessing<a class="headerlink" href="#appvoc-preprocessing" title="Link to this heading">#</a></h2>
-<p>In advance of the exploratory and interactive analyses,  our aim for the next few sections is to ensure that the text data are clean, structured, and ready for in-depth examination and modeling. With that, our six-stage data preprocessing effort will unfold as follows:</p>
-<ol class="arabic simple">
-<li><p><strong>Data Normalization</strong>: Standardize data types and encoding to resolve technical anomalies before further processing and analysis.</p></li>
-<li><p><strong>Data Quality Analysis</strong>: Identify and rectify noise within the dataset, including profanity, excessive special characters, and identifiable patterns like emails and URLs.</p></li>
-<li><p><strong>Cleaning</strong>: Purge biased or distorted observations detected during the data quality analysis, ensuring data integrity.</p></li>
-<li><p><strong>Feature Engineering</strong>: Enhance data by transforming date fields into informative features such as month, day of the week, and day of the month. Additionally, anonymize author information to uphold privacy.</p></li>
-<li><p><strong>Text Preprocessing</strong>: Optimize textual data for downstream tasks such as word cloud generation and topic modeling, utilizing techniques like tokenization and stemming.</p></li>
-<li><p><strong>Metrics</strong>: Establish an Analytics Precomputation Layer (APL) to calculate aggregate statistical summaries, facilitating swift query responses and cost-effective analytics.</p></li>
-</ol>
-<p>These next steps will ensure that the dataset is clean, consistent, and well-structured for exploratory data analysis. Next up? Data quality analysis.</p>
-</section>
-</section>
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cell_output docutils container">
+                      <div class="output text_html">
+                        <style type="text/css">
+                        </style>
+                        <table id="T_b0129">
+                          <thead>
+                            <tr>
+                              <th class="blank level0">&nbsp;</th>
+                              <th id="T_b0129_level0_col0" class="col_heading level0 col0">Characteristic</th>
+                              <th id="T_b0129_level0_col1" class="col_heading level0 col1">Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th id="T_b0129_level0_row0" class="row_heading level0 row0">0</th>
+                              <td id="T_b0129_row0_col0" class="data row0 col0">Number of Reviews</td>
+                              <td id="T_b0129_row0_col1" class="data row0 col1">18,306</td>
+                            </tr>
+                            <tr>
+                              <th id="T_b0129_level0_row1" class="row_heading level0 row1">1</th>
+                              <td id="T_b0129_row1_col0" class="data row1 col0">Number of Users</td>
+                              <td id="T_b0129_row1_col1" class="data row1 col1">18,289</td>
+                            </tr>
+                            <tr>
+                              <th id="T_b0129_level0_row2" class="row_heading level0 row2">2</th>
+                              <td id="T_b0129_row2_col0" class="data row2 col0">Number of Apps</td>
+                              <td id="T_b0129_row2_col1" class="data row2 col1">4,199</td>
+                            </tr>
+                            <tr>
+                              <th id="T_b0129_level0_row3" class="row_heading level0 row3">3</th>
+                              <td id="T_b0129_row3_col0" class="data row3 col0">Number of Categories</td>
+                              <td id="T_b0129_row3_col1" class="data row3 col1">10</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <p>The table below provides a breakdown of the review distribution across various app categories,
+                    highlighting the count and percentage of reviews each category has received within the full dataset.
+                  </p>
+                  <div class="cell docutils container">
+                    <div class="cell_input docutils container">
+                      <div class="highlight-ipython3 notranslate">
+                        <div class="highlight">
+                          <pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">summary</span>
+</pre>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cell_output docutils container">
+                      <div class="output text_html">
+                        <style type="text/css">
+                        </style>
+                        <table id="T_49e5d">
+                          <thead>
+                            <tr>
+                              <th class="blank level0">&nbsp;</th>
+                              <th id="T_49e5d_level0_col0" class="col_heading level0 col0">category</th>
+                              <th id="T_49e5d_level0_col1" class="col_heading level0 col1">Count</th>
+                              <th id="T_49e5d_level0_col2" class="col_heading level0 col2">Percent</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th id="T_49e5d_level0_row0" class="row_heading level0 row0">0</th>
+                              <td id="T_49e5d_row0_col0" class="data row0 col0">Book</td>
+                              <td id="T_49e5d_row0_col1" class="data row0 col1">796</td>
+                              <td id="T_49e5d_row0_col2" class="data row0 col2">4.35</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row1" class="row_heading level0 row1">1</th>
+                              <td id="T_49e5d_row1_col0" class="data row1 col0">Business</td>
+                              <td id="T_49e5d_row1_col1" class="data row1 col1">1,418</td>
+                              <td id="T_49e5d_row1_col2" class="data row1 col2">7.75</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row2" class="row_heading level0 row2">2</th>
+                              <td id="T_49e5d_row2_col0" class="data row2 col0">Education</td>
+                              <td id="T_49e5d_row2_col1" class="data row2 col1">1,126</td>
+                              <td id="T_49e5d_row2_col2" class="data row2 col2">6.15</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row3" class="row_heading level0 row3">3</th>
+                              <td id="T_49e5d_row3_col0" class="data row3 col0">Entertainment</td>
+                              <td id="T_49e5d_row3_col1" class="data row3 col1">2,004</td>
+                              <td id="T_49e5d_row3_col2" class="data row3 col2">10.95</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row4" class="row_heading level0 row4">4</th>
+                              <td id="T_49e5d_row4_col0" class="data row4 col0">Health & Fitness</td>
+                              <td id="T_49e5d_row4_col1" class="data row4 col1">4,009</td>
+                              <td id="T_49e5d_row4_col2" class="data row4 col2">21.90</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row5" class="row_heading level0 row5">5</th>
+                              <td id="T_49e5d_row5_col0" class="data row5 col0">Lifestyle</td>
+                              <td id="T_49e5d_row5_col1" class="data row5 col1">1,726</td>
+                              <td id="T_49e5d_row5_col2" class="data row5 col2">9.43</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row6" class="row_heading level0 row6">6</th>
+                              <td id="T_49e5d_row6_col0" class="data row6 col0">Medical</td>
+                              <td id="T_49e5d_row6_col1" class="data row6 col1">662</td>
+                              <td id="T_49e5d_row6_col2" class="data row6 col2">3.62</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row7" class="row_heading level0 row7">7</th>
+                              <td id="T_49e5d_row7_col0" class="data row7 col0">Productivity</td>
+                              <td id="T_49e5d_row7_col1" class="data row7 col1">794</td>
+                              <td id="T_49e5d_row7_col2" class="data row7 col2">4.34</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row8" class="row_heading level0 row8">8</th>
+                              <td id="T_49e5d_row8_col0" class="data row8 col0">Social Networking</td>
+                              <td id="T_49e5d_row8_col1" class="data row8 col1">2,699</td>
+                              <td id="T_49e5d_row8_col2" class="data row8 col2">14.74</td>
+                            </tr>
+                            <tr>
+                              <th id="T_49e5d_level0_row9" class="row_heading level0 row9">9</th>
+                              <td id="T_49e5d_row9_col0" class="data row9 col0">Utilities</td>
+                              <td id="T_49e5d_row9_col1" class="data row9 col1">3,072</td>
+                              <td id="T_49e5d_row9_col2" class="data row9 col2">16.78</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section id="appvoc-dataset-variables">
+                  <h2><span class="section-number">1.3. </span>AppVoC Dataset Variables<a class="headerlink"
+                      href="#appvoc-dataset-variables" title="Link to this heading">#</a></h2>
+                  <p>The dataset contains 13 variables, offering a multifaceted view of user interactions and app
+                    attributes.</p>
+                  <ul class="simple">
+                    <li>
+                      <p><strong>id</strong>: Unique identifier for each review.</p>
+                    </li>
+                    <li>
+                      <p><strong>app_id</strong>: Unique identifier for the app being reviewed.</p>
+                    </li>
+                    <li>
+                      <p><strong>app_name</strong>: Name of the mobile application being reviewed.</p>
+                    </li>
+                    <li>
+                      <p><strong>category_id</strong>: Four-digit identifier representing the category or genre of the
+                        app.</p>
+                    </li>
+                    <li>
+                      <p><strong>category</strong>: Category or genre name of the app.</p>
+                    </li>
+                    <li>
+                      <p><strong>author</strong>: Name or identifier of the reviewer.</p>
+                    </li>
+                    <li>
+                      <p><strong>rating</strong>: Numeric rating provided by the author for the app.</p>
+                    </li>
+                    <li>
+                      <p><strong>title</strong>: Title of the review.</p>
+                    </li>
+                    <li>
+                      <p><strong>content</strong>: Detailed content of the review provided by the author.</p>
+                    </li>
+                    <li>
+                      <p><strong>review_length</strong>: Length of the review in words.</p>
+                    </li>
+                    <li>
+                      <p><strong>vote_sum</strong>: Total sum of votes on the usefulness of the rating.</p>
+                    </li>
+                    <li>
+                      <p><strong>vote_count</strong>: Number of votes on the usefulness of the rating.</p>
+                    </li>
+                    <li>
+                      <p><strong>date</strong>: Date when the review was written.</p>
+                    </li>
+                  </ul>
+                  <p>These variables collectively evince the mobile app user experience and provide a basis for
+                    analyzing user feedback and extracting actionable intelligence about areas for improvement, feature
+                    requests, unmet needs, and user preferences.</p>
+                </section>
+                <section id="appvoc-preprocessing">
+                  <h2><span class="section-number">1.4. </span>AppVOC Preprocessing<a class="headerlink"
+                      href="#appvoc-preprocessing" title="Link to this heading">#</a></h2>
+                  <p>In advance of the exploratory and interactive analyses, our aim for the next few sections is to
+                    ensure that the text data are clean, structured, and ready for in-depth examination and modeling.
+                    With that, our six-stage data preprocessing effort will unfold as follows:</p>
+                  <ol class="arabic simple">
+                    <li>
+                      <p><strong>Data Normalization</strong>: Standardize data types and encoding to resolve technical
+                        anomalies before further processing and analysis.</p>
+                    </li>
+                    <li>
+                      <p><strong>Data Quality Analysis</strong>: Identify and rectify noise within the dataset,
+                        including profanity, excessive special characters, and identifiable patterns like emails and
+                        URLs.</p>
+                    </li>
+                    <li>
+                      <p><strong>Cleaning</strong>: Purge biased or distorted observations detected during the data
+                        quality analysis, ensuring data integrity.</p>
+                    </li>
+                    <li>
+                      <p><strong>Feature Engineering</strong>: Enhance data by transforming date fields into informative
+                        features such as month, day of the week, and day of the month. Additionally, anonymize author
+                        information to uphold privacy.</p>
+                    </li>
+                    <li>
+                      <p><strong>Text Preprocessing</strong>: Optimize textual data for downstream tasks such as word
+                        cloud generation and topic modeling, utilizing techniques like tokenization and stemming.</p>
+                    </li>
+                    <li>
+                      <p><strong>Metrics</strong>: Establish an Analytics Precomputation Layer (APL) to calculate
+                        aggregate statistical summaries, facilitating swift query responses and cost-effective
+                        analytics.</p>
+                    </li>
+                  </ol>
+                  <p>These next steps will ensure that the dataset is clean, consistent, and well-structured for
+                    exploratory data analysis. Next up? Data quality analysis.</p>
+                </section>
+              </section>
 
-    <script type="text/x-thebe-config">
+              <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -681,108 +810,113 @@ document.write(`
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+              <script>kernelName = 'python3'</script>
 
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="../00_intro.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">AppInsight</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="01_norm.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Normalization</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+            </article>
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-appvoc-dataset">1.1. Key Features of AppVoC Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#major-statistics-of-the-appvoc-dataset">1.2. Major Statistics of the AppVoC Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-dataset-variables">1.3. AppVoC Dataset Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-preprocessing">1.4. AppVOC Preprocessing</a></li>
-</ul>
-  </nav></div>
 
-</div></div>
-              
-            
+
+
+
+            <footer class="prev-next-footer">
+
+              <div class="prev-next-area">
+                <a class="left-prev" href="../00_intro.html" title="previous page">
+                  <i class="fa-solid fa-angle-left"></i>
+                  <div class="prev-next-info">
+                    <p class="prev-next-subtitle">previous</p>
+                    <p class="prev-next-title">AppInsight</p>
+                  </div>
+                </a>
+                <a class="right-next" href="01_norm.html" title="next page">
+                  <div class="prev-next-info">
+                    <p class="prev-next-subtitle">next</p>
+                    <p class="prev-next-title"><span class="section-number">2. </span>Normalization</p>
+                  </div>
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+            </footer>
+
           </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By John James
-</p>
 
-  </div>
-  
-  <div class="footer-item">
-    
 
-  <p class="copyright">
-    
-      © Copyright 2024.
-      <br/>
-    
-  </p>
 
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
+          <div class="bd-sidebar-secondary bd-toc">
+            <div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+              <div class="sidebar-secondary-item">
+                <div class="page-toc tocsection onthispage">
+                  <i class="fa-solid fa-list"></i> Contents
+                </div>
+                <nav class="bd-toc-nav page-toc">
+                  <ul class="visible nav section-nav flex-column">
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#key-features-of-appvoc-dataset">1.1. Key Features of AppVoC Dataset</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#major-statistics-of-the-appvoc-dataset">1.2. Major Statistics of the AppVoC Dataset</a>
+                    </li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#appvoc-dataset-variables">1.3. AppVoC Dataset Variables</a></li>
+                    <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link"
+                        href="#appvoc-preprocessing">1.4. AppVOC Preprocessing</a></li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <footer class="bd-footer-content">
+
+          <div class="bd-footer-content__inner container">
+
+            <div class="footer-item">
+
+              <p class="component-author">
+                By John James
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+
+              <p class="copyright">
+
+                © Copyright 2024.
+                <br />
+
+              </p>
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+            <div class="footer-item">
+
+            </div>
+
+          </div>
+        </footer>
+
 
       </main>
     </div>
   </div>
-  
+
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
   <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
-  </body>
+</body>
+
 </html>
