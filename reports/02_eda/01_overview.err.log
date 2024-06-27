@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/john/miniconda3/envs/appinsight/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+repo = DatasetRepo()
+df = repo.read(directory=DIRECTORY, filename=FILENAME)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn[4], line 2[0m
+[1;32m      1[0m repo [38;5;241m=[39m DatasetRepo()
+[0;32m----> 2[0m df [38;5;241m=[39m [43mrepo[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mdirectory[49m[38;5;241;43m=[39;49m[43mDIRECTORY[49m[43m,[49m[43m [49m[43mfilename[49m[38;5;241;43m=[39;49m[43mFILENAME[49m[43m)[49m
+
+File [0;32m~/projects/appinsight/appinsight/utils/repo.py:84[0m, in [0;36mDatasetRepo.read[0;34m(self, directory, filename)[0m
+[1;32m     82[0m [38;5;250m[39m[38;5;124;03m"""Reads data so designated."""[39;00m
+[1;32m     83[0m filepath [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_filepath(directory[38;5;241m=[39mdirectory, filename[38;5;241m=[39mfilename)
+[0;32m---> 84[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mio[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mfilepath[49m[38;5;241;43m=[39;49m[43mfilepath[49m[43m)[49m
+
+File [0;32m~/projects/appinsight/appinsight/utils/file.py:360[0m, in [0;36mIOService.read[0;34m(cls, filepath, **kwargs)[0m
+[1;32m    357[0m [38;5;129m@classmethod[39m
+[1;32m    358[0m [38;5;28;01mdef[39;00m [38;5;21mread[39m([38;5;28mcls[39m, filepath: [38;5;28mstr[39m, [38;5;241m*[39m[38;5;241m*[39mkwargs) [38;5;241m-[39m[38;5;241m>[39m Any:
+[1;32m    359[0m     io [38;5;241m=[39m [38;5;28mcls[39m[38;5;241m.[39m_get_io(filepath)
+[0;32m--> 360[0m     [38;5;28;01mreturn[39;00m [43mio[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mfilepath[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/projects/appinsight/appinsight/utils/file.py:43[0m, in [0;36mIO.read[0;34m(cls, filepath, *args, **kwargs)[0m
+[1;32m     41[0m [38;5;129m@classmethod[39m
+[1;32m     42[0m [38;5;28;01mdef[39;00m [38;5;21mread[39m([38;5;28mcls[39m, filepath: [38;5;28mstr[39m, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs) [38;5;241m-[39m[38;5;241m>[39m Any:
+[0;32m---> 43[0m     data [38;5;241m=[39m [38;5;28;43mcls[39;49m[38;5;241;43m.[39;49m[43m_read[49m[43m([49m[43mfilepath[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m     44[0m     [38;5;28;01mreturn[39;00m data
+
+File [0;32m~/projects/appinsight/appinsight/utils/file.py:245[0m, in [0;36mPickleIO._read[0;34m(cls, filepath, **kwargs)[0m
+[1;32m    243[0m [38;5;129m@classmethod[39m
+[1;32m    244[0m [38;5;28;01mdef[39;00m [38;5;21m_read[39m([38;5;28mcls[39m, filepath: [38;5;28mstr[39m, [38;5;241m*[39m[38;5;241m*[39mkwargs) [38;5;241m-[39m[38;5;241m>[39m Any:
+[0;32m--> 245[0m     [38;5;28;01mwith[39;00m [38;5;28;43mopen[39;49m[43m([49m[43mfilepath[49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m"[39;49m[43m)[49m [38;5;28;01mas[39;00m f:
+[1;32m    246[0m         [38;5;28;01mtry[39;00m:
+[1;32m    247[0m             [38;5;28;01mreturn[39;00m pickle[38;5;241m.[39mload(f)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'data/prod/04_features/reviews.pkl'
+

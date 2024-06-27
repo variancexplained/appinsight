@@ -1,0 +1,1322 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. AppVoC Reviews Dataset: Apple App Store Voice of the Customer…at Scale &#8212; &lt;h1&gt;AppStore Analysis and Opportunity Discovery&lt;/h1&gt;
+</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '00_data/00_intro';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Introduction" href="../01_data/00_intro.html" />
+    <link rel="prev" title="AppInsight" href="../00_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../00_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+ - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+ - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_intro.html">
+                    AppInsight
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. AppVoC Reviews Dataset: Apple App Store Voice of the Customer…at Scale</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset Preparation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_data/00_intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/01_norm.html">3. Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/02_dqa.html">4. Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/03_clean.html">5. Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/04_features.html">6. Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/05_text_prep.html">7. Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/06_metrics.html">8. Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/07_conclusion.html">9. Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploratory Data Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02_eda/00_intro.html">10. AppVoC Exploratory Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_eda/01_overview.html">11. AppVoC Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/00_data/00_intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/00_data/00_intro.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/00_data/00_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F00_data/00_intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/00_data/00_intro.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AppVoC Reviews Dataset: Apple App Store Voice of the Customer…at Scale</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">1.1.1. Motivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-project">1.1.2. AppVoC Project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-context">1.1.3. Literature Context</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yard-yet-another-review-dataset">1.1.4. Why YARD (Yet Another Review Dataset)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-appvoc-dataset">1.1.5. Key Features of AppVoC Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-of-the-dataset">1.1.6. Value of the Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">1.2. Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition">1.2.1. Data Acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-layer">Domain Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-layer">Application Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-layer">Infrastructure Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layer">Repository Layer</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">1.2.2. Sampling Strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-categories-meeting-the-criteria">Selected Categories Meeting the Criteria</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-categories-included">Rationale for Categories Included</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-excluding-gaming-the-largest-category">Justification for Excluding Gaming, the Largest Category</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-excluding-the-shopping-category">Justification for Excluding the Shopping Category</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">1.3. Dataset Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-files">1.3.1. Dataset Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-variables">1.3.2. Dataset Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-on-data-representation">1.3.3. Caution on Data Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-uses-of-data">1.4. Potential Uses of Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">1.4.1. Conclusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.5. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-reviews-dataset-apple-app-store-voice-of-the-customer-at-scale">
+<h1><span class="section-number">1. </span>AppVoC Reviews Dataset: Apple App Store Voice of the Customer…at Scale<a class="headerlink" href="#appvoc-reviews-dataset-apple-app-store-voice-of-the-customer-at-scale" title="Link to this heading">#</a></h1>
+<p>John James<br />
+ORCID iD: 0009-0000-5294-6189<br />
+VarianceXplained; <a class="reference external" href="mailto:john&#37;&#52;&#48;variancexplained&#46;com">john<span>&#64;</span>variancexplained<span>&#46;</span>com</a><br />
+Author’s Role(s): Dataset Creator, Visualization, Draft Text, Review &amp; Editing</p>
+<p><strong>Abstract</strong>:</p>
+<p><strong>Keywords</strong>: Review Dataset; Natural Language Processing; Sentiment Analysis; App Store; Mobile Computing; Customer Behavior Analysis</p>
+<section id="introduction">
+<h2><span class="section-number">1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="motivation">
+<h3><span class="section-number">1.1.1. </span>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h3>
+<p>At the 1983 International Design Conference, Steve Jobs described an ecosystem where consumers would effortlessly access, purchase, and download software directly onto ‘an incredibly great computer in a book that you can carry around with you’ <span id="id1">[<a class="reference internal" href="#id20" title="Steve Jobs. Talk by Steven Jobs at the IDCA. June 1983.">1</a>]</span>. Fast forward 25 years to July 10, 2008, and Apple materialized Jobs’ foresight with the launch of the App Store, an event that revolutionized how technology is acquired, engaged, and integrated into daily life. One of the world’s first commercially successful mobile app marketplaces, the App Store stands as a digital leviathan, boasting a staggering 1,928,363 apps and catering to over 1.3 billion iOS users worldwide <span id="id2">[<a class="reference internal" href="#id8" title="42matters AG. iOS Apple App Store Statistics and Trends 2024. https://42matters.com/ios-apple-app-store-statistics-and-trends.">2</a>]</span>.</p>
+<blockquote>
+<div><p>“Because we offer nearly two million apps — and we want you to feel good about using every single one of them.” - Apple</p>
+</div></blockquote>
+<p>User feedback, manifested through ratings and reviews, serves as a critical component of App Store Optimization (ASO), influencing app discoverability, user engagement, and financial outcomes for developers. However, despite the ubiquity and strategic importance of user reviews, there remains a dearth of large-scale datasets dedicated to comprehensive analysis of mobile app user experiences.</p>
+</section>
+<section id="appvoc-project">
+<h3><span class="section-number">1.1.2. </span>AppVoC Project<a class="headerlink" href="#appvoc-project" title="Link to this heading">#</a></h3>
+<p>The AppVoC (App Voice of the Customer) project, launched in late August 2023, set out to address the critical gap in comprehensive app ratings and review datasets. By compiling a robust collection of app feedback, this initiative provides researchers, developers, and data scientists with a valuable resource to drive innovation and understanding in the following key areas:</p>
+<ol class="arabic simple">
+<li><p><strong>Opportunity Discovery</strong>: By analyzing trends, competitor performance, and consumer preferences, the dataset enables the discovery of new market opportunities and niches that were previously challenging to identify.</p></li>
+<li><p><strong>Product Development</strong>: Deep insights from user reviews and feedback help pinpoint essential features and functionalities, guiding user-centric product development and inspiring the creation of entirely new app concepts.</p></li>
+<li><p><strong>Harnessing Next-Gen AI</strong>: Leveraging advanced AI and generative models, the dataset uncovers latent consumer needs and preferences. This capability accelerates the development of next-generation technologies that redefine the intersection of consumer behavior and technological advancement.</p></li>
+</ol>
+<p>These objectives aim to articulate a vision that not only explores the immediate impacts of technology but also positions innovation as a driving force that reshapes the fusion of society, human experiences, and technological advancements. This project represents a pivotal step towards enhancing our understanding of app user experiences and preferences, fostering innovation across the app development landscape.</p>
+</section>
+<section id="literature-context">
+<h3><span class="section-number">1.1.3. </span>Literature Context<a class="headerlink" href="#literature-context" title="Link to this heading">#</a></h3>
+<p>The motivation behind the AppVoC (App Voice of the Customer) project draws upon foundational literature in user experience research, sentiment analysis, and consumer behavior within digital platforms. Studies by Sällberg, Wang, and Numminen (2023) emphasize the significance of user reviews in shaping perceptions and adoption of mobile apps, providing insights into sentiment analysis and thematic categorization <span id="id3">[<a class="reference internal" href="#id19" title="Henrik Sällberg, Shujun Wang, and Emil Numminen. The combinatory role of online ratings and reviews in mobile app downloads: an empirical investigation of gaming and productivity apps from their initial app store launch. Journal of Marketing Analytics, 11(3):426–442, September 2023. doi:10.1057/s41270-022-00171-w.">3</a>]</span>. Additionally, theoretical frameworks such as the Technology Acceptance Model (TAM) and Uses and Gratifications Theory (UGT) offer lenses through which to interpret user behaviors and motivations in the context of app interactions <span id="id4">[<a class="reference internal" href="#id12" title="Fred D. Davis. Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology. MIS Quarterly, 13(3):319, September 1989. arXiv:249008, doi:10.2307/249008.">4</a>]</span> <span id="id5">[<a class="reference internal" href="#id15" title="Elihu Katz, Jay G. Blumler, and Michael Gurevitch. Uses and Gratifications Research. Public Opinion Quarterly, 37(4):509, 1973. doi:10.1086/268109.">5</a>]</span>.</p>
+<p>Furthermore, the unified theoretical model proposed by Tas, Huseynov, and Kose (2024) integrates various theories and empirical data to comprehensively explain mobile application usage behavior, supported by real usage data. This model contributes significantly to understanding user motivations, preferences, and decision-making processes in digital environments <span id="id6">[<a class="reference internal" href="#id22" title="Nurullah Tas, Farid Huseynov, and Busra Ozdenızcı Kose. A unified theoretical model for understanding mobile application usage behavior supported with real usage data. Information Development, pages 02666669241257191, June 2024. doi:10.1177/02666669241257191.">6</a>]</span>.</p>
+</section>
+<section id="why-yard-yet-another-review-dataset">
+<h3><span class="section-number">1.1.4. </span>Why YARD (Yet Another Review Dataset)?<a class="headerlink" href="#why-yard-yet-another-review-dataset" title="Link to this heading">#</a></h3>
+<p>Existing review datasets like Amazon, Yelp, and IMDB have been invaluable for research in consumer behavior. These datasets are accessible and widely adopted, providing a rich source of information that has contributed significantly to understanding purchasing decisions, service satisfaction, and entertainment preferences. They serve as benchmark datasets, helping researchers develop and validate models that predict consumer behavior, sentiment, and preferences. The insights derived from these reviews have driven advancements in recommendation systems, personalized marketing, and sentiment analysis, showcasing their utility and importance in the field.</p>
+<p>Yet, these benchmark datasets primarily focus on product choices, service quality, and entertainment preferences. They provide valuable insights but fall short of capturing the profound impact of technology on consumer behavior, human interactions, and capabilities. The unique and transformative nature of mobile app usage, where technology seamlessly integrates into our daily routines through smartphones, wearables, and other devices, necessitates a specialized dataset. This is where the AppVoC dataset becomes essential. Mobile app reviews serve as a historical record of this technological evolution, capturing user experiences, challenges, and adaptations in real time. These reviews document the gradual yet significant shifts in human behavior and interaction brought about by technological advancements, providing a rich source of data for understanding this ongoing evolution. The AppVoC Dataset is not just another collection of reviews; it is a critical resource for documenting and driving the next stages of the human/technological nexus.</p>
+</section>
+<section id="key-features-of-appvoc-dataset">
+<h3><span class="section-number">1.1.5. </span>Key Features of AppVoC Dataset<a class="headerlink" href="#key-features-of-appvoc-dataset" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Scale</strong>: Contains approximately 22 million reviews, making it one of the most extensive collections of app store reviews publicly available.</p></li>
+<li><p><strong>User Base</strong>: Includes opinions from approximately 16 million unique users, reflecting a vast and diverse range of perspectives.</p></li>
+<li><p><strong>App Diversity</strong>: Features reviews for over 36 thousand unique apps, showcasing a broad spectrum of app interests and needs.</p></li>
+<li><p><strong>Category Coverage</strong>: Spans 14 of the most popular app categories, illuminating the diverse interests and needs of mobile users.</p></li>
+<li><p><strong>Voice-on-Voice</strong>: Captures user engagement and the value placed on the sentiments and opinions of other users, with data on the number and value of user votes on reviews.</p></li>
+<li><p><strong>Temporal Coverage</strong>: Reviews span from July 10, 2008, the day the App Store was launched, to September 3, 2023, providing a 15-year longitudinal view of app usage and user feedback trends.</p></li>
+<li><p><strong>Rich Metadata</strong>: Each review includes metadata such as app name, category, rating, vote count, and timestamp, enabling multifaceted analysis.</p></li>
+</ul>
+</section>
+<section id="value-of-the-dataset">
+<h3><span class="section-number">1.1.6. </span>Value of the Dataset<a class="headerlink" href="#value-of-the-dataset" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Comprehensive Analysis</strong>: The large scale of the dataset allows for in-depth and statistically significant analyses of user reviews and app feedback.</p></li>
+<li><p><strong>Diverse Perspectives</strong>: With opinions from nearly 16 million unique users, the dataset provides a broad and varied range of user insights, enhancing the robustness of research findings.</p></li>
+<li><p><strong>Wide Applicability</strong>: Reviews for over 36 thousand unique apps across 14 categories enable research across different domains, making the dataset valuable for a wide range of applications and studies.</p></li>
+<li><p><strong>User Engagement Insights</strong>: The Voice-on-Voice feature offers unique insights into user engagement dynamics, helping to identify influential reviews and understand collective user sentiment.</p></li>
+<li><p><strong>Longitudinal Trends</strong>: The 15-year temporal coverage allows for the analysis of trends and changes in user sentiment over time, providing historical context and aiding in predictive analysis.</p></li>
+<li><p><strong>Multifaceted Analysis</strong>: Rich metadata supports comprehensive analyses, enabling researchers to explore various dimensions of the data and uncover deeper insights.</p></li>
+<li><p><strong>Predictive Power</strong>: Temporal data empowers stakeholders to anticipate trends, mitigate risks, and capitalize on emerging opportunities in the app ecosystem.</p></li>
+<li><p><strong>Enhanced Decision Making</strong>: Insights derived from the dataset can inform app development, marketing strategies, and policy-making, leading to better user experiences and improved business outcomes.</p></li>
+</ul>
+</section>
+</section>
+<section id="methods">
+<h2><span class="section-number">1.2. </span>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
+<p>The app reviews dataset was obtained from the Apple App Store over the course of two weeks in late August of 2023. The data were gathered from publicly accessible sources within the App Store, ensuring transparency and adherence to ethical guidelines throughout the process.</p>
+<section id="data-acquisition">
+<h3><span class="section-number">1.2.1. </span>Data Acquisition<a class="headerlink" href="#data-acquisition" title="Link to this heading">#</a></h3>
+<p>The data acquisition process for the AppVoC dataset employs a multi-layered system to efficiently collect, process, validate, and store app reviews. This system is composed of domain entities for reviews and scraping requests, application services for orchestrating the scraping and validation processes, infrastructure components for handling HTTP requests and rate limiting, and repository layers for managing data persistence and integrity.</p>
+<figure class="align-default" id="data-acquisition-fig-ref">
+<img alt="../_images/AppVoCDataAcquisition.png" src="../_images/AppVoCDataAcquisition.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">AppVoC Data Acquisition Architecture</span><a class="headerlink" href="#data-acquisition-fig-ref" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="domain-layer">
+<h4>Domain Layer<a class="headerlink" href="#domain-layer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Review</strong>: This class encapsulates individual app review details, including attributes like <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">app_id</span></code>, <code class="docutils literal notranslate"><span class="pre">app_name</span></code>, <code class="docutils literal notranslate"><span class="pre">category_id</span></code>, <code class="docutils literal notranslate"><span class="pre">category</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code>, <code class="docutils literal notranslate"><span class="pre">rating</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, <code class="docutils literal notranslate"><span class="pre">content</span></code>, <code class="docutils literal notranslate"><span class="pre">vote_sum</span></code>, <code class="docutils literal notranslate"><span class="pre">vote_count</span></code>, and <code class="docutils literal notranslate"><span class="pre">date</span></code>. Author anonymity is ensured using the BLAKE2b cryptographic hash function.</p></li>
+<li><p><strong>ReviewRequest</strong>: Defines scraping requests with attributes like <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">category_id</span></code>, and <code class="docutils literal notranslate"><span class="pre">last_index</span></code> to track progress.</p></li>
+<li><p><strong>Job</strong>: Represents an entity for job management with attributes such as <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">controller</span></code>, <code class="docutils literal notranslate"><span class="pre">category_id</span></code>, <code class="docutils literal notranslate"><span class="pre">category</span></code>, <code class="docutils literal notranslate"><span class="pre">complete</span></code>, and <code class="docutils literal notranslate"><span class="pre">completed</span></code>.</p></li>
+<li><p><strong>ReviewJobRun</strong>: Models the execution of review jobs with attributes tracking app and review metrics.</p></li>
+<li><p><strong>ReviewResult</strong>: Encapsulates app review data obtained from web scraping.</p></li>
+</ul>
+</section>
+<section id="application-layer">
+<h4>Application Layer<a class="headerlink" href="#application-layer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>ReviewDirector</strong>: Orchestrates job runs for the <code class="docutils literal notranslate"><span class="pre">ReviewController</span></code>, using a Unit of Work (UoW) pattern for repository interactions.</p></li>
+<li><p><strong>ReviewController</strong>: Manages the scraping process, handling job runs, app retrieval, review data scraping, validation, and data persistence.</p></li>
+<li><p><strong>ReviewValidator</strong>: Validates HTTP responses, ensuring the integrity and correctness of the review data.</p></li>
+<li><p><strong>ReviewScraper</strong>: Extracts app reviews from the App Store, handling HTTP sessions, and pagination through multiple pages of reviews.</p></li>
+</ul>
+</section>
+<section id="infrastructure-layer">
+<h4>Infrastructure Layer<a class="headerlink" href="#infrastructure-layer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>ASessionHandler</strong>: Manages asynchronous HTTP requests, incorporating request retries, throttling, and proxy server integration.</p></li>
+<li><p><strong>AThrottle</strong>: Implements asynchronous rate limiting by adjusting request delays based on real-time latency measurements.</p></li>
+</ul>
+</section>
+<section id="repository-layer">
+<h4>Repository Layer<a class="headerlink" href="#repository-layer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>UoW (Unit of Work)</strong>: Manages repositories for project objects within a structured database context.</p></li>
+<li><p><strong>ReviewRequestRepo</strong>: Handles the management of review requests within a database.</p></li>
+<li><p><strong>ReviewRepo</strong>: Stores and accesses app review data within a database context.</p></li>
+<li><p><strong>JobRepo</strong>: Manages and tracks the progress of ETL jobs within a database.</p></li>
+<li><p><strong>ReviewJobRunRepo</strong>: Manages review job runs within a database.</p></li>
+</ul>
+<p>This architecture ensures systematic data management, robust process orchestration, and maintenance of data integrity across the entire workflow. It supports the efficient collection and processing of app reviews, enabling comprehensive analysis of user feedback and app interactions.</p>
+</section>
+</section>
+<section id="sampling-strategy">
+<h3><span class="section-number">1.2.2. </span>Sampling Strategy<a class="headerlink" href="#sampling-strategy" title="Link to this heading">#</a></h3>
+<p>To ensure a representative and insightful analysis of app reviews, we established specific inclusion criteria for selecting categories. The criteria aim to balance diversity, user engagement, and functional relevance across various app types. Below are the articulated inclusion criteria based on the categories selected:</p>
+<ol class="arabic simple">
+<li><p><strong>High User Engagement and Relevance</strong>:</p>
+<ul class="simple">
+<li><p>Categories selected should represent areas with high user engagement and relevance to daily activities, professional tasks, and personal interests. This ensures that the insights derived are impactful and reflect significant user interactions.</p></li>
+</ul>
+</li>
+<li><p><strong>Diverse Functional Coverage</strong>:</p>
+<ul class="simple">
+<li><p>The chosen categories should cover a wide range of functions and utilities to provide a holistic view of app usage. This includes productivity, education, lifestyle, health, finance, entertainment, and information-related apps, ensuring a comprehensive understanding of user needs.</p></li>
+</ul>
+</li>
+<li><p><strong>Balanced Representation Across Major App Types</strong>:</p>
+<ul class="simple">
+<li><p>The selection should include categories that collectively represent a balanced cross-section of the app ecosystem. This means including high-percentage categories like Business, Education, and Utilities, as well as lower-percentage but critical categories like Medical and Social Networking.</p></li>
+</ul>
+</li>
+<li><p><strong>Potential for Impactful Insights</strong>:</p>
+<ul class="simple">
+<li><p>Categories that are likely to provide actionable insights for app development and improvement are prioritized. This includes areas where user feedback can directly inform enhancements in functionality, user experience, and engagement.</p></li>
+</ul>
+</li>
+<li><p><strong>Consistency in User Behavior and Engagement Patterns</strong>:</p>
+<ul class="simple">
+<li><p>Selected categories should exhibit relatively consistent and comparable user behavior and engagement patterns. This facilitates more accurate and meaningful analysis, avoiding the variability and trends often seen in highly volatile categories like gaming.</p></li>
+</ul>
+</li>
+</ol>
+<section id="selected-categories-meeting-the-criteria">
+<h4>Selected Categories Meeting the Criteria<a class="headerlink" href="#selected-categories-meeting-the-criteria" title="Link to this heading">#</a></h4>
+<p>Here, we graphically depict the categories included, and excluded for the most popular apple app categories as of 3rd Quarter 2022.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">explorify.eda.visualize.visualizer</span> <span class="kn">import</span> <span class="n">Visualizer</span>
+<span class="kn">from</span> <span class="nn">appinsight.analysis.overview</span> <span class="kn">import</span> <span class="n">DatasetOverview</span><span class="p">,</span> <span class="n">FilesetOverview</span>
+<span class="kn">from</span> <span class="nn">appinsight.utils.repo</span> <span class="kn">import</span> <span class="n">DatasetRepo</span>
+<span class="kn">from</span> <span class="nn">appinsight.utils.file</span> <span class="kn">import</span> <span class="n">IOService</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">most_popular_apps</span> <span class="o">=</span> <span class="n">IOService</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">FP_CATEGORY_POPULARITY</span><span class="p">)</span>
+<span class="n">viz</span> <span class="o">=</span> <span class="n">Visualizer</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">viz</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">most_popular_apps</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Category&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Pct Active Apps&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Inclusion&quot;</span><span class="p">,</span><span class="n">legend_loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Category Inclusion for Most Popular Apple App Categories as of 3rd Quarter 2022, by Share of Available Apps&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/476e7586c3d87073e9c6afac8ef36ab8fdeea3c88f5f6714fffe1031d15d4092.png" src="../_images/476e7586c3d87073e9c6afac8ef36ab8fdeea3c88f5f6714fffe1031d15d4092.png" />
+</div>
+</div>
+</section>
+<section id="rationale-for-categories-included">
+<h4>Rationale for Categories Included<a class="headerlink" href="#rationale-for-categories-included" title="Link to this heading">#</a></h4>
+<p>Rationale for category inclusion is summarized below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categories_included</span> <span class="o">=</span> <span class="n">IOService</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">FP_SELECTED_CATEGORIES</span><span class="p">)</span>
+<span class="n">categories_included</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Category</th>
+      <th>Pct Active Apps</th>
+      <th>Inclusion Justification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Business</td>
+      <td>10.35</td>
+      <td>High engagement with productivity and professional tools.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Education</td>
+      <td>9.79</td>
+      <td>Significant user interest in learning and self-improvement.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Utilities</td>
+      <td>9.22</td>
+      <td>Daily functional tools essential for a wide range of tasks.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Lifestyle</td>
+      <td>7.93</td>
+      <td>Apps supporting personal well-being and hobbies.</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Food &amp; Drink</td>
+      <td>6.58</td>
+      <td>Popular apps related to dining, recipes, and food delivery.</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Health &amp; Fitness</td>
+      <td>5.08</td>
+      <td>Focus on physical health, wellness, and exercise.</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Productivity</td>
+      <td>4.84</td>
+      <td>Tools enhancing efficiency and organization.</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Finance</td>
+      <td>4.16</td>
+      <td>Apps for managing finances, banking, and investments.</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Entertainment</td>
+      <td>3.92</td>
+      <td>Leisure and media consumption applications.</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Medical</td>
+      <td>2.53</td>
+      <td>Health management and telemedicine apps.</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Social Networking</td>
+      <td>2.16</td>
+      <td>Facilitating digital social interactions.</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Photo &amp; Video</td>
+      <td>1.61</td>
+      <td>Creative expression and media sharing tools.</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Reference</td>
+      <td>1.41</td>
+      <td>Informational and resource-based apps.</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Books</td>
+      <td>0.97</td>
+      <td>Digital reading and literature apps.</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Total</td>
+      <td>70.55</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The 14 app categories selected for inclusion cover 71% of the active apps on the app store.</p>
+<p>Two of the most popular categories: Games and Shopping, were excluded from the sample. Here’s why.</p>
+</section>
+<section id="justification-for-excluding-gaming-the-largest-category">
+<h4>Justification for Excluding Gaming, the Largest Category<a class="headerlink" href="#justification-for-excluding-gaming-the-largest-category" title="Link to this heading">#</a></h4>
+<p>While games represent the largest category on the App Store with 12.68% of active apps, there are several strategic reasons for excluding it from the current sampling strategy:</p>
+<ol class="arabic simple">
+<li><p><strong>Niche Focus on Non-Entertainment Apps</strong>:</p>
+<ul class="simple">
+<li><p>The primary goal of this analysis is to understand user engagement and satisfaction across various functional and utility-based app categories. Including gaming, which is heavily entertainment-focused, could skew the results and dilute insights related to productivity, education, and lifestyle applications.</p></li>
+</ul>
+</li>
+<li><p><strong>Distinct User Behavior and Engagement Patterns</strong>:</p>
+<ul class="simple">
+<li><p>Gaming apps often exhibit unique user behavior and engagement patterns that differ significantly from other app categories. By excluding games, we can ensure a more consistent and comparable analysis across the selected categories, focusing on practical and utilitarian app usage.</p></li>
+</ul>
+</li>
+<li><p><strong>High Volatility and Trends in Gaming</strong>:</p>
+<ul class="simple">
+<li><p>The gaming industry is characterized by rapid changes in trends and high volatility, with popular games frequently emerging and declining. This can introduce variability and noise into the data, making it challenging to derive stable and long-term insights from the sample.</p></li>
+</ul>
+</li>
+<li><p><strong>Prioritizing Diversity and Depth</strong>:</p>
+<ul class="simple">
+<li><p>Given the limited scope of the study, prioritizing a diverse range of non-gaming categories allows for a deeper exploration of various aspects of user life and needs. This diversity ensures a more comprehensive understanding of app usage beyond entertainment.</p></li>
+</ul>
+</li>
+<li><p><strong>Overrepresentation Concerns</strong>:</p>
+<ul class="simple">
+<li><p>Including the largest category like gaming could lead to its overrepresentation, potentially overshadowing insights from smaller but equally important categories. Focusing on a balanced selection of categories ensures that each area receives adequate attention in the analysis.</p></li>
+</ul>
+</li>
+<li><p><strong>Alignment with Strategic Goals</strong>:</p>
+<ul class="simple">
+<li><p>The current study aims to gather insights that can inform the development and improvement of non-entertainment apps. By concentrating on categories like Business, Education, Utilities, and Health &amp; Fitness, the findings can more effectively guide strategies for enhancing user satisfaction in these critical areas.</p></li>
+</ul>
+</li>
+</ol>
+<p>While the Gaming category is undeniably important, the decision to exclude it from the current analysis is based on the need for a focused and balanced study on functional, utility-based, and entertainment app experiences. This approach ensures that the insights derived are robust and applicable across a wide range of app types, providing meaningful guidance for improving user satisfaction and engagement.</p>
+</section>
+<section id="justification-for-excluding-the-shopping-category">
+<h4>Justification for Excluding the Shopping Category<a class="headerlink" href="#justification-for-excluding-the-shopping-category" title="Link to this heading">#</a></h4>
+<p>Although shopping apps are a significant part of the app ecosystem and ecommerce is a critical area, the decision to exclude the Shopping category from the current analysis is based on the following considerations:</p>
+<ol class="arabic simple">
+<li><p><strong>Focus on Diverse Functional, Lifestyle, and Utility-Based Applications</strong>:</p>
+<ul class="simple">
+<li><p>The primary objective of this analysis is to gain insights into user engagement and satisfaction across a wide range of functional, lifestyle, and utility-based applications. Categories like Business, Education, Health &amp; Fitness, and Utilities offer a broad spectrum of essential services and tools that are central to users’ daily lives. By focusing on these categories, the study can provide deeper and more meaningful insights into areas that impact productivity and well-being.</p></li>
+</ul>
+</li>
+<li><p><strong>Distinct User Interaction Patterns in Ecommerce</strong>:</p>
+<ul class="simple">
+<li><p>Shopping apps exhibit unique interaction patterns centered around browsing, purchasing, and product reviews. These interactions differ significantly from those in other functional categories, such as productivity or health apps. Excluding the Shopping category ensures that the analysis remains focused on app types where user interaction patterns are more consistent and comparable.</p></li>
+</ul>
+</li>
+<li><p><strong>Avoiding Overlap with Other Lifestyle Categories</strong>:</p>
+<ul class="simple">
+<li><p>Many functional aspects of shopping, such as food delivery (Food &amp; Drink) and lifestyle enhancements (Lifestyle), are already covered by other selected categories. Including Shopping could lead to overlap and redundancy, whereas the current categories provide a more distinct and non-overlapping view of different user needs and app functionalities.</p></li>
+</ul>
+</li>
+<li><p><strong>Strategic Alignment with Non-Transactional App Usage</strong>:</p>
+<ul class="simple">
+<li><p>The current study aims to gather insights that can inform the development and improvement of non-transactional apps. While Shopping apps are heavily transaction-focused, other selected categories like Medical, Education, and Finance emphasize information access, health management, learning, and financial planning. Excluding Shopping helps maintain a strategic focus on enhancing user experiences in these non-transactional areas.</p></li>
+</ul>
+</li>
+<li><p><strong>Concentration on App Types with Broader Utility</strong>:</p>
+<ul class="simple">
+<li><p>The selected categories represent a wide range of utilities and services that are relevant to a broad user base. By concentrating on these app types, the study can better capture diverse user needs and provide insights applicable to a wider array of app functionalities. This strategic focus supports the goal of understanding and improving the most impactful and widely used functional apps.</p></li>
+</ul>
+</li>
+</ol>
+<p>The decision to exclude the Shopping category is based on maintaining a focused analysis of functional, lifestyle, and utility-based app experiences. By concentrating on categories that provide essential services and tools, the study can generate robust and actionable insights that enhance user satisfaction and engagement in key non-transactional app areas.</p>
+</section>
+</section>
+</section>
+<section id="dataset-description">
+<h2><span class="section-number">1.3. </span>Dataset Description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the dataset repository</span>
+<span class="n">dsr</span> <span class="o">=</span> <span class="n">DatasetRepo</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dsr</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">DATASET_DIR</span><span class="p">,</span><span class="n">filename</span><span class="o">=</span><span class="n">DATASET_FILENAME</span><span class="p">)</span>
+<span class="c1"># Instantiate the dataset overview class, summarizing the entire dataset.</span>
+<span class="n">dso</span> <span class="o">=</span> <span class="n">DatasetOverview</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># Instantiate the fileset overview, summarizing the key statistics for each file in the dataset.</span>
+<span class="n">fso</span> <span class="o">=</span> <span class="n">FilesetOverview</span><span class="p">(</span><span class="n">folder</span><span class="o">=</span><span class="n">FILE_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Overall, the AppVoC Dataset contains over 22 million reviews submitted by nearly 16 million users across 36 thousand apps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso</span><span class="o">.</span><span class="n">overview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                AppVoC Overview                                 
+                       Number of Reviews | 22,166,591
+                         Number of Users | 15,710,479
+                          Number of Apps | 36,363
+                    Number of Categories | 14
+                                Features | 11
+                        Memory Size (Mb) | 15,903.19
+                    Date of First Review | 2008-07-10
+                     Date of Last Review | 2023-09-03
+</pre></div>
+</div>
+</div>
+</div>
+<p>Created between August 16, 2023 and September 3, 2023, the dataset spans over 15 years, containing reviews dated from July 10, 2008, the day the App Store was launched, to September 3, 2023.</p>
+<section id="dataset-files">
+<h3><span class="section-number">1.3.1. </span>Dataset Files<a class="headerlink" href="#dataset-files" title="Link to this heading">#</a></h3>
+<p>Reviews for each category are contained in 14 separate tab-separated-values files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fso</span><span class="o">.</span><span class="n">overview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_410a4">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_410a4_level0_col0" class="col_heading level0 col0" >Filename</th>
+      <th id="T_410a4_level0_col1" class="col_heading level0 col1" >Rows</th>
+      <th id="T_410a4_level0_col2" class="col_heading level0 col2" >Columns</th>
+      <th id="T_410a4_level0_col3" class="col_heading level0 col3" >Size Disk (Mb)</th>
+      <th id="T_410a4_level0_col4" class="col_heading level0 col4" >Size Memory (Mb)</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Category</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_410a4_level0_row0" class="row_heading level0 row0" >Book</th>
+      <td id="T_410a4_row0_col0" class="data row0 col0" >Book.tsv</td>
+      <td id="T_410a4_row0_col1" class="data row0 col1" >792,250</td>
+      <td id="T_410a4_row0_col2" class="data row0 col2" >11</td>
+      <td id="T_410a4_row0_col3" class="data row0 col3" >212.51</td>
+      <td id="T_410a4_row0_col4" class="data row0 col4" >493.66</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row1" class="row_heading level0 row1" >Business</th>
+      <td id="T_410a4_row1_col0" class="data row1 col0" >Business.tsv</td>
+      <td id="T_410a4_row1_col1" class="data row1 col1" >1,404,960</td>
+      <td id="T_410a4_row1_col2" class="data row1 col2" >11</td>
+      <td id="T_410a4_row1_col3" class="data row1 col3" >366.35</td>
+      <td id="T_410a4_row1_col4" class="data row1 col4" >852.90</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row2" class="row_heading level0 row2" >Education</th>
+      <td id="T_410a4_row2_col0" class="data row2 col0" >Education.tsv</td>
+      <td id="T_410a4_row2_col1" class="data row2 col1" >1,123,184</td>
+      <td id="T_410a4_row2_col2" class="data row2 col2" >11</td>
+      <td id="T_410a4_row2_col3" class="data row2 col3" >282.10</td>
+      <td id="T_410a4_row2_col4" class="data row2 col4" >682.12</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row3" class="row_heading level0 row3" >Entertainment</th>
+      <td id="T_410a4_row3_col0" class="data row3 col0" >Entertainment.tsv</td>
+      <td id="T_410a4_row3_col1" class="data row3 col1" >2,021,749</td>
+      <td id="T_410a4_row3_col2" class="data row3 col2" >11</td>
+      <td id="T_410a4_row3_col3" class="data row3 col3" >497.78</td>
+      <td id="T_410a4_row3_col4" class="data row3 col4" >1,195.18</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row4" class="row_heading level0 row4" >Finance</th>
+      <td id="T_410a4_row4_col0" class="data row4 col0" >Finance.tsv</td>
+      <td id="T_410a4_row4_col1" class="data row4 col1" >39,499</td>
+      <td id="T_410a4_row4_col2" class="data row4 col2" >11</td>
+      <td id="T_410a4_row4_col3" class="data row4 col3" >10.73</td>
+      <td id="T_410a4_row4_col4" class="data row4 col4" >25.31</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row5" class="row_heading level0 row5" >Food-&-Drink</th>
+      <td id="T_410a4_row5_col0" class="data row5 col0" >Food-&-Drink.tsv</td>
+      <td id="T_410a4_row5_col1" class="data row5 col1" >1,588,182</td>
+      <td id="T_410a4_row5_col2" class="data row5 col2" >11</td>
+      <td id="T_410a4_row5_col3" class="data row5 col3" >404.34</td>
+      <td id="T_410a4_row5_col4" class="data row5 col4" >962.78</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row6" class="row_heading level0 row6" >Health-&-Fitness</th>
+      <td id="T_410a4_row6_col0" class="data row6 col0" >Health-&-Fitness.tsv</td>
+      <td id="T_410a4_row6_col1" class="data row6 col1" >3,946,103</td>
+      <td id="T_410a4_row6_col2" class="data row6 col2" >11</td>
+      <td id="T_410a4_row6_col3" class="data row6 col3" >1,093.01</td>
+      <td id="T_410a4_row6_col4" class="data row6 col4" >2,445.22</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row7" class="row_heading level0 row7" >Lifestyle</th>
+      <td id="T_410a4_row7_col0" class="data row7 col0" >Lifestyle.tsv</td>
+      <td id="T_410a4_row7_col1" class="data row7 col1" >1,593,337</td>
+      <td id="T_410a4_row7_col2" class="data row7 col2" >11</td>
+      <td id="T_410a4_row7_col3" class="data row7 col3" >397.96</td>
+      <td id="T_410a4_row7_col4" class="data row7 col4" >958.82</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row8" class="row_heading level0 row8" >Medical</th>
+      <td id="T_410a4_row8_col0" class="data row8 col0" >Medical.tsv</td>
+      <td id="T_410a4_row8_col1" class="data row8 col1" >621,333</td>
+      <td id="T_410a4_row8_col2" class="data row8 col2" >11</td>
+      <td id="T_410a4_row8_col3" class="data row8 col3" >174.01</td>
+      <td id="T_410a4_row8_col4" class="data row8 col4" >399.10</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row9" class="row_heading level0 row9" >Photo-&-Video</th>
+      <td id="T_410a4_row9_col0" class="data row9 col0" >Photo-&-Video.tsv</td>
+      <td id="T_410a4_row9_col1" class="data row9 col1" >1,471,496</td>
+      <td id="T_410a4_row9_col2" class="data row9 col2" >11</td>
+      <td id="T_410a4_row9_col3" class="data row9 col3" >357.89</td>
+      <td id="T_410a4_row9_col4" class="data row9 col4" >876.64</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row10" class="row_heading level0 row10" >Productivity</th>
+      <td id="T_410a4_row10_col0" class="data row10 col0" >Productivity.tsv</td>
+      <td id="T_410a4_row10_col1" class="data row10 col1" >822,652</td>
+      <td id="T_410a4_row10_col2" class="data row10 col2" >11</td>
+      <td id="T_410a4_row10_col3" class="data row10 col3" >218.29</td>
+      <td id="T_410a4_row10_col4" class="data row10 col4" >487.35</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row11" class="row_heading level0 row11" >Reference</th>
+      <td id="T_410a4_row11_col0" class="data row11 col0" >Reference.tsv</td>
+      <td id="T_410a4_row11_col1" class="data row11 col1" >1,077,200</td>
+      <td id="T_410a4_row11_col2" class="data row11 col2" >11</td>
+      <td id="T_410a4_row11_col3" class="data row11 col3" >261.69</td>
+      <td id="T_410a4_row11_col4" class="data row11 col4" >629.84</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row12" class="row_heading level0 row12" >Social-Networking</th>
+      <td id="T_410a4_row12_col0" class="data row12 col0" >Social-Networking.tsv</td>
+      <td id="T_410a4_row12_col1" class="data row12 col1" >2,735,806</td>
+      <td id="T_410a4_row12_col2" class="data row12 col2" >11</td>
+      <td id="T_410a4_row12_col3" class="data row12 col3" >630.14</td>
+      <td id="T_410a4_row12_col4" class="data row12 col4" >1,512.73</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row13" class="row_heading level0 row13" >Utilities</th>
+      <td id="T_410a4_row13_col0" class="data row13 col0" >Utilities.tsv</td>
+      <td id="T_410a4_row13_col1" class="data row13 col1" >2,928,840</td>
+      <td id="T_410a4_row13_col2" class="data row13 col2" >11</td>
+      <td id="T_410a4_row13_col3" class="data row13 col3" >659.42</td>
+      <td id="T_410a4_row13_col4" class="data row13 col4" >1,634.11</td>
+    </tr>
+    <tr>
+      <th id="T_410a4_level0_row14" class="row_heading level0 row14" >Total</th>
+      <td id="T_410a4_row14_col0" class="data row14 col0" ></td>
+      <td id="T_410a4_row14_col1" class="data row14 col1" >22,166,591</td>
+      <td id="T_410a4_row14_col2" class="data row14 col2" >11</td>
+      <td id="T_410a4_row14_col3" class="data row14 col3" >5,566.22</td>
+      <td id="T_410a4_row14_col4" class="data row14 col4" >13,155.76</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="dataset-variables">
+<h3><span class="section-number">1.3.2. </span>Dataset Variables<a class="headerlink" href="#dataset-variables" title="Link to this heading">#</a></h3>
+<p>The dataset contains 11 variables, offering a multifaceted view of user interactions and app attributes.</p>
+<ul class="simple">
+<li><p><strong>id</strong>: Unique identifier for each review.</p></li>
+<li><p><strong>app_id</strong>: Unique identifier for the app being reviewed.</p></li>
+<li><p><strong>app_name</strong>: Name of the mobile application being reviewed.</p></li>
+<li><p><strong>category_id</strong>: Four-digit identifier representing the category or genre of the app.</p></li>
+<li><p><strong>category</strong>: Category or genre name of the app.</p></li>
+<li><p><strong>author</strong>: Name or identifier of the reviewer.</p></li>
+<li><p><strong>rating</strong>: Numeric rating provided by the author for the app.</p></li>
+<li><p><strong>content</strong>: Detailed content of the review provided by the author.</p></li>
+<li><p><strong>vote_sum</strong>: Total sum of votes on the usefulness of the rating.</p></li>
+<li><p><strong>vote_count</strong>: Number of votes on the usefulness of the rating.</p></li>
+<li><p><strong>date</strong>: Date when the review was written.</p></li>
+</ul>
+<p>These variables collectively evince the mobile app user experience and provide a basis for analyzing user feedback and extracting actionable intelligence about areas for improvement, feature requests, unmet needs, and user preferences.</p>
+</section>
+<section id="caution-on-data-representation">
+<h3><span class="section-number">1.3.3. </span>Caution on Data Representation<a class="headerlink" href="#caution-on-data-representation" title="Link to this heading">#</a></h3>
+<p>While the AppVoC dataset provides a substantial collection of over 22 million reviews, it is essential to recognize that the dataset represents the reviews collected during the data gathering period and may not capture every review or the complete distribution of reviews in the App Store. However, the dataset offers valuable insights into user feedback and app interactions within the selected categories.</p>
+<p>The dataset’s extensive coverage across 14 categories, which represent 70.55% of active apps in the App Store, ensures that it provides a significant and meaningful snapshot of the mobile app ecosystem. While variations in the number of reviews across categories might be influenced by factors such as the popularity of specific app types and temporal fluctuations in user activity, the breadth and depth of the data allow for robust analyses and valuable inferences.</p>
+<p>While the dataset may not capture the entirety of the App Store review landscape, it offers a representative and diverse sample that reflects significant aspects of user experiences and interactions. This allows for meaningful inferences about user preferences, emerging trends, and the performance of various app categories. Researchers and developers can leverage the dataset to generate insights that inform future developments in mobile technology and app design.</p>
+</section>
+</section>
+<section id="potential-uses-of-data">
+<h2><span class="section-number">1.4. </span>Potential Uses of Data<a class="headerlink" href="#potential-uses-of-data" title="Link to this heading">#</a></h2>
+<p>The AppVoC dataset serves several important purposes:</p>
+<ul class="simple">
+<li><p><strong>Understanding User Feedback</strong>: It provides a rich source of data for analyzing user reviews, helping to uncover trends and patterns in user satisfaction and dissatisfaction.</p></li>
+<li><p><strong>App Store Optimization (ASO)</strong>: Researchers and developers can use the dataset to study factors that impact app discoverability and user engagement, ultimately aiding in the optimization of apps for better performance in the App Store.</p></li>
+<li><p><strong>Research and Development</strong>: The dataset supports the development of advanced natural language processing (NLP) models and techniques, offering a practical application for studying generative methods and text synthesis.</p></li>
+</ul>
+<section id="conclusion">
+<h3><span class="section-number">1.4.1. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>The AppVoC dataset, with its broad coverage and substantial volume of reviews, provides a valuable resource for understanding the mobile app customer experience. While it is essential to consider its limitations, the dataset’s representativeness and the depth of information it offers make it a powerful tool for research, analysis, and the advancement of app development practices.</p>
+</section>
+</section>
+<section id="references">
+<h2><span class="section-number">1.5. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id7">
+<div role="list" class="citation-list">
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Steve Jobs. Talk by Steven Jobs at the IDCA. June 1983.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>42matters AG. iOS Apple App Store Statistics and Trends 2024. https://42matters.com/ios-apple-app-store-statistics-and-trends.</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Henrik Sällberg, Shujun Wang, and Emil Numminen. The combinatory role of online ratings and reviews in mobile app downloads: an empirical investigation of gaming and productivity apps from their initial app store launch. <em>Journal of Marketing Analytics</em>, 11(3):426–442, September 2023. <a class="reference external" href="https://doi.org/10.1057/s41270-022-00171-w">doi:10.1057/s41270-022-00171-w</a>.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Fred D. Davis. Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology. <em>MIS Quarterly</em>, 13(3):319, September 1989. <a class="reference external" href="https://arxiv.org/abs/249008">arXiv:249008</a>, <a class="reference external" href="https://doi.org/10.2307/249008">doi:10.2307/249008</a>.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Elihu Katz, Jay G. Blumler, and Michael Gurevitch. Uses and Gratifications Research. <em>Public Opinion Quarterly</em>, 37(4):509, 1973. <a class="reference external" href="https://doi.org/10.1086/268109">doi:10.1086/268109</a>.</p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>Nurullah Tas, Farid Huseynov, and Busra Ozdenızcı Kose. A unified theoretical model for understanding mobile application usage behavior supported with real usage data. <em>Information Development</em>, pages 02666669241257191, June 2024. <a class="reference external" href="https://doi.org/10.1177/02666669241257191">doi:10.1177/02666669241257191</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./00_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../00_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AppInsight</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../01_data/00_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">1.1.1. Motivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-project">1.1.2. AppVoC Project</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-context">1.1.3. Literature Context</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-yard-yet-another-review-dataset">1.1.4. Why YARD (Yet Another Review Dataset)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-appvoc-dataset">1.1.5. Key Features of AppVoC Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-of-the-dataset">1.1.6. Value of the Dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">1.2. Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition">1.2.1. Data Acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-layer">Domain Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#application-layer">Application Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-layer">Infrastructure Layer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-layer">Repository Layer</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-strategy">1.2.2. Sampling Strategy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-categories-meeting-the-criteria">Selected Categories Meeting the Criteria</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-categories-included">Rationale for Categories Included</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-excluding-gaming-the-largest-category">Justification for Excluding Gaming, the Largest Category</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#justification-for-excluding-the-shopping-category">Justification for Excluding the Shopping Category</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">1.3. Dataset Description</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-files">1.3.1. Dataset Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-variables">1.3.2. Dataset Variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-on-data-representation">1.3.3. Caution on Data Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-uses-of-data">1.4. Potential Uses of Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">1.4.1. Conclusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.5. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

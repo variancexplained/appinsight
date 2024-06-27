@@ -1,0 +1,1700 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>11. AppVoC Overview &#8212; &lt;h1&gt;AppStore Analysis and Opportunity Discovery&lt;/h1&gt;
+</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_eda/01_overview';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="10. AppVoC Exploratory Analysis" href="00_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../00_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+ - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="<h1>AppStore Analysis and Opportunity Discovery</h1>
+ - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_intro.html">
+                    AppInsight
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../00_data/00_intro.html">1. AppVoC Reviews Dataset: Apple App Store Voice of the Customer…at Scale</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AppVoC Dataset Preparation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_data/00_intro.html">2. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/01_norm.html">3. Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/02_dqa.html">4. Data Quality Assessment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/03_clean.html">5. Cleaning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/04_features.html">6. Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/05_text_prep.html">7. Text Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/06_metrics.html">8. Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_data/07_conclusion.html">9. Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exploratory Data Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_intro.html">10. AppVoC Exploratory Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. AppVoC Overview</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/variancexplained/appinsight/main?urlpath=tree/jbook/02_eda/01_overview.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/variancexplained/appinsight/blob/main/jbook/02_eda/01_overview.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/edit/main/jbook/02_eda/01_overview.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/variancexplained/appinsight/issues/new?title=Issue%20on%20page%20%2F02_eda/01_overview.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02_eda/01_overview.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AppVoC Overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-features">11.1. AppVoC Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-measurement">11.2. Variable Types and Measurement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rating-as-interval">11.2.1. Rating as Interval</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-profile">11.3. AppVoC Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-data-sample">11.4. AppVoC Data Sample</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-analysis">11.4.1. Example: Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-store-s-first-review">11.5. App Store’s First Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-significance">11.5.1. Historical Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-significance">11.5.2. Analytical Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cultural-and-social-significance">11.5.3. Cultural and Social Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-first-app-review-in-our-dataset">11.5.4. Analysis of the First App Review in Our Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-details">Review Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#content-analysis">Content Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contextual-insights">Contextual Insights</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="appvoc-overview">
+<h1><span class="section-number">11. </span>AppVoC Overview<a class="headerlink" href="#appvoc-overview" title="Link to this heading">#</a></h1>
+<p>In this section, we provide essential information about the AppVoC dataset, including review, app, user and category counts, the number of features in the dataset, and its temporal range.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">appinsight.utils.repo</span> <span class="kn">import</span> <span class="n">DatasetRepo</span>
+<span class="kn">from</span> <span class="nn">appinsight.analysis.overview</span> <span class="kn">import</span> <span class="n">DatasetOverview</span>
+<span class="kn">from</span> <span class="nn">appinsight.utils.print</span> <span class="kn">import</span> <span class="n">Printer</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;max_colwidth&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DIRECTORY</span> <span class="o">=</span> <span class="s2">&quot;04_features&quot;</span>
+<span class="n">FILENAME</span> <span class="o">=</span> <span class="s2">&quot;reviews.pkl&quot;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repo</span> <span class="o">=</span> <span class="n">DatasetRepo</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">DIRECTORY</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">FILENAME</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">repo</span> <span class="o">=</span> <span class="n">DatasetRepo</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">repo</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">DIRECTORY</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">FILENAME</span><span class="p">)</span>
+
+<span class="nn">File ~/projects/appinsight/appinsight/utils/repo.py:84,</span> in <span class="ni">DatasetRepo.read</span><span class="nt">(self, directory, filename)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Reads data so designated.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="n">filepath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_filepath</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">84</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="nn">File ~/projects/appinsight/appinsight/utils/file.py:360,</span> in <span class="ni">IOService.read</span><span class="nt">(cls, filepath, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">357</span> <span class="nd">@classmethod</span>
+<span class="g g-Whitespace">    </span><span class="mi">358</span> <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="n">io</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_get_io</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">360</span>     <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/projects/appinsight/appinsight/utils/file.py:43,</span> in <span class="ni">IO.read</span><span class="nt">(cls, filepath, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="nd">@classmethod</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">43</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_read</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="k">return</span> <span class="n">data</span>
+
+<span class="nn">File ~/projects/appinsight/appinsight/utils/file.py:245,</span> in <span class="ni">PickleIO._read</span><span class="nt">(cls, filepath, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span> <span class="nd">@classmethod</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span> <span class="k">def</span> <span class="nf">_read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">245</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span>             <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/prod/04_features/reviews.pkl&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span> <span class="o">=</span> <span class="n">DatasetOverview</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">ov</span><span class="o">.</span><span class="n">reset_cache</span><span class="p">()</span>
+<span class="n">ov</span><span class="o">.</span><span class="n">overview</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                AppVoC Overview                                 
+                       Number of Reviews | 17109
+                         Number of Users | 17097
+                          Number of Apps | 3997
+                    Number of Categories | 10
+                                Features | 18
+                               Size (Mb) | 16.93
+                    Date of First Review | 2008-09-04
+                     Date of Last Review | 2023-08-17
+                          Date Generated | 2023-12-02
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compiled in December of 2023, the preprocessed AppVoC dataset contains some 16.7 million reviews and ratings submitted by approximately 33,000 users for 12 million apps across 10 categories. The 17 features in the dataset represent user opinion and sentiment dating back to July 10, 2008, the day that Steve Job’s launched the App Store. Quite naturally, we will reveal some of these early opinions in about a minute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">by_category</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_17af4">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_17af4_level0_col0" class="col_heading level0 col0" >Category</th>
+      <th id="T_17af4_level0_col1" class="col_heading level0 col1" >Reviews</th>
+      <th id="T_17af4_level0_col2" class="col_heading level0 col2" >Apps</th>
+      <th id="T_17af4_level0_col3" class="col_heading level0 col3" >Reviews/App</th>
+      <th id="T_17af4_level0_col4" class="col_heading level0 col4" >Authors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_17af4_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_17af4_row0_col0" class="data row0 col0" >Book</td>
+      <td id="T_17af4_row0_col1" class="data row0 col1" >748</td>
+      <td id="T_17af4_row0_col2" class="data row0 col2" >124</td>
+      <td id="T_17af4_row0_col3" class="data row0 col3" >6.03</td>
+      <td id="T_17af4_row0_col4" class="data row0 col4" >748</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_17af4_row1_col0" class="data row1 col0" >Business</td>
+      <td id="T_17af4_row1_col1" class="data row1 col1" >1,320</td>
+      <td id="T_17af4_row1_col2" class="data row1 col2" >451</td>
+      <td id="T_17af4_row1_col3" class="data row1 col3" >2.93</td>
+      <td id="T_17af4_row1_col4" class="data row1 col4" >1,320</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_17af4_row2_col0" class="data row2 col0" >Education</td>
+      <td id="T_17af4_row2_col1" class="data row2 col1" >1,040</td>
+      <td id="T_17af4_row2_col2" class="data row2 col2" >300</td>
+      <td id="T_17af4_row2_col3" class="data row2 col3" >3.47</td>
+      <td id="T_17af4_row2_col4" class="data row2 col4" >1,040</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_17af4_row3_col0" class="data row3 col0" >Entertainment</td>
+      <td id="T_17af4_row3_col1" class="data row3 col1" >1,885</td>
+      <td id="T_17af4_row3_col2" class="data row3 col2" >335</td>
+      <td id="T_17af4_row3_col3" class="data row3 col3" >5.63</td>
+      <td id="T_17af4_row3_col4" class="data row3 col4" >1,885</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_17af4_row4_col0" class="data row4 col0" >Health & Fitness</td>
+      <td id="T_17af4_row4_col1" class="data row4 col1" >3,891</td>
+      <td id="T_17af4_row4_col2" class="data row4 col2" >851</td>
+      <td id="T_17af4_row4_col3" class="data row4 col3" >4.57</td>
+      <td id="T_17af4_row4_col4" class="data row4 col4" >3,891</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_17af4_row5_col0" class="data row5 col0" >Lifestyle</td>
+      <td id="T_17af4_row5_col1" class="data row5 col1" >1,612</td>
+      <td id="T_17af4_row5_col2" class="data row5 col2" >389</td>
+      <td id="T_17af4_row5_col3" class="data row5 col3" >4.14</td>
+      <td id="T_17af4_row5_col4" class="data row5 col4" >1,612</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_17af4_row6_col0" class="data row6 col0" >Medical</td>
+      <td id="T_17af4_row6_col1" class="data row6 col1" >642</td>
+      <td id="T_17af4_row6_col2" class="data row6 col2" >245</td>
+      <td id="T_17af4_row6_col3" class="data row6 col3" >2.62</td>
+      <td id="T_17af4_row6_col4" class="data row6 col4" >642</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_17af4_row7_col0" class="data row7 col0" >Productivity</td>
+      <td id="T_17af4_row7_col1" class="data row7 col1" >754</td>
+      <td id="T_17af4_row7_col2" class="data row7 col2" >194</td>
+      <td id="T_17af4_row7_col3" class="data row7 col3" >3.89</td>
+      <td id="T_17af4_row7_col4" class="data row7 col4" >754</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_17af4_row8_col0" class="data row8 col0" >Social Networking</td>
+      <td id="T_17af4_row8_col1" class="data row8 col1" >2,426</td>
+      <td id="T_17af4_row8_col2" class="data row8 col2" >278</td>
+      <td id="T_17af4_row8_col3" class="data row8 col3" >8.73</td>
+      <td id="T_17af4_row8_col4" class="data row8 col4" >2,425</td>
+    </tr>
+    <tr>
+      <th id="T_17af4_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_17af4_row9_col0" class="data row9 col0" >Utilities</td>
+      <td id="T_17af4_row9_col1" class="data row9 col1" >2,791</td>
+      <td id="T_17af4_row9_col2" class="data row9 col2" >830</td>
+      <td id="T_17af4_row9_col3" class="data row9 col3" >3.36</td>
+      <td id="T_17af4_row9_col4" class="data row9 col4" >2,790</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>The table above summarizes the distribution of reviews and apps across different categories in the dataset. Each category is listed along with the total number of reviews, the total number of apps, the average number of reviews per app (Reviews/App), and the total number of authors contributing to the reviews in each category.</p>
+<section id="appvoc-features">
+<h2><span class="section-number">11.1. </span>AppVoC Features<a class="headerlink" href="#appvoc-features" title="Link to this heading">#</a></h2>
+<p>The table below lists the 17 features of the dataset, representing both the customer’s experience and the influence of their opinions on customer behavior and engagement.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Data Type</p></th>
+<th class="head"><p>Measurement</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>id</p></td>
+<td><p>string</p></td>
+<td><p>nominal</p></td>
+<td><p>Unique identifier for each review.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>app_id</p></td>
+<td><p>string</p></td>
+<td><p>nominal</p></td>
+<td><p>Unique identifier for each app in the App Store.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>app_name</p></td>
+<td><p>string</p></td>
+<td><p>nominal</p></td>
+<td><p>Name for each app in the App Store.</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>category</p></td>
+<td><p>category</p></td>
+<td><p>nominal</p></td>
+<td><p>Name of the category or genre to which each app belongs.</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>author</p></td>
+<td><p>string</p></td>
+<td><p>nominal</p></td>
+<td><p>10-character hash sequence representing a unique review author.</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>rating</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>Represents the author’s level of satisfaction with the app on a   five-point scale from 1 to 5.</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>title</p></td>
+<td><p>string</p></td>
+<td><p>nominal</p></td>
+<td><p>String that characterizes or summarizes a review.</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>content</p></td>
+<td><p>text</p></td>
+<td><p>nominal</p></td>
+<td><p>Strings that comprise an app review.</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>review_length</p></td>
+<td><p>numeric</p></td>
+<td><p>discrete</p></td>
+<td><p>Number of words in a review.</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>vote_count</p></td>
+<td><p>numeric</p></td>
+<td><p>discrete</p></td>
+<td><p>Number of users that cast a vote on the usefullness or value of a   review.</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>vote_sum</p></td>
+<td><p>numeric</p></td>
+<td><p>discrete</p></td>
+<td><p>Total of the value of the votes given by users indicating the value or   usefullness of a review.</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>date</p></td>
+<td><p>datetime64[ms]</p></td>
+<td><p>interval</p></td>
+<td><p>The date the review was submitted.</p></td>
+</tr>
+<tr class="row-even"><td><p>13</p></td>
+<td><p>year</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>The year the review was submitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p>month</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>The month the review was submitted.</p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p>day</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>The day the review was submitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>year_month</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>The year and month the review was submitted.</p></td>
+</tr>
+<tr class="row-even"><td><p>17</p></td>
+<td><p>ymd</p></td>
+<td><p>numeric</p></td>
+<td><p>interval</p></td>
+<td><p>The year month a day the review was submitted.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="variable-types-and-measurement">
+<h2><span class="section-number">11.2. </span>Variable Types and Measurement<a class="headerlink" href="#variable-types-and-measurement" title="Link to this heading">#</a></h2>
+<p>The dataset features a variety of data types and measurement types, each serving a distinct purpose in capturing and analyzing user interactions and app performance:</p>
+<ol class="arabic simple">
+<li><p><strong>String (Nominal)</strong>: Used for identifiers such as <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">app_id</span></code>, <code class="docutils literal notranslate"><span class="pre">app_name</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code>, <code class="docutils literal notranslate"><span class="pre">title</span></code>, and <code class="docutils literal notranslate"><span class="pre">content</span></code>. These represent categorical data without any inherent order or numerical value.</p></li>
+<li><p><strong>Category (Nominal)</strong>: The <code class="docutils literal notranslate"><span class="pre">category</span></code> field conveys a specific type of string data, indicating the genre or category to which each app belongs.</p></li>
+<li><p><strong>Numeric (Interval/Discrete)</strong>: The <code class="docutils literal notranslate"><span class="pre">rating</span></code>, <code class="docutils literal notranslate"><span class="pre">review_length</span></code>, <code class="docutils literal notranslate"><span class="pre">vote_count</span></code>, <code class="docutils literal notranslate"><span class="pre">vote_sum</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">year_month</span></code>, and <code class="docutils literal notranslate"><span class="pre">ymd</span></code> fields utilize numeric data types.</p>
+<ul class="simple">
+<li><p><strong>Interval</strong>: <code class="docutils literal notranslate"><span class="pre">rating</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">year_month</span></code>, and <code class="docutils literal notranslate"><span class="pre">ymd</span></code> represent continuous numerical data with meaningful intervals between values.</p></li>
+<li><p><strong>Discrete</strong>: <code class="docutils literal notranslate"><span class="pre">review_length</span></code>, <code class="docutils literal notranslate"><span class="pre">vote_count</span></code>, and <code class="docutils literal notranslate"><span class="pre">vote_sum</span></code> represent countable quantities, typically whole numbers.</p></li>
+</ul>
+</li>
+<li><p><strong>Datetime (Interval)</strong>: The <code class="docutils literal notranslate"><span class="pre">date</span></code> field employs datetime data type, providing precise temporal information about when each review was submitted.</p></li>
+</ol>
+<p>These diverse data types and measurement types enable principled analysis of user engagement, sentiment, and behavior.</p>
+<section id="rating-as-interval">
+<h3><span class="section-number">11.2.1. </span>Rating as Interval<a class="headerlink" href="#rating-as-interval" title="Link to this heading">#</a></h3>
+<p>Our decision to treat rating as an interval type may raise eyebrows among traditionalists in data analysis pedagogy and measurement theory, as it challenges the long-standing orthodoxy surrounding data types. Since Harvard Psychology Professor, Dr.Stanley Smith Stevens proposed his taxonomy in the 1946 <span id="id1">[]</span>, the orthodoxy surrounding data types has been well-established. Rating, he argued, takes on a distinct nature of ordinal measurement. In this framework, ratings are characterized by their inherent order but <em>lack</em> consistent intervals between categories. This view aligns with the theoretical justification that ordinal scales provide a <em>ranking</em> of values without implying specific quantitative differences between them. Therefore, certain constructs such as ‘average rating’, for instance, have no mathematically interpretation.</p>
+<p>Our departure from this view leverages the inherent properties of interval scales, including equal intervals and meaningful arithmetic operations. Interval scales exhibit the property of equal intervals, where the difference between any two consecutive points on the scale remains constant. Mathematically, this implies that for any ratings <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, that $|i-j| = |k-l| \space \forall \space i,j,k,l. Because of this, arithmetic operations such as addition and averaging are meaningful, and more sophisticated statistical techniques, such as regression and correlation analysis, can be applied to facilitate a deeper understanding of user feedback. Moreover, the widespread adoption of average ratings by industry-leading platforms (such as Amazon, IMDb, and Yelp) as key metric for summarizing user feedback and comparing different products, services, or categories, underscores the practical acceptance of treating ratings as interval data. By treating ratings as interval data, we align with common industry practices and leverage the full range of statistical tools available for numerical data.</p>
+<p>Our departure from the conventional treatment of ratings as ordinal measurements is not without precedent. Inspired by the critiques of Velleman, Wilkinson, Rozeboom, and others, we have adopted a perspective that “the scale type of data may be determined in part
+by the questions we ask of the data or the purposes for which we intend it” <span id="id2">[]</span>. For those curious about the rationale behind our methodology, we invite you to explore <span class="xref std std-ref">rating_as_interval</span>.</p>
+</section>
+</section>
+<section id="appvoc-profile">
+<h2><span class="section-number">11.3. </span>AppVoC Profile<a class="headerlink" href="#appvoc-profile" title="Link to this heading">#</a></h2>
+<p>The profile summarizes the data and aspects of data quality in terms of:</p>
+<ul class="simple">
+<li><p><strong>Column</strong>: Represents the column names in the dataset.</p></li>
+<li><p><strong>DataType</strong>: Indicates the data type of each column.</p></li>
+<li><p><strong>Complete</strong>: Displays the count of complete cases (non-null values) in each column.</p></li>
+<li><p><strong>Null</strong>: Shows the count of null values in each column.</p></li>
+<li><p><strong>Completeness</strong>: Represents the completeness of each column, calculated as the ratio of complete cases to the total number of cases.</p></li>
+<li><p><strong>Unique</strong>: Indicates the count of unique values in each column.</p></li>
+<li><p><strong>Duplicate</strong>: Displays the count of duplicate values in each column.</p></li>
+<li><p><strong>Uniqueness</strong>: Represents the uniqueness of values within each column, calculated as the ratio of unique values to the total number of cases.</p></li>
+<li><p><strong>Size</strong>: Represents the size of the column in bytes.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">info</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_bd55e">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_bd55e_level0_col0" class="col_heading level0 col0" >Column</th>
+      <th id="T_bd55e_level0_col1" class="col_heading level0 col1" >DataType</th>
+      <th id="T_bd55e_level0_col2" class="col_heading level0 col2" >Complete</th>
+      <th id="T_bd55e_level0_col3" class="col_heading level0 col3" >Null</th>
+      <th id="T_bd55e_level0_col4" class="col_heading level0 col4" >Completeness</th>
+      <th id="T_bd55e_level0_col5" class="col_heading level0 col5" >Unique</th>
+      <th id="T_bd55e_level0_col6" class="col_heading level0 col6" >Duplicate</th>
+      <th id="T_bd55e_level0_col7" class="col_heading level0 col7" >Uniqueness</th>
+      <th id="T_bd55e_level0_col8" class="col_heading level0 col8" >Size (Bytes)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_bd55e_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_bd55e_row0_col0" class="data row0 col0" >id</td>
+      <td id="T_bd55e_row0_col1" class="data row0 col1" >string</td>
+      <td id="T_bd55e_row0_col2" class="data row0 col2" >17,109</td>
+      <td id="T_bd55e_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_bd55e_row0_col4" class="data row0 col4" >1.00</td>
+      <td id="T_bd55e_row0_col5" class="data row0 col5" >17,109</td>
+      <td id="T_bd55e_row0_col6" class="data row0 col6" >0</td>
+      <td id="T_bd55e_row0_col7" class="data row0 col7" >1.00</td>
+      <td id="T_bd55e_row0_col8" class="data row0 col8" >1,142,703</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_bd55e_row1_col0" class="data row1 col0" >app_id</td>
+      <td id="T_bd55e_row1_col1" class="data row1 col1" >string</td>
+      <td id="T_bd55e_row1_col2" class="data row1 col2" >17,109</td>
+      <td id="T_bd55e_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_bd55e_row1_col4" class="data row1 col4" >1.00</td>
+      <td id="T_bd55e_row1_col5" class="data row1 col5" >3,997</td>
+      <td id="T_bd55e_row1_col6" class="data row1 col6" >13,112</td>
+      <td id="T_bd55e_row1_col7" class="data row1 col7" >0.23</td>
+      <td id="T_bd55e_row1_col8" class="data row1 col8" >1,134,012</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_bd55e_row2_col0" class="data row2 col0" >app_name</td>
+      <td id="T_bd55e_row2_col1" class="data row2 col1" >string</td>
+      <td id="T_bd55e_row2_col2" class="data row2 col2" >17,109</td>
+      <td id="T_bd55e_row2_col3" class="data row2 col3" >0</td>
+      <td id="T_bd55e_row2_col4" class="data row2 col4" >1.00</td>
+      <td id="T_bd55e_row2_col5" class="data row2 col5" >3,997</td>
+      <td id="T_bd55e_row2_col6" class="data row2 col6" >13,112</td>
+      <td id="T_bd55e_row2_col7" class="data row2 col7" >0.23</td>
+      <td id="T_bd55e_row2_col8" class="data row2 col8" >1,458,227</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_bd55e_row3_col0" class="data row3 col0" >category_id</td>
+      <td id="T_bd55e_row3_col1" class="data row3 col1" >category</td>
+      <td id="T_bd55e_row3_col2" class="data row3 col2" >17,109</td>
+      <td id="T_bd55e_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_bd55e_row3_col4" class="data row3 col4" >1.00</td>
+      <td id="T_bd55e_row3_col5" class="data row3 col5" >10</td>
+      <td id="T_bd55e_row3_col6" class="data row3 col6" >17,099</td>
+      <td id="T_bd55e_row3_col7" class="data row3 col7" >0.00</td>
+      <td id="T_bd55e_row3_col8" class="data row3 col8" >17,780</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_bd55e_row4_col0" class="data row4 col0" >category</td>
+      <td id="T_bd55e_row4_col1" class="data row4 col1" >category</td>
+      <td id="T_bd55e_row4_col2" class="data row4 col2" >17,109</td>
+      <td id="T_bd55e_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_bd55e_row4_col4" class="data row4 col4" >1.00</td>
+      <td id="T_bd55e_row4_col5" class="data row4 col5" >10</td>
+      <td id="T_bd55e_row4_col6" class="data row4 col6" >17,099</td>
+      <td id="T_bd55e_row4_col7" class="data row4 col7" >0.00</td>
+      <td id="T_bd55e_row4_col8" class="data row4 col8" >18,083</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_bd55e_row5_col0" class="data row5 col0" >author</td>
+      <td id="T_bd55e_row5_col1" class="data row5 col1" >object</td>
+      <td id="T_bd55e_row5_col2" class="data row5 col2" >17,109</td>
+      <td id="T_bd55e_row5_col3" class="data row5 col3" >0</td>
+      <td id="T_bd55e_row5_col4" class="data row5 col4" >1.00</td>
+      <td id="T_bd55e_row5_col5" class="data row5 col5" >17,097</td>
+      <td id="T_bd55e_row5_col6" class="data row5 col6" >12</td>
+      <td id="T_bd55e_row5_col7" class="data row5 col7" >1.00</td>
+      <td id="T_bd55e_row5_col8" class="data row5 col8" >1,317,393</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_bd55e_row6_col0" class="data row6 col0" >rating</td>
+      <td id="T_bd55e_row6_col1" class="data row6 col1" >int64</td>
+      <td id="T_bd55e_row6_col2" class="data row6 col2" >17,109</td>
+      <td id="T_bd55e_row6_col3" class="data row6 col3" >0</td>
+      <td id="T_bd55e_row6_col4" class="data row6 col4" >1.00</td>
+      <td id="T_bd55e_row6_col5" class="data row6 col5" >5</td>
+      <td id="T_bd55e_row6_col6" class="data row6 col6" >17,104</td>
+      <td id="T_bd55e_row6_col7" class="data row6 col7" >0.00</td>
+      <td id="T_bd55e_row6_col8" class="data row6 col8" >136,872</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_bd55e_row7_col0" class="data row7 col0" >title</td>
+      <td id="T_bd55e_row7_col1" class="data row7 col1" >string</td>
+      <td id="T_bd55e_row7_col2" class="data row7 col2" >17,109</td>
+      <td id="T_bd55e_row7_col3" class="data row7 col3" >0</td>
+      <td id="T_bd55e_row7_col4" class="data row7 col4" >1.00</td>
+      <td id="T_bd55e_row7_col5" class="data row7 col5" >11,601</td>
+      <td id="T_bd55e_row7_col6" class="data row7 col6" >5,508</td>
+      <td id="T_bd55e_row7_col7" class="data row7 col7" >0.68</td>
+      <td id="T_bd55e_row7_col8" class="data row7 col8" >1,311,468</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_bd55e_row8_col0" class="data row8 col0" >content</td>
+      <td id="T_bd55e_row8_col1" class="data row8 col1" >string</td>
+      <td id="T_bd55e_row8_col2" class="data row8 col2" >17,109</td>
+      <td id="T_bd55e_row8_col3" class="data row8 col3" >0</td>
+      <td id="T_bd55e_row8_col4" class="data row8 col4" >1.00</td>
+      <td id="T_bd55e_row8_col5" class="data row8 col5" >16,164</td>
+      <td id="T_bd55e_row8_col6" class="data row8 col6" >945</td>
+      <td id="T_bd55e_row8_col7" class="data row8 col7" >0.94</td>
+      <td id="T_bd55e_row8_col8" class="data row8 col8" >6,243,364</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_bd55e_row9_col0" class="data row9 col0" >vote_sum</td>
+      <td id="T_bd55e_row9_col1" class="data row9 col1" >int64</td>
+      <td id="T_bd55e_row9_col2" class="data row9 col2" >17,109</td>
+      <td id="T_bd55e_row9_col3" class="data row9 col3" >0</td>
+      <td id="T_bd55e_row9_col4" class="data row9 col4" >1.00</td>
+      <td id="T_bd55e_row9_col5" class="data row9 col5" >26</td>
+      <td id="T_bd55e_row9_col6" class="data row9 col6" >17,083</td>
+      <td id="T_bd55e_row9_col7" class="data row9 col7" >0.00</td>
+      <td id="T_bd55e_row9_col8" class="data row9 col8" >136,872</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_bd55e_row10_col0" class="data row10 col0" >vote_count</td>
+      <td id="T_bd55e_row10_col1" class="data row10 col1" >int64</td>
+      <td id="T_bd55e_row10_col2" class="data row10 col2" >17,109</td>
+      <td id="T_bd55e_row10_col3" class="data row10 col3" >0</td>
+      <td id="T_bd55e_row10_col4" class="data row10 col4" >1.00</td>
+      <td id="T_bd55e_row10_col5" class="data row10 col5" >31</td>
+      <td id="T_bd55e_row10_col6" class="data row10 col6" >17,078</td>
+      <td id="T_bd55e_row10_col7" class="data row10 col7" >0.00</td>
+      <td id="T_bd55e_row10_col8" class="data row10 col8" >136,872</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_bd55e_row11_col0" class="data row11 col0" >date</td>
+      <td id="T_bd55e_row11_col1" class="data row11 col1" >datetime64[ms]</td>
+      <td id="T_bd55e_row11_col2" class="data row11 col2" >17,109</td>
+      <td id="T_bd55e_row11_col3" class="data row11 col3" >0</td>
+      <td id="T_bd55e_row11_col4" class="data row11 col4" >1.00</td>
+      <td id="T_bd55e_row11_col5" class="data row11 col5" >17,109</td>
+      <td id="T_bd55e_row11_col6" class="data row11 col6" >0</td>
+      <td id="T_bd55e_row11_col7" class="data row11 col7" >1.00</td>
+      <td id="T_bd55e_row11_col8" class="data row11 col8" >136,872</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_bd55e_row12_col0" class="data row12 col0" >review_length</td>
+      <td id="T_bd55e_row12_col1" class="data row12 col1" >int64</td>
+      <td id="T_bd55e_row12_col2" class="data row12 col2" >17,109</td>
+      <td id="T_bd55e_row12_col3" class="data row12 col3" >0</td>
+      <td id="T_bd55e_row12_col4" class="data row12 col4" >1.00</td>
+      <td id="T_bd55e_row12_col5" class="data row12 col5" >275</td>
+      <td id="T_bd55e_row12_col6" class="data row12 col6" >16,834</td>
+      <td id="T_bd55e_row12_col7" class="data row12 col7" >0.02</td>
+      <td id="T_bd55e_row12_col8" class="data row12 col8" >136,872</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_bd55e_row13_col0" class="data row13 col0" >year</td>
+      <td id="T_bd55e_row13_col1" class="data row13 col1" >object</td>
+      <td id="T_bd55e_row13_col2" class="data row13 col2" >17,109</td>
+      <td id="T_bd55e_row13_col3" class="data row13 col3" >0</td>
+      <td id="T_bd55e_row13_col4" class="data row13 col4" >1.00</td>
+      <td id="T_bd55e_row13_col5" class="data row13 col5" >16</td>
+      <td id="T_bd55e_row13_col6" class="data row13 col6" >17,093</td>
+      <td id="T_bd55e_row13_col7" class="data row13 col7" >0.00</td>
+      <td id="T_bd55e_row13_col8" class="data row13 col8" >1,043,649</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_bd55e_row14_col0" class="data row14 col0" >month</td>
+      <td id="T_bd55e_row14_col1" class="data row14 col1" >object</td>
+      <td id="T_bd55e_row14_col2" class="data row14 col2" >17,109</td>
+      <td id="T_bd55e_row14_col3" class="data row14 col3" >0</td>
+      <td id="T_bd55e_row14_col4" class="data row14 col4" >1.00</td>
+      <td id="T_bd55e_row14_col5" class="data row14 col5" >12</td>
+      <td id="T_bd55e_row14_col6" class="data row14 col6" >17,097</td>
+      <td id="T_bd55e_row14_col7" class="data row14 col7" >0.00</td>
+      <td id="T_bd55e_row14_col8" class="data row14 col8" >1,079,259</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_bd55e_row15_col0" class="data row15 col0" >day</td>
+      <td id="T_bd55e_row15_col1" class="data row15 col1" >object</td>
+      <td id="T_bd55e_row15_col2" class="data row15 col2" >17,109</td>
+      <td id="T_bd55e_row15_col3" class="data row15 col3" >0</td>
+      <td id="T_bd55e_row15_col4" class="data row15 col4" >1.00</td>
+      <td id="T_bd55e_row15_col5" class="data row15 col5" >7</td>
+      <td id="T_bd55e_row15_col6" class="data row15 col6" >17,102</td>
+      <td id="T_bd55e_row15_col7" class="data row15 col7" >0.00</td>
+      <td id="T_bd55e_row15_col8" class="data row15 col8" >1,097,470</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_bd55e_row16_col0" class="data row16 col0" >year_month</td>
+      <td id="T_bd55e_row16_col1" class="data row16 col1" >object</td>
+      <td id="T_bd55e_row16_col2" class="data row16 col2" >17,109</td>
+      <td id="T_bd55e_row16_col3" class="data row16 col3" >0</td>
+      <td id="T_bd55e_row16_col4" class="data row16 col4" >1.00</td>
+      <td id="T_bd55e_row16_col5" class="data row16 col5" >180</td>
+      <td id="T_bd55e_row16_col6" class="data row16 col6" >16,929</td>
+      <td id="T_bd55e_row16_col7" class="data row16 col7" >0.01</td>
+      <td id="T_bd55e_row16_col8" class="data row16 col8" >1,094,976</td>
+    </tr>
+    <tr>
+      <th id="T_bd55e_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_bd55e_row17_col0" class="data row17 col0" >ymd</td>
+      <td id="T_bd55e_row17_col1" class="data row17 col1" >object</td>
+      <td id="T_bd55e_row17_col2" class="data row17 col2" >17,109</td>
+      <td id="T_bd55e_row17_col3" class="data row17 col3" >0</td>
+      <td id="T_bd55e_row17_col4" class="data row17 col4" >1.00</td>
+      <td id="T_bd55e_row17_col5" class="data row17 col5" >4,635</td>
+      <td id="T_bd55e_row17_col6" class="data row17 col6" >12,474</td>
+      <td id="T_bd55e_row17_col7" class="data row17 col7" >0.27</td>
+      <td id="T_bd55e_row17_col8" class="data row17 col8" >1,146,303</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>All columns in the dataset are complete with no null values. Key observations include zero duplication in review <code class="docutils literal notranslate"><span class="pre">id</span></code> and 74% uniqueness in the <code class="docutils literal notranslate"><span class="pre">author</span></code> variable indicates 26% of the authors have submitted more than one review.</p>
+</section>
+<section id="appvoc-data-sample">
+<h2><span class="section-number">11.4. </span>AppVoC Data Sample<a class="headerlink" href="#appvoc-data-sample" title="Link to this heading">#</a></h2>
+<p>Next, we inspect the data by examining the first and last five observations in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>app_id</th>
+      <th>app_name</th>
+      <th>category_id</th>
+      <th>category</th>
+      <th>author</th>
+      <th>rating</th>
+      <th>title</th>
+      <th>content</th>
+      <th>vote_sum</th>
+      <th>vote_count</th>
+      <th>date</th>
+      <th>review_length</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year_month</th>
+      <th>ymd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15906283</th>
+      <td>1160519484</td>
+      <td>454638411</td>
+      <td>Messenger</td>
+      <td>6005</td>
+      <td>Social Networking</td>
+      <td>a3485c0ad91b83c2a966</td>
+      <td>5</td>
+      <td>Good</td>
+      <td>100% good</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2015-02-28 17:51:50</td>
+      <td>2</td>
+      <td>2015</td>
+      <td>February</td>
+      <td>Saturday</td>
+      <td>2015-02</td>
+      <td>2015-02-28</td>
+    </tr>
+    <tr>
+      <th>8328248</th>
+      <td>9036129510</td>
+      <td>1597150642</td>
+      <td>Reverse Health</td>
+      <td>6013</td>
+      <td>Health &amp; Fitness</td>
+      <td>5b28931a5bc65792a7b8</td>
+      <td>1</td>
+      <td>It’s a Scam</td>
+      <td>This app/program is a joke. You don’t receive coaching with a live person, the exercise program consists of three 20 minute videos w/two bonus exercise videos. Some of the recipes are decent, but ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2022-08-31 02:31:08</td>
+      <td>191</td>
+      <td>2022</td>
+      <td>August</td>
+      <td>Wednesday</td>
+      <td>2022-08</td>
+      <td>2022-08-31</td>
+    </tr>
+    <tr>
+      <th>10123462</th>
+      <td>1685166136</td>
+      <td>946346179</td>
+      <td>Animation Desk® Draw &amp; Animate</td>
+      <td>6016</td>
+      <td>Entertainment</td>
+      <td>66edc1765bb07328b9d4</td>
+      <td>3</td>
+      <td>Hard to use</td>
+      <td>Would be good if there was copy frame sorry I'm only going to give it 3 stars because it was not the worst sorry fix this and I'll give it 5🤓</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2017-07-16 23:20:22</td>
+      <td>31</td>
+      <td>2017</td>
+      <td>July</td>
+      <td>Sunday</td>
+      <td>2017-07</td>
+      <td>2017-07-16</td>
+    </tr>
+    <tr>
+      <th>5884575</th>
+      <td>6836055253</td>
+      <td>1158555867</td>
+      <td>Replika - Virtual AI Companion</td>
+      <td>6013</td>
+      <td>Health &amp; Fitness</td>
+      <td>9e88318918189b886c83</td>
+      <td>1</td>
+      <td>Peoples privacy</td>
+      <td>This app it’s been telling me that people are watching me through the phone following me around everywhere I go I don’t think this is a safe app that anyone should be on.</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2021-01-06 03:10:31</td>
+      <td>33</td>
+      <td>2021</td>
+      <td>January</td>
+      <td>Wednesday</td>
+      <td>2021-01</td>
+      <td>2021-01-06</td>
+    </tr>
+    <tr>
+      <th>16095366</th>
+      <td>445648636</td>
+      <td>447119634</td>
+      <td>Currents</td>
+      <td>6005</td>
+      <td>Social Networking</td>
+      <td>09b586574a4c4d3e6259</td>
+      <td>5</td>
+      <td>I Love Google</td>
+      <td>Google &gt; Apple</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2011-07-19 16:27:53</td>
+      <td>3</td>
+      <td>2011</td>
+      <td>July</td>
+      <td>Tuesday</td>
+      <td>2011-07</td>
+      <td>2011-07-19</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ov</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>app_id</th>
+      <th>app_name</th>
+      <th>category_id</th>
+      <th>category</th>
+      <th>author</th>
+      <th>rating</th>
+      <th>title</th>
+      <th>content</th>
+      <th>vote_sum</th>
+      <th>vote_count</th>
+      <th>date</th>
+      <th>review_length</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>year_month</th>
+      <th>ymd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10544753</th>
+      <td>5008213353</td>
+      <td>376510438</td>
+      <td>Hulu: Watch TV shows &amp; movies</td>
+      <td>6016</td>
+      <td>Entertainment</td>
+      <td>598519b19b40f326fe25</td>
+      <td>2</td>
+      <td>glitchy</td>
+      <td>i don’t normally submit reviews but this app has been bothering me more and more. it often makes you rewatch commercials if you accidentally rewind or fastforward too much, it freezes, it doesn’t ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2019-10-24 18:38:51</td>
+      <td>96</td>
+      <td>2019</td>
+      <td>October</td>
+      <td>Thursday</td>
+      <td>2019-10</td>
+      <td>2019-10-24</td>
+    </tr>
+    <tr>
+      <th>5338032</th>
+      <td>1605328721</td>
+      <td>330595774</td>
+      <td>Cyclemeter Bike Computer</td>
+      <td>6013</td>
+      <td>Health &amp; Fitness</td>
+      <td>83bd65033507f43ac262</td>
+      <td>5</td>
+      <td>The perfect biking app</td>
+      <td>The only thing I don't like about this app is that I didn't find it sooner!  This app is immensely customizable, so you can set it up to display EXACTLY the information that you want to see. In ad...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2017-05-05 02:37:58</td>
+      <td>309</td>
+      <td>2017</td>
+      <td>May</td>
+      <td>Friday</td>
+      <td>2017-05</td>
+      <td>2017-05-05</td>
+    </tr>
+    <tr>
+      <th>2113413</th>
+      <td>9794096424</td>
+      <td>1533132556</td>
+      <td>Angi Services for Pros</td>
+      <td>6000</td>
+      <td>Business</td>
+      <td>436344ad7013a66c4626</td>
+      <td>5</td>
+      <td>New update killed the app</td>
+      <td>It started out amazing, I was making great money on tons of different handyman jobs. Then they started assigning 2 people to some jobs. You have no idea who the other “pro” is, and it makes a job ...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2023-04-06 19:54:00</td>
+      <td>183</td>
+      <td>2023</td>
+      <td>April</td>
+      <td>Thursday</td>
+      <td>2023-04</td>
+      <td>2023-04-06</td>
+    </tr>
+    <tr>
+      <th>8395610</th>
+      <td>3288614151</td>
+      <td>314498713</td>
+      <td>BetterSleep: Relax and Sleep</td>
+      <td>6013</td>
+      <td>Health &amp; Fitness</td>
+      <td>cf370b0f5e43a3d6030f</td>
+      <td>5</td>
+      <td>The baby was</td>
+      <td>I got it for the baby and it’s like magic. Asleep in little time, the best sound app</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2018-10-11 08:51:55</td>
+      <td>18</td>
+      <td>2018</td>
+      <td>October</td>
+      <td>Thursday</td>
+      <td>2018-10</td>
+      <td>2018-10-11</td>
+    </tr>
+    <tr>
+      <th>4827725</th>
+      <td>690659843</td>
+      <td>381471023</td>
+      <td>Flashlight Ⓞ</td>
+      <td>6002</td>
+      <td>Utilities</td>
+      <td>2d54a30692141cb5e7a0</td>
+      <td>5</td>
+      <td>No Name</td>
+      <td>Supper app</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2012-11-14 03:25:04</td>
+      <td>2</td>
+      <td>2012</td>
+      <td>November</td>
+      <td>Wednesday</td>
+      <td>2012-11</td>
+      <td>2012-11-14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>When examining the first and last five reviews in the dataset, several aspects are worth commenting on:</p>
+<ol class="arabic simple">
+<li><p><strong>Consistency</strong>: The dataset maintains a consistent format with clearly defined columns.</p></li>
+<li><p><strong>Timestamp Granularity</strong>: Each review has a detailed timestamp (<code class="docutils literal notranslate"><span class="pre">date</span></code>), providing the exact date and time down to seconds.</p></li>
+<li><p><strong>Derived Columns</strong>: Additional columns (<code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">year_month</span></code>, <code class="docutils literal notranslate"><span class="pre">ymd</span></code>) are derived from the <code class="docutils literal notranslate"><span class="pre">date</span></code> column for easier analysis.</p></li>
+<li><p><strong>Vote Metrics</strong>: The earliest reviews reflect varying levels of user engagement with each review via <code class="docutils literal notranslate"><span class="pre">vote_sum</span></code> and <code class="docutils literal notranslate"><span class="pre">vote_count</span></code>.</p></li>
+</ol>
+<section id="example-analysis">
+<h3><span class="section-number">11.4.1. </span>Example: Analysis<a class="headerlink" href="#example-analysis" title="Link to this heading">#</a></h3>
+<p>Here’s an example analysis commentary based on the printed reviews:</p>
+<ul class="simple">
+<li><p><strong>Qudo - Find Snapchat Friends</strong>: The review is short but positive, indicating a good user experience. However, the low rating contrasts with the review content, which could be an outlier or an error.</p></li>
+<li><p><strong>Flirtini - Match, Chat, Meet</strong>: This review is critical of the app, highlighting an issue with fake accounts. This type of feedback is crucial for app developers to address user concerns.</p></li>
+<li><p><strong>Text Me - Phone Call + Texting</strong>: A highly positive review praising the app’s functionality, aligning well with the 5-star rating.</p></li>
+<li><p><strong>Boo — Dating. Friends. Chat.</strong>: Another positive review with a humorous touch, reflecting user satisfaction.</p></li>
+<li><p><strong>Emoji Me Sticker Maker</strong>: Positive feedback on the app’s features, showing user appreciation for the provided content.</p></li>
+</ul>
+<p>Next step? We analyze the distributions of the variables, to understand centrality, frequency and spread of variables in the dataset. But first…</p>
+</section>
+</section>
+<section id="app-store-s-first-review">
+<h2><span class="section-number">11.5. </span>App Store’s First Review<a class="headerlink" href="#app-store-s-first-review" title="Link to this heading">#</a></h2>
+<p>To be more precise, ‘App Store’s First Review’ should say the App Store’s First Review <em>in our dataset</em> from App Store launch on July 10, 2008; hereinafter referred to as the ‘first app review’.</p>
+<p>The first app review in the App Store holds historical and symbolic significance, marking the beginning of a new era in mobile applications and user-generated feedback. This review provides insights into early user experiences and expectations from apps when the App Store was launched. Here are several reasons why the first app review is significant:</p>
+<section id="historical-significance">
+<h3><span class="section-number">11.5.1. </span>Historical Significance<a class="headerlink" href="#historical-significance" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Milestone Event</strong>: The first app review represents a milestone in the history of mobile technology and digital marketplaces. It signifies the launch of a platform that revolutionized how software is distributed and consumed.</p></li>
+<li><p><strong>Early User Expectations</strong>: It provides a glimpse into what early adopters of mobile technology valued and expected from mobile applications in 2008.</p></li>
+<li><p><strong>App Store Evolution</strong>: Comparing this review to contemporary reviews highlights how both user expectations and app functionalities have evolved.</p></li>
+</ol>
+</section>
+<section id="analytical-significance">
+<h3><span class="section-number">11.5.2. </span>Analytical Significance<a class="headerlink" href="#analytical-significance" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Baseline for Analysis</strong>: It serves as a baseline for understanding how user feedback and app quality have evolved. Analyzing this review can set the stage for a longitudinal study of app reviews.</p></li>
+<li><p><strong>Sentiment Analysis</strong>: Conducting sentiment analysis on the first review can reveal initial user sentiment towards the App Store and its apps.</p></li>
+<li><p><strong>Trends and Patterns</strong>: Observing the progression from this first review to subsequent reviews can reveal trends in user demands and app features.</p></li>
+</ol>
+</section>
+<section id="cultural-and-social-significance">
+<h3><span class="section-number">11.5.3. </span>Cultural and Social Significance<a class="headerlink" href="#cultural-and-social-significance" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>User Empowerment</strong>: The ability for users to review and rate apps empowered consumers and provided developers with direct feedback. This review is a testament to that empowerment.</p></li>
+<li><p><strong>Community Building</strong>: It marks the beginning of an interactive community where users share their experiences and help guide others in the app selection process.</p></li>
+</ol>
+<p>For a complete analysis, it’s essential to recognize this review’s historical, analytical, cultural, and social significance.</p>
+<p>Voici, the ‘first app review’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Printer</span><span class="p">()</span><span class="o">.</span><span class="n">print_dataframe_as_dict</span><span class="p">(</span><span class="n">ov</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;First App Review (in our dataset)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                       First App Review (in our dataset)                        
+                                      id | 1160519484
+                                  app_id | 454638411
+                                app_name | Messenger
+                             category_id | 6005
+                                category | Social Networking
+                                  author | a3485c0ad91b83c2a966
+                                  rating | 5
+                                   title | Good
+                                 content | 100% good
+                                vote_sum | 0
+                              vote_count | 0
+                                    date | 2015-02-28 17:51:50
+                           review_length | 2
+                                    year | 2015
+                                   month | February
+                                     day | Saturday
+                              year_month | 2015-02
+                                     ymd | 2015-02-28
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analysis-of-the-first-app-review-in-our-dataset">
+<h3><span class="section-number">11.5.4. </span>Analysis of the First App Review in Our Dataset<a class="headerlink" href="#analysis-of-the-first-app-review-in-our-dataset" title="Link to this heading">#</a></h3>
+<p>This review, dated July 10, 2008, is for the app <strong>epocrates</strong>, categorized under <strong>Medical</strong>. The review highlights several key aspects of early user interactions and expectations with mobile applications.</p>
+<section id="review-details">
+<h4>Review Details<a class="headerlink" href="#review-details" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>App Information</strong></p>
+<ul>
+<li><p><strong>App Name:</strong> epocrates</p></li>
+<li><p><strong>Category:</strong> Medical</p></li>
+<li><p><strong>App ID:</strong> 281935788</p></li>
+</ul>
+</li>
+<li><p><strong>Review Metadata</strong></p>
+<ul>
+<li><p><strong>Review ID:</strong> 5287030</p></li>
+<li><p><strong>Author ID:</strong> 50c38e8b41319e42951d</p></li>
+<li><p><strong>Rating:</strong> 5 stars</p></li>
+<li><p><strong>Review Date:</strong> July 10, 2008 (Thursday)</p></li>
+<li><p><strong>Vote Sum:</strong> 27</p></li>
+<li><p><strong>Vote Count:</strong> 37</p></li>
+<li><p><strong>Review Length:</strong> 34 words</p></li>
+</ul>
+</li>
+<li><p><strong>Review Content:</strong></p>
+<ul>
+<li><p><strong>Title:</strong> ePocrates</p></li>
+<li><p><strong>Body:</strong> “It’s FREE!  Damn, you can’t beat that for an outstanding app!  I was ready to throw down some cash for this.  Did I mention that this is a FREE app?  Go and get yours!!!”</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="content-analysis">
+<h4>Content Analysis<a class="headerlink" href="#content-analysis" title="Link to this heading">#</a></h4>
+<p>The reviewer’s excitement is palpable, marked by the repeated emphasis on the app being free. This enthusiasm reflects early user sentiments where the cost of apps was a significant factor in user satisfaction. The use of informal language (“Damn,” “throw down some cash”) and multiple exclamation marks highlights the casual and enthusiastic tone common in early app reviews.</p>
+</section>
+<section id="sentiment-analysis">
+<h4>Sentiment Analysis<a class="headerlink" href="#sentiment-analysis" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Tone:</strong> Highly positive</p></li>
+<li><p><strong>Key Sentiment Words:</strong> “FREE,” “outstanding,” “can’t beat that”</p></li>
+<li><p>The review conveys strong satisfaction, primarily driven by the app’s cost-free nature and perceived high value.</p></li>
+</ul>
+</section>
+<section id="contextual-insights">
+<h4>Contextual Insights<a class="headerlink" href="#contextual-insights" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Historical Context:</strong> This review dates back to the very early stages of the App Store, which launched on July 10, 2008. The review’s date indicates it was among the first user feedbacks, offering valuable historical context.</p></li>
+<li><p><strong>User Expectations:</strong> The emphasis on the app being free underscores early user expectations where free apps were a significant draw.</p></li>
+<li><p><strong>App Popularity:</strong> The relatively high vote count (37) suggests that even in the nascent stages of the App Store, user engagement and community validation (through votes) were important.</p></li>
+</ol>
+</section>
+<section id="reflection">
+<h4>Reflection<a class="headerlink" href="#reflection" title="Link to this heading">#</a></h4>
+<p>Behold, the first app review. This piece of digital history offers a window into the dawn of the app ecosystem. The excitement and high rating reflect a time of discovery and novelty, where users were thrilled to find useful, free applications. This review not only serves as a benchmark for user satisfaction but also highlights the evolving nature of app development and user interaction over the years.</p>
+<p>The first review in our dataset is a testament to the excitement and high expectations surrounding early mobile applications. It provides a rich, qualitative snapshot of user sentiment, engagement, and the nascent app culture.</p>
+<p>With that, we conclude the dataset overview section of the exploratory analysis. Next, we scrutinize the distributions of ratings, vote counts, and other key variables to unveil insights into their centrality, spread, and potential patterns.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./02_eda"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>AppVoC Exploratory Analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-features">11.1. AppVoC Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-types-and-measurement">11.2. Variable Types and Measurement</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rating-as-interval">11.2.1. Rating as Interval</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-profile">11.3. AppVoC Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appvoc-data-sample">11.4. AppVoC Data Sample</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-analysis">11.4.1. Example: Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-store-s-first-review">11.5. App Store’s First Review</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-significance">11.5.1. Historical Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-significance">11.5.2. Analytical Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cultural-and-social-significance">11.5.3. Cultural and Social Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-the-first-app-review-in-our-dataset">11.5.4. Analysis of the First App Review in Our Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#review-details">Review Details</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#content-analysis">Content Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sentiment-analysis">Sentiment Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#contextual-insights">Contextual Insights</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection">Reflection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By John James
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
